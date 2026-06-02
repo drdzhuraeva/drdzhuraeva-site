@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Джураева Малика Дильмурадовна — врач-дерматовенеролог, косметолог</title>
+  <meta name="description" content="Врач-дерматовенеролог и косметолог. Аппаратная косметология, здоровье и красота кожи. Запись на консультацию." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ece6dc;        /* greige */
+      --bg-2: #e5ddd0;      /* services band */
+      --panel: #f4f0e8;     /* cards */
+      --line: #d6ccbd;
+      --ink: #2e2820;
+      --muted: #8a8175;
+      --sage: #8a9a7b;
+      --sage-dark: #6c7b5b;
+      --espresso: #3b3027;
+      --cream: #f4f0e8;
+      --radius: 4px;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Manrope", -apple-system, "Segoe UI", sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+    a { color: inherit; text-decoration: none; }
+    .ph { color: var(--sage-dark); border-bottom: 1px dashed var(--sage); }
+
+    .eyebrow {
+      color: var(--sage-dark); font-family: var(--sans); font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase; font-size: 12px;
+    }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: 0.5px; color: var(--espresso); }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(236, 230, 220, 0.8);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+    .logo { font-family: var(--serif); font-size: 22px; letter-spacing: 1px; color: var(--espresso); }
+    .logo span { color: var(--sage-dark); }
+    .nav-links { display: flex; gap: 34px; }
+    .nav-links a { color: var(--muted); font-size: 14px; letter-spacing: .5px; transition: color .25s; }
+    .nav-links a:hover { color: var(--sage-dark); }
+    .btn {
+      display: inline-block; background: var(--espresso); color: var(--cream);
+      padding: 13px 28px; border-radius: 999px; font-weight: 600; font-size: 13px;
+      letter-spacing: 1px; text-transform: uppercase; transition: all .25s;
+    }
+    .btn:hover { background: #4a3d31; transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--espresso); border: 1px solid var(--sage-dark); }
+    .btn-ghost:hover { background: rgba(138,154,123,.16); }
+    @media (max-width: 820px) { .nav-links { display: none; } }
+
+    /* Hero */
+    .hero { padding: 96px 0 88px; border-bottom: 1px solid var(--line); }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; }
+    .hero h1 { font-size: 58px; line-height: 1.05; margin: 18px 0 10px; }
+    .hero .role { font-family: var(--sans); font-weight: 300; color: var(--muted); font-size: 18px; letter-spacing: 1px; margin-bottom: 26px; }
+    .hero p.lead { font-size: 18px; color: #5c554b; margin-bottom: 36px; max-width: 480px; font-weight: 300; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+    .portrait {
+      aspect-ratio: 4/5; border-radius: var(--radius); overflow: hidden;
+      background: linear-gradient(160deg, #f0ebe2, #ddd3c2);
+      border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 14px; text-align: center; padding: 24px; letter-spacing: 1px;
+      position: relative;
+    }
+    .portrait::after { content:""; position:absolute; inset:10px; border:1px solid var(--sage); opacity:.5; border-radius: var(--radius); pointer-events:none; z-index:2; }
+    .portrait img, .about-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+    .stats { display: flex; gap: 48px; margin-top: 44px; flex-wrap: wrap; }
+    .stat .num { font-family: var(--serif); font-size: 40px; color: var(--sage-dark); line-height: 1; }
+    .stat .lbl { color: var(--muted); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+      .hero h1 { font-size: 42px; }
+    }
+
+    section.block { padding: 100px 0; border-bottom: 1px solid var(--line); }
+    h2 { font-size: 40px; margin: 10px 0 36px; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: stretch; }
+    .about-photo {
+      border-radius: var(--radius); background: linear-gradient(160deg, #f0ebe2, #ddd3c2);
+      border: 1px solid var(--line); min-height: 360px;
+      display:flex; align-items:center; justify-content:center; color: var(--muted); padding: 24px; text-align:center; letter-spacing: 1px;
+    }
+    .about p { color: #5c554b; font-size: 17px; margin-bottom: 18px; }
+    .quals { display: flex; gap: 40px; margin-top: 28px; flex-wrap: wrap; }
+    .qual .k { font-family: var(--serif); font-size: 22px; color: var(--sage-dark); }
+    .qual .v { color: var(--muted); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+    @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
+
+    /* Services */
+    .services { background: var(--bg-2); }
+    .svc-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+    .svc-head p { color: var(--muted); max-width: 360px; font-size: 15px; }
+    .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 24px; }
+    .svc {
+      background: var(--panel); padding: 34px 30px; transition: background .25s;
+      display: flex; flex-direction: column; gap: 10px; min-height: 178px;
+      cursor: pointer; text-align: left; border: none; width: 100%; color: inherit; font-family: inherit;
+    }
+    .svc:hover, .svc:focus-visible { background: #fbf8f2; outline: none; }
+    .svc .no { font-family: var(--serif); color: var(--sage-dark); font-size: 15px; letter-spacing: 2px; }
+    .svc h3 { font-size: 23px; line-height: 1.2; }
+    .svc p { color: var(--muted); font-size: 14px; }
+    .svc-more { margin-top: auto; padding-top: 8px; color: var(--sage-dark); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; opacity: .55; transition: opacity .25s, transform .25s; }
+    .svc:hover .svc-more, .svc:focus-visible .svc-more { opacity: 1; transform: translateX(3px); }
+    .cat-title { font-family: var(--serif); font-weight: 500; color: var(--espresso); font-size: 26px; margin: 52px 0 0; }
+    .cat-title:first-of-type { margin-top: 44px; }
+    .svc-grid + .cat-title { margin-top: 56px; }
+    .svc-note { color: var(--muted); font-size: 14px; margin-top: 26px; }
+    @media (max-width: 820px) { .svc-grid { grid-template-columns: 1fr; } }
+
+    /* Modal — service detail */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center;
+      padding: 24px; background: rgba(46, 40, 32, .55); backdrop-filter: blur(5px);
+      opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal {
+      background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+      max-width: 640px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 52px 52px 48px;
+      position: relative; transform: translateY(14px) scale(.98); transition: transform .3s;
+      box-shadow: 0 30px 90px rgba(46, 40, 32, .3);
+    }
+    .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+    .modal-close {
+      position: absolute; top: 18px; right: 20px; width: 38px; height: 38px; border-radius: 999px;
+      border: 1px solid var(--line); background: transparent; color: var(--muted); font-size: 20px;
+      cursor: pointer; line-height: 1; transition: all .2s; display: flex; align-items: center; justify-content: center;
+    }
+    .modal-close:hover { background: var(--bg-2); color: var(--espresso); }
+    .modal .m-no { font-family: var(--serif); color: var(--sage-dark); font-size: 14px; letter-spacing: 3px; }
+    .modal h3 { font-size: 32px; line-height: 1.15; margin: 6px 0 16px; }
+    .modal .m-lead { color: #5c554b; font-size: 17px; margin-bottom: 26px; }
+    .modal .m-sec { margin-top: 22px; }
+    .modal .m-sec h4 { font-family: var(--sans); font-weight: 600; color: var(--sage-dark); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .modal .m-sec p { color: #5c554b; font-size: 15px; }
+    .modal .m-sec ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .modal .m-sec li { color: #5c554b; font-size: 15px; padding-left: 20px; position: relative; }
+    .modal .m-sec li::before { content: "—"; position: absolute; left: 0; color: var(--sage-dark); }
+    .modal .m-cta { margin-top: 32px; }
+    /* Before / After block inside modal */
+    .m-ba { margin-top: 24px; }
+    .m-ba .ba-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ba-cell {
+      position: relative; aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--line); background: linear-gradient(160deg, #f0ebe2, #ddd3c2);
+      display: flex; align-items: center; justify-content: center; color: var(--muted);
+      font-size: 12px; text-align: center; padding: 14px;
+    }
+    .ba-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ba-cell .ba-tag {
+      position: absolute; top: 10px; left: 10px; background: rgba(46, 40, 32, .82); color: var(--cream);
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px;
+    }
+    .m-ba .ba-note { color: var(--muted); font-size: 12px; margin-top: 9px; font-style: italic; }
+    @media (max-width: 560px) { .modal { padding: 44px 26px 32px; } .modal h3 { font-size: 26px; } }
+
+    /* Services layout — sidebar selector + catalog */
+    .svc-layout { display: grid; grid-template-columns: 290px 1fr; gap: 40px; align-items: start; margin-top: 44px; }
+    .svc-filter { position: sticky; top: 100px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px; }
+    .svc-filter h3 { font-size: 22px; margin-bottom: 4px; }
+    .svc-filter .sub { color: var(--muted); font-size: 13px; margin-bottom: 22px; line-height: 1.5; }
+    .filter-group { margin-bottom: 22px; }
+    .filter-group > .lbl { display: block; color: var(--sage-dark); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { border: 1px solid var(--line); background: transparent; color: #5c554b; font-family: inherit; font-size: 13px; padding: 7px 13px; border-radius: 999px; cursor: pointer; transition: all .2s; }
+    .chip:hover { border-color: var(--sage); }
+    .chip.active { background: var(--sage-dark); border-color: var(--sage-dark); color: var(--cream); }
+    .filter-reset { background: none; border: none; color: var(--muted); font-family: inherit; font-size: 13px; cursor: pointer; text-decoration: underline; padding: 0; }
+    .filter-reset:hover { color: var(--espresso); }
+    .filter-count { color: var(--sage-dark); font-size: 14px; letter-spacing: .5px; margin-bottom: 6px; }
+    .svc-main .cat-title:first-of-type { margin-top: 0; }
+    .svc-empty { color: var(--muted); font-size: 15px; padding: 26px 0; }
+    @media (max-width: 980px) {
+      .svc-layout { grid-template-columns: 1fr; gap: 28px; }
+      .svc-filter { position: static; }
+    }
+
+    /* Approach */
+    .approach-lead { color: #5c554b; font-size: 18px; max-width: 680px; margin-bottom: 42px; font-weight: 300; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+    .step .s-no { font-family: var(--serif); font-size: 34px; color: var(--sage-dark); line-height: 1; margin-bottom: 12px; }
+    .step h3 { font-size: 21px; margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: 14px; }
+    .principle { margin-top: 48px; border-left: 3px solid var(--sage); padding: 4px 0 4px 26px; }
+    .principle p { font-family: var(--serif); font-style: italic; font-size: 23px; line-height: 1.4; color: var(--espresso); max-width: 640px; }
+    @media (max-width: 820px) { .steps { grid-template-columns: 1fr 1fr; gap: 24px; } }
+    @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+    /* Reviews */
+    .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .review { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 36px; }
+    .review .stars { color: var(--sage-dark); margin-bottom: 16px; letter-spacing: 4px; }
+    .review p { font-family: var(--serif); font-size: 22px; line-height: 1.5; color: var(--ink); margin-bottom: 18px; font-style: italic; }
+    .review .who { color: var(--muted); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+    @media (max-width: 820px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+    /* Contact — dark espresso band for premium contrast */
+    .contact { background: var(--espresso); border-bottom: none; }
+    .contact h2 { color: var(--cream); }
+    .contact .eyebrow { color: var(--sage); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .contact-info .row { margin-bottom: 22px; }
+    .contact-info .label { display:block; color: var(--sage); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+    .contact-info .val { font-size: 19px; color: var(--cream); }
+    .contact-info .val a:hover { color: var(--sage); }
+    .contact-info .ph { color: #b9c4a8; border-color: var(--sage); }
+    .contact .btn { background: var(--cream); color: var(--espresso); }
+    .contact .btn:hover { background: #fff; }
+    .contact .btn-ghost { background: transparent; color: var(--cream); border-color: var(--sage); }
+    .contact .btn-ghost:hover { background: rgba(138,154,123,.18); }
+    .contact-cta { display:flex; flex-direction: column; gap: 14px; }
+    /* Booking form */
+    .book-form { display: flex; flex-direction: column; gap: 13px; }
+    .book-form .bf-row { display: flex; gap: 13px; }
+    .book-form input, .book-form select, .book-form textarea {
+      width: 100%; font-family: inherit; font-size: 15px; color: var(--cream);
+      background: rgba(255,255,255,.06); border: 1px solid rgba(138,154,123,.45);
+      border-radius: var(--radius); padding: 13px 15px; transition: border-color .2s;
+    }
+    .book-form input::placeholder, .book-form textarea::placeholder { color: #b3aa9c; }
+    .book-form input:focus, .book-form select:focus, .book-form textarea:focus { outline: none; border-color: var(--sage); }
+    .book-form select { appearance: none; -webkit-appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238a9a7b' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
+      background-repeat: no-repeat; background-position: right 15px center; padding-right: 38px; }
+    .book-form option, .book-form optgroup { color: #2e2820; }
+    .book-form textarea { resize: vertical; min-height: 52px; }
+    .book-form input[type=date] { color-scheme: dark; }
+    .book-form button.btn { border: none; cursor: pointer; margin-top: 2px; }
+    .bf-alt { color: #b3aa9c; font-size: 13px; margin-top: 4px; }
+    .bf-alt a { color: var(--sage); border-bottom: 1px solid rgba(138,154,123,.5); }
+    .bf-alt a:hover { color: var(--cream); }
+    @media (max-width: 560px) { .book-form .bf-row { flex-direction: column; } }
+    @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; letter-spacing: 1px; }
+    footer .logo { font-size: 18px; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">Dr. <span>Dzhuraeva</span></div>
+      <nav class="nav-links">
+        <a href="#about">О враче</a>
+        <a href="#approach">Подход</a>
+        <a href="#services">Процедуры</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <a href="#contact" class="btn">Запись</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Дерматовенерология · Эстетическая косметология</div>
+        <h1>Джураева Малика<br />Дильмурадовна</h1>
+        <div class="role">Врач-дерматовенеролог · косметолог</div>
+        <p class="lead">Медицинский подход к красоте и здоровью кожи. Аппаратные методики, индивидуальная программа для каждого пациента и видимый результат.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Записаться на приём</a>
+          <a href="#services" class="btn btn-ghost">Процедуры</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="num">6</div><div class="lbl">лет стажа</div></div>
+          <div class="stat"><div class="num">4</div><div class="lbl">специальности</div></div>
+          <div class="stat"><div class="num">∞</div><div class="lbl">забота о коже</div></div>
+        </div>
+      </div>
+      <div class="portrait"><img src="img/portrait.jpg" alt="Джураева Малика Дильмурадовна — врач-дерматовенеролог, косметолог" /></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block about" id="about">
+    <div class="container about-grid">
+      <div class="about-photo"><img src="img/portrait.jpg" alt="Малика Дильмурадовна Джураева" /></div>
+      <div>
+        <div class="eyebrow">О враче</div>
+        <h2>Малика Дильмурадовна Джураева</h2>
+        <p>Врач-дерматовенеролог и косметолог с 6-летним опытом. Сочетаю доказательную медицину с эстетической косметологией: сначала выясняю причину состояния кожи, а затем подбираю безопасную и эффективную программу ухода и аппаратных процедур.</p>
+        <p>Работаю бережно и внимательно — каждое решение основано на диагностике, а не на шаблоне. Главная цель — здоровая кожа и естественный, ухоженный результат.</p>
+        <div class="quals">
+          <div class="qual"><div class="k">Дерматовенеролог</div><div class="v">основная специальность</div></div>
+          <div class="qual"><div class="k">Косметолог</div><div class="v">эстетическая медицина</div></div>
+          <div class="qual"><div class="k">6 лет</div><div class="v">клинический стаж</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="block approach" id="approach">
+    <div class="container">
+      <div class="eyebrow">Подход</div>
+      <h2>Врач, а не салон красоты</h2>
+      <p class="approach-lead">Я врач-дерматовенеролог. Это значит, что я не просто выполняю процедуры — я ставлю диагноз и работаю с причиной. Сначала разбираемся, почему кожа в таком состоянии, и только потом подбираем лечение или эстетику.</p>
+      <div class="steps">
+        <div class="step"><div class="s-no">01</div><h3>Диагностика</h3><p>Осмотр, сбор анамнеза, при необходимости — анализы. Ищу причину, а не маскирую симптом.</p></div>
+        <div class="step"><div class="s-no">02</div><h3>Объяснение</h3><p>Рассказываю, что происходит с кожей и почему. Без шаблонов «всем одно и то же».</p></div>
+        <div class="step"><div class="s-no">03</div><h3>Протокол</h3><p>Подбираю программу под вашу ситуацию — лечение, уход и эстетику в верной последовательности.</p></div>
+        <div class="step"><div class="s-no">04</div><h3>План ухода</h3><p>Вы уходите с индивидуальной схемой домашнего ухода — только то, что действительно нужно.</p></div>
+      </div>
+      <div class="principle"><p>«Не назначаю лишнего и честно говорю, когда процедура не нужна».</p></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="block services" id="services">
+    <div class="container">
+      <div class="svc-head">
+        <div>
+          <div class="eyebrow">Процедуры</div>
+          <h2 style="margin-bottom:0">Дерматология и косметология</h2>
+        </div>
+        <p>Медицинская дерматология, аппаратные и инъекционные методики, терапия волос. Подберите процедуру в меню слева или откройте полный каталог.</p>
+      </div>
+
+      <div class="svc-layout">
+        <aside class="svc-filter">
+          <h3>Подбор процедуры</h3>
+          <div class="sub">Отметьте параметры — подскажу подходящие методы. Это ориентир, а не диагноз.</div>
+          <div class="filter-group">
+            <span class="lbl">Возраст</span>
+            <div class="chips" data-group="age"></div>
+          </div>
+          <div class="filter-group">
+            <span class="lbl">Жалоба</span>
+            <div class="chips" data-group="concern"></div>
+          </div>
+          <div class="filter-group">
+            <span class="lbl">Желаемый эффект</span>
+            <div class="chips" data-group="effect"></div>
+          </div>
+          <button class="filter-reset" id="filter-reset" type="button">Сбросить выбор</button>
+        </aside>
+
+        <div class="svc-main">
+          <div id="svc-results" hidden>
+            <div class="filter-count" id="filter-count"></div>
+            <div class="svc-grid" id="grid-results"></div>
+          </div>
+          <div id="svc-catalog">
+            <h3 class="cat-title">Медицинская дерматология</h3>
+            <div class="svc-grid" id="grid-medical"></div>
+
+            <h3 class="cat-title">Аппаратная косметология</h3>
+            <div class="svc-grid" id="grid-hardware"></div>
+
+            <h3 class="cat-title">Инъекционная косметология</h3>
+            <div class="svc-grid" id="grid-injection"></div>
+
+            <h3 class="cat-title">Терапия волос</h3>
+            <div class="svc-grid" id="grid-hair"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="svc-note">Нажмите на процедуру, чтобы узнать подробности. Подбор носит ознакомительный характер — финальную программу врач определяет на консультации.</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="block" id="reviews">
+    <div class="container">
+      <div class="eyebrow">Отзывы</div>
+      <h2>Что говорят пациенты</h2>
+      <div class="reviews-grid">
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>«<span class="ph">[Текст отзыва пациента.]</span>»</p>
+          <div class="who"><span class="ph">— Имя</span></div>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>«<span class="ph">[Текст отзыва пациента.]</span>»</p>
+          <div class="who"><span class="ph">— Имя</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block contact" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <div class="eyebrow">Контакты</div>
+        <h2>Запись на приём</h2>
+        <div class="row">
+          <span class="label">Телефон</span>
+          <span class="val"><a href="tel:+79670874774">+7 967 087-47-74</a></span>
+        </div>
+        <div class="row">
+          <span class="label">Телефон</span>
+          <span class="val"><a href="tel:+79855808866">+7 985 580-88-66</a></span>
+        </div>
+        <div class="row">
+          <span class="label">Instagram</span>
+          <span class="val"><a href="https://instagram.com/drdzhuraeva" target="_blank" rel="noopener">@drdzhuraeva</a></span>
+        </div>
+        <div class="row">
+          <span class="label">Telegram</span>
+          <span class="val"><a href="https://t.me/drdzhuraeva" target="_blank" rel="noopener">@drdzhuraeva</a> <span class="ph">[уточните ник, если другой]</span></span>
+        </div>
+        <div class="row">
+          <span class="label">Адрес и часы приёма</span>
+          <span class="val"><span class="ph">[город, клиника, часы — пришлите]</span></span>
+        </div>
+      </div>
+      <div class="contact-cta">
+        <form class="book-form" id="book-form">
+          <div class="bf-row">
+            <input type="text" id="bf-name" placeholder="Ваше имя" autocomplete="name" required />
+            <input type="tel" id="bf-phone" placeholder="Телефон" autocomplete="tel" required />
+          </div>
+          <select id="bf-service" required>
+            <option value="" disabled selected>Процедура или консультация</option>
+          </select>
+          <div class="bf-row">
+            <input type="date" id="bf-date" aria-label="Желаемая дата" />
+            <input type="text" id="bf-time" placeholder="Удобное время" />
+          </div>
+          <textarea id="bf-comment" placeholder="Комментарий (необязательно)" rows="2"></textarea>
+          <button type="submit" class="btn">Записаться через WhatsApp</button>
+          <div class="bf-alt">Заявка откроется в WhatsApp уже заполненной. Или напрямую:
+            <a href="https://t.me/drdzhuraeva" target="_blank" rel="noopener">Telegram</a> ·
+            <a href="https://instagram.com/drdzhuraeva" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="logo">Dr. <span style="color:var(--sage-dark)">Dzhuraeva</span></div>
+      © 2026 Джураева Малика Дильмурадовна · drdzhuraeva.ru
+    </div>
+  </footer>
+
+  <!-- SERVICE MODAL -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" aria-label="Закрыть">&times;</button>
+      <div class="m-no" id="modal-no"></div>
+      <h3 id="modal-title"></h3>
+      <p class="m-lead" id="modal-lead"></p>
+      <div id="modal-body"></div>
+      <div class="m-cta">
+        <a href="#contact" class="btn" id="modal-cta">Записаться на процедуру</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* tags: age — young (До 30) | mid (30–45) | mature (45+)
+       ba: true => показывать блок «До/После» с местами под реальные фото.
+       Когда появятся фото, замените на { before: "img/x-before.jpg", after: "img/x-after.jpg" }. */
+    const SERVICES = {
+      medical: [
+        {
+          no: "01", title: "Лечение акне и постакне",
+          short: "Врачебная программа против акне, а не маскировка симптомов.",
+          lead: "Акне — это заболевание, а не косметический дефект. Как дерматовенеролог я выясняю причину высыпаний и подбираю лечение, а затем работаю с последствиями — постакне, пятнами и рубцами.",
+          effect: "Чистая, спокойная кожа, контроль высыпаний, выравнивание следов постакне.",
+          process: "Осмотр и сбор анамнеза, при необходимости — анализы. Назначается медикаментозная терапия и/или процедуры, ведётся динамическое наблюдение за результатом.",
+          indications: ["Воспалительные высыпания, акне", "Постакне, рубцы и застойные пятна", "Жирная, проблемная кожа"],
+          ba: true,
+          age: ["young", "mid"], concern: ["acne"], effect_tags: ["treatment"]
+        },
+        {
+          no: "02", title: "Розацеа и купероз",
+          short: "Диагностика и лечение стойких покраснений и сосудов.",
+          lead: "Стойкие покраснения, приливы и сосудистые сеточки требуют врачебного подхода: важно определить тип и причину состояния, а не просто «убрать красноту».",
+          effect: "Снижение покраснений и приливов, укрепление сосудов, ровный спокойный тон кожи.",
+          process: "Осмотр, выявление триггеров и стадии, подбор терапии и грамотного ухода, при необходимости — аппаратная коррекция сосудов.",
+          indications: ["Стойкое покраснение лица, приливы", "Розацеа", "Купероз, сосудистые звёздочки"],
+          age: ["mid", "mature"], concern: ["vessels", "rash"], effect_tags: ["treatment", "tone"]
+        },
+        {
+          no: "03", title: "Дерматиты и раздражения",
+          short: "Лечение воспалительных и аллергических состояний кожи.",
+          lead: "Зуд, шелушение, высыпания и раздражение — повод обратиться к врачу, а не пробовать новый крем. Определяю природу состояния и назначаю обоснованное лечение.",
+          effect: "Снятие воспаления и зуда, восстановление кожного барьера, стойкая ремиссия.",
+          process: "Осмотр, сбор анамнеза, при необходимости — анализы и тесты. Подбор терапии и ухода для восстановления здоровой кожи.",
+          indications: ["Зуд, шелушение, покраснение", "Себорейный и контактный дерматит", "Реакции на косметику и внешние факторы"],
+          age: ["young", "mid", "mature"], concern: ["rash"], effect_tags: ["treatment"]
+        },
+        {
+          no: "04", title: "Пигментные нарушения",
+          short: "Диагностика причины пигментации и её коррекция.",
+          lead: "Пигментные пятна бывают разной природы — от солнца до гормонов. Сначала определяю причину, и только потом подбираю безопасную коррекцию, чтобы пигмент не вернулся.",
+          effect: "Ровный тон кожи, осветление пятен, профилактика повторной пигментации.",
+          process: "Осмотр, выяснение причины пигментации, обязательная защита от солнца, подбор домашней и аппаратной коррекции.",
+          indications: ["Пигментные пятна, мелазма", "Поствоспалительная пигментация", "Неровный тон кожи"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["pigment"], effect_tags: ["treatment", "tone"]
+        },
+        {
+          no: "05", title: "Удаление новообразований",
+          short: "Удаление папиллом, бородавок и других образований у врача.",
+          lead: "Доброкачественные образования кожи должен осматривать и удалять именно врач — с предварительной оценкой и контролем, а не мастер в салоне.",
+          effect: "Аккуратное удаление образований с минимальным следом и под врачебным контролем.",
+          process: "Осмотр и оценка образования, при необходимости — дополнительная диагностика. Удаление аппаратным методом и рекомендации по заживлению.",
+          indications: ["Папилломы, бородавки", "Кератомы и другие доброкачественные образования", "Желание убрать образование безопасно"],
+          note: "Любое подозрительное образование требует очной оценки врача перед удалением.",
+          age: ["young", "mid", "mature"], concern: ["neoplasm"], effect_tags: ["treatment"]
+        },
+        {
+          no: "06", title: "Дерматоскопия и контроль родинок",
+          short: "Осмотр родинок и новообразований под увеличением.",
+          lead: "Дерматоскопия — осмотр родинок и образований под многократным увеличением. Позволяет вовремя заметить изменения и отличить безопасное образование от того, что требует внимания.",
+          effect: "Спокойствие за здоровье кожи, ранний контроль изменений, обоснованные рекомендации.",
+          process: "Врач осматривает образования дерматоскопом, оценивает структуру и при необходимости рекомендует наблюдение, удаление или консультацию профильного специалиста.",
+          indications: ["Множество родинок, контроль в динамике", "Изменившиеся или новые образования", "Профилактический осмотр кожи"],
+          age: ["young", "mid", "mature"], concern: ["neoplasm"], effect_tags: ["treatment"]
+        }
+      ],
+      hardware: [
+        {
+          no: "01", title: "Лазерная эпиляция",
+          short: "Долговременное удаление нежелательных волос на любой зоне.",
+          lead: "Аппаратное удаление волос лазером по принципу селективного фототермолиза: луч поглощается пигментом волоса и разрушает фолликул, не повреждая окружающую кожу. Подходит для лица и тела, в том числе для чувствительных зон.",
+          effect: "Стойкое сокращение роста волос, гладкая кожа без вросших волосков, раздражения и регулярного бритья.",
+          process: "Зона обрабатывается вспышками лазера с одновременным охлаждением кожи — ощущается лёгкое покалывание и тепло. Для устойчивого результата нужен курс из нескольких сеансов с интервалом в несколько недель, по фазам роста волос.",
+          indications: ["Нежелательные волосы на лице и теле", "Вросшие волосы и раздражение после бритья", "Повышенная чувствительность к воску и эпилятору"],
+          age: ["young", "mid", "mature"], concern: ["hairremoval"], effect_tags: ["smooth"]
+        },
+        {
+          no: "02", title: "Лазерное омоложение",
+          short: "Фракционный фототермолиз: обновление кожи, текстура, тонус.",
+          lead: "Фракционный лазер создаёт в коже множество микрозон контролируемого прогрева, запуская естественную регенерацию и синтез нового коллагена. Кожа обновляется и уплотняется изнутри.",
+          effect: "Ровная текстура, подтянутость, сокращение морщин, рубцов постакне и расширенных пор.",
+          process: "Кожа очищается, наносится анестезирующий крем. Лазер обрабатывает зоны — ощущается тепло и покалывание. После процедуры возможны лёгкое покраснение и шелушение в течение 1–3 дней.",
+          indications: ["Мелкие морщины и тусклый тон", "Расширенные поры, неровный рельеф", "Рубцы постакне, следы от высыпаний"],
+          note: "Реабилитация короткая; количество процедур подбирается по состоянию кожи.",
+          ba: true,
+          age: ["mid", "mature"], concern: ["wrinkles", "acne", "dullness"], effect_tags: ["rejuv", "tone", "smooth"]
+        },
+        {
+          no: "03", title: "Фотоомоложение IPL",
+          short: "Выравнивание тона, борьба с пигментацией и куперозом.",
+          lead: "Широкополосный импульсный свет (IPL) избирательно поглощается пигментом и сосудами, разрушая их и выравнивая цвет кожи. Один из самых деликатных способов вернуть коже сияние.",
+          effect: "Однородный тон, меньше пигментных пятен и сосудистых сеточек, ровное здоровое сияние.",
+          process: "На кожу наносится гель, зоны обрабатываются вспышками света с охлаждением — ощущается тёплое пощипывание. Сразу после возможно лёгкое порозовение, макияж допустим уже на следующий день.",
+          indications: ["Пигментация и веснушки", "Сосудистые звёздочки, лёгкий купероз", "Тусклая, неровная по цвету кожа"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["pigment", "vessels", "dullness"], effect_tags: ["tone", "rejuv"]
+        },
+        {
+          no: "04", title: "RF-лифтинг",
+          short: "Радиочастотное подтягивание и уплотнение кожи лица и шеи.",
+          lead: "Радиоволны мягко прогревают глубокие слои дермы до температуры, при которой коллагеновые волокна сокращаются, а клетки начинают активно производить новый коллаген и эластин.",
+          effect: "Более плотная и упругая кожа, подтянутый овал лица, разглаживание морщин.",
+          process: "По коже с проводящим гелем специалист водит манипулой, постепенно прогревая ткани до комфортного тепла. Без боли и реабилитации — сразу можно вернуться к делам.",
+          indications: ["Снижение упругости кожи лица и шеи", "Нечёткий овал, лёгкая дряблость", "Мелкие и средние морщины"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["laxity", "wrinkles"], effect_tags: ["lifting", "rejuv"]
+        },
+        {
+          no: "05", title: "SMAS-лифтинг",
+          short: "Ультразвуковая подтяжка глубоких слоёв — безоперационный лифтинг.",
+          lead: "Сфокусированный ультразвук воздействует на SMAS — тот самый мышечно-апоневротический слой, с которым работают при хирургической подтяжке, но без разрезов и реабилитации.",
+          effect: "Заметное подтягивание тканей, чёткий овал, лифтинг-эффект с нарастанием за 2–3 месяца.",
+          process: "После разметки специалист подаёт сфокусированный ультразвук на заданную глубину. Ощущаются короткие точечные импульсы тепла. Эффект развивается постепенно и держится до 1–1,5 лет.",
+          indications: ["Птоз (опущение) тканей лица", "Расплывшийся овал, второй подбородок", "Брыли, нависание в области шеи"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["laxity"], effect_tags: ["lifting"]
+        },
+        {
+          no: "06", title: "Ультразвуковая чистка",
+          short: "Бережное очищение и обновление кожи без травматизации.",
+          lead: "Ультразвуковые колебания мягко удаляют ороговевшие клетки и загрязнения из пор без механического давления и травмы кожи.",
+          effect: "Чистая, гладкая кожа, сужение пор, свежий и отдохнувший вид без покраснений.",
+          process: "На кожу наносится раствор, ультразвуковая лопаточка снимает загрязнения и ороговевший слой. Безболезненно и без следов — подходит даже накануне мероприятия.",
+          indications: ["Тусклая кожа, забитые поры", "Чёрные точки, жирный блеск", "Чувствительная кожа, которой противопоказана ручная чистка"],
+          age: ["young", "mid", "mature"], concern: ["acne", "dullness"], effect_tags: ["cleansing"]
+        },
+        {
+          no: "07", title: "Микротоковая терапия",
+          short: "Лимфодренаж, тонус мышц и сияние кожи слабыми токами.",
+          lead: "Слабые импульсные токи работают на клеточном уровне: улучшают микроциркуляцию и лимфоотток, восстанавливают тонус мимических мышц и обменные процессы в коже.",
+          effect: "Снятие отёков, свежий цвет лица, мягкий лифтинг и сияние кожи.",
+          process: "Специалист обрабатывает лицо электродами или в токопроводящих перчатках под слабым током. Ощущения комфортные — лёгкое пощипывание. Лучший результат даёт курс процедур.",
+          indications: ["Отёчность и тусклый цвет лица", "Сниженный тонус кожи", "Восстановление после других процедур"],
+          age: ["young", "mid", "mature"], concern: ["edema", "dullness", "laxity"], effect_tags: ["lifting", "tone"]
+        },
+        {
+          no: "08", title: "Карбоновый пилинг",
+          short: "Лазерный пилинг: чистая, матовая и сияющая кожа.",
+          lead: "На кожу наносится карбоновый гель, который проникает в поры и связывает загрязнения, после чего лазер «выпаривает» его вместе с ними и одновременно прогревает дерму.",
+          effect: "Матовая, чистая кожа, сужение пор, ровный тон и сияние заметны сразу после процедуры.",
+          process: "Наносится карбоновый гель, после впитывания кожа обрабатывается лазером со звонкими щелчками. Безболезненно и без реабилитации.",
+          indications: ["Жирная и комбинированная кожа", "Расширенные поры, чёрные точки", "Тусклый цвет лица, неровный рельеф"],
+          ba: true,
+          age: ["young", "mid"], concern: ["acne", "dullness"], effect_tags: ["cleansing", "tone"]
+        },
+        {
+          no: "09", title: "Газожидкостный пилинг",
+          short: "Аквапилинг: атравматичное очищение и насыщение кислородом.",
+          lead: "Тонкая струя из кислорода, физиологического раствора и активных сывороток подаётся под давлением: одновременно мягко очищает кожу и доставляет в неё увлажняющие компоненты.",
+          effect: "Глубокое очищение без травмы, увлажнение, свежий и напитанный вид кожи.",
+          process: "Кожа обрабатывается струёй под давлением — ощущается прохлада и лёгкое касание, дискомфорта нет. Подходит как экспресс-уход «на выход».",
+          indications: ["Обезвоженная, уставшая кожа", "Чувствительная кожа", "Подготовка к мероприятию"],
+          age: ["young", "mid", "mature"], concern: ["dryness", "dullness"], effect_tags: ["hydration", "cleansing", "tone"]
+        },
+        {
+          no: "10", title: "Удаление сосудов и пигмента",
+          short: "Лазерная коррекция сосудистых звёздочек и пигментных пятен.",
+          lead: "Лазер избирательно воздействует на расширенные сосуды и скопления пигмента, не затрагивая окружающую кожу: сосуд запаивается, пигмент разрушается.",
+          effect: "Исчезновение сосудистых звёздочек и пигментных пятен, ровный однородный тон.",
+          process: "Лазер точечно обрабатывает сосуд или пятно короткими импульсами — возможно лёгкое пощипывание. Сосуд светлеет сразу, пигмент темнеет и сходит за несколько дней.",
+          indications: ["Купероз, сосудистые звёздочки", "Пигментные пятна, мелазма", "Точечные сосудистые образования"],
+          ba: true,
+          age: ["young", "mid", "mature"], concern: ["pigment", "vessels"], effect_tags: ["tone"]
+        },
+        {
+          no: "11", title: "Oligio (RF-лифтинг)",
+          short: "Монополярная радиочастотная подтяжка кожи лица.",
+          lead: "Oligio — монополярная RF-система последнего поколения: контролируемый глубокий прогрев дермы стимулирует мощную выработку коллагена при защите и охлаждении поверхности кожи.",
+          effect: "Подтяжка и уплотнение кожи, чёткий овал, разглаживание морщин — комфортно и без реабилитации.",
+          process: "По коже с гелем специалист водит RF-манипулой с контролем температуры и охлаждением поверхности. Ощущается приятное тепло, после процедуры можно сразу вернуться к делам.",
+          indications: ["Снижение упругости и плотности кожи", "Нечёткий овал лица, лёгкий птоз", "Морщины и возрастные изменения"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["laxity", "wrinkles"], effect_tags: ["lifting", "rejuv"]
+        },
+        {
+          no: "12", title: "Тулиевая терапия",
+          short: "Тулиевый лазер: тон, текстура и сияние кожи.",
+          lead: "Неаблятивный фракционный тулиевый лазер деликатно обновляет поверхностные слои кожи и создаёт микроканалы, через которые активные сыворотки проникают значительно глубже (laser-assisted доставка).",
+          effect: "Ровный тон, сияние, сокращение пигментации и мелких морщин, гладкая ухоженная кожа.",
+          process: "Кожа очищается, тулиевый лазер обрабатывает поверхность, затем часто наносится активная сыворотка. Ощущается лёгкое тепло, реабилитация минимальная.",
+          indications: ["Тусклый, неровный тон кожи", "Пигментация и мелазма", "Расширенные поры, мелкие морщины"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["pigment", "dullness", "wrinkles"], effect_tags: ["tone", "rejuv", "smooth"]
+        },
+        {
+          no: "13", title: "BBL (фототерапия)",
+          short: "BroadBand Light: омоложение и выравнивание тона.",
+          lead: "BBL — широкополосный импульсный свет нового поколения: точно настраивается под пигмент, сосуды и признаки старения и работает глубже и мягче классического IPL.",
+          effect: "Однородный тон, меньше пигментных пятен и сосудистых сеточек, сияющая и более молодая кожа.",
+          process: "На кожу наносится гель, зоны обрабатываются вспышками света с охлаждением — тёплое пощипывание. После возможно лёгкое порозовение, реабилитации практически нет.",
+          indications: ["Пигментация, веснушки, фотостарение", "Купероз и сосудистые звёздочки", "Тусклая, возрастная кожа"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["pigment", "vessels", "dullness"], effect_tags: ["tone", "rejuv"]
+        },
+        {
+          no: "14", title: "Ultraformer (Volumer, HIFU)",
+          short: "Сфокусированный ультразвук: лифтинг и объём контуров.",
+          lead: "Ultraformer — система HIFU с насадкой Volumer: сфокусированный ультразвук точечно прогревает SMAS и глубокие слои, подтягивая ткани и воссоздавая объём без операции и разрезов.",
+          effect: "Подтяжка тканей, чёткий овал, лифтинг и восстановление объёма с нарастающим эффектом за несколько месяцев.",
+          process: "После разметки специалист подаёт ультразвук насадками разной глубины, при необходимости — насадкой Volumer для объёма. Ощущаются точечные импульсы тепла, эффект развивается 2–3 месяца.",
+          indications: ["Птоз тканей, расплывшийся овал", "Второй подбородок, брыли", "Потеря объёма и упругости кожи"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["laxity", "volume"], effect_tags: ["lifting", "volume"]
+        }
+      ],
+      injection: [
+        {
+          no: "01", title: "Ботулинотерапия (ботокс)",
+          short: "Разглаживание мимических морщин ботулотоксином.",
+          lead: "Микроинъекции препарата ботулотоксина мягко снижают активность мимических мышц, из-за работы которых формируются морщины. При грамотной дозировке мимика остаётся естественной.",
+          effect: "Разглаживание морщин лба, межбровья и «гусиных лапок», отдохнувшее и спокойное выражение лица.",
+          process: "Врач отмечает точки и делает несколько тонких инъекций в мимические мышцы — занимает 10–15 минут, ощущения минимальны. Эффект развивается за 1–2 недели и держится несколько месяцев.",
+          indications: ["Мимические морщины лба и межбровья", "«Гусиные лапки» у глаз", "Профилактика заломов кожи"],
+          note: "Эффект развивается за 1–2 недели и сохраняется несколько месяцев.",
+          ba: true,
+          age: ["young", "mid", "mature"], concern: ["wrinkles"], effect_tags: ["rejuv"]
+        },
+        {
+          no: "02", title: "Контурная пластика (филлеры)",
+          short: "Моделирование объёма и контуров гиалуроновой кислотой.",
+          lead: "Введение филлеров на основе гиалуроновой кислоты восстанавливает утраченный объём, корректирует форму и сглаживает глубокие складки. Результат предсказуем и при необходимости обратим.",
+          effect: "Объём губ и скул, коррекция носогубных складок, чёткий контур без операции.",
+          process: "После аппликационной анестезии врач вводит филлер канюлей или иглой, моделируя объём и контур. Результат виден сразу и окончательно оформляется за 1–2 недели.",
+          indications: ["Коррекция формы и объёма губ", "Восполнение объёма скул и подбородка", "Носогубные складки, «морщины марионетки»"],
+          ba: true,
+          age: ["young", "mid", "mature"], concern: ["wrinkles", "volume"], effect_tags: ["volume", "rejuv"]
+        },
+        {
+          no: "03", title: "Биоревитализация",
+          short: "Глубокое увлажнение кожи гиалуроновой кислотой.",
+          lead: "Инъекции нативной гиалуроновой кислоты насыщают кожу влагой изнутри и запускают её восстановление: улучшается тургор, цвет и плотность кожи.",
+          effect: "Упругая, увлажнённая и сияющая кожа, разглаживание мелких морщин, свежий вид.",
+          process: "Врач делает сетку микроинъекций по лицу. Возможны небольшие папулы, которые рассасываются за 1–2 дня. Обычно проводится курсом из нескольких процедур.",
+          indications: ["Сухость и обезвоженность кожи", "Тусклый цвет лица, мелкие морщины", "Подготовка кожи к лету и восстановление после него"],
+          ba: true,
+          age: ["young", "mid", "mature"], concern: ["dryness", "dullness", "wrinkles"], effect_tags: ["hydration", "rejuv", "tone"]
+        },
+        {
+          no: "04", title: "Мезотерапия",
+          short: "Инъекционные коктейли витаминов и аминокислот.",
+          lead: "Микроинъекции индивидуально подобранных коктейлей из витаминов, аминокислот и микроэлементов доставляют активные вещества прямо в кожу — лица или головы.",
+          effect: "Улучшение качества и цвета кожи, питание, сияние, борьба с тусклостью и усталостью; укрепление волос.",
+          process: "Индивидуальный коктейль вводится микроинъекциями в кожу. Процедура быстрая, дискомфорт минимальный. Проводится курсом.",
+          indications: ["Тусклая, уставшая кожа", "Профилактика возрастных изменений", "Выпадение волос (мезотерапия кожи головы)"],
+          age: ["young", "mid", "mature"], concern: ["dullness", "dryness", "hairloss"], effect_tags: ["rejuv", "tone", "hairgrowth"]
+        },
+        {
+          no: "05", title: "Полинуклеотиды (ДНК лосося)",
+          short: "Регенерация и восстановление кожи полинуклеотидами.",
+          lead: "Препараты на основе полинуклеотидов, выделенных из ДНК лосося, — мощные регенеранты: они восстанавливают кожу на клеточном уровне, повышают её плотность, эластичность и качество.",
+          effect: "Восстановление и уплотнение кожи, ровный тон, упругость, выраженный регенерирующий и омолаживающий эффект.",
+          process: "Препарат вводится микроинъекциями в проблемные зоны — лицо, веки, шею. Курс из нескольких процедур даёт нарастающий регенерирующий эффект.",
+          indications: ["Тонкая, обезвоженная и уставшая кожа", "Тёмные круги и тонкая кожа век", "Восстановление после агрессивных процедур, рубцы постакне"],
+          note: "Часто это и есть та самая «сперма лосося», о которой говорят, — речь о полинуклеотидах из ДНК рыбы.",
+          ba: true,
+          age: ["young", "mid", "mature"], concern: ["dryness", "laxity", "dullness"], effect_tags: ["rejuv", "hydration"]
+        },
+        {
+          no: "06", title: "Плазмотерапия лица (PRP)",
+          short: "Омоложение кожи лица собственной плазмой крови.",
+          lead: "В кожу вводится плазма, обогащённая тромбоцитами и выделенная из собственной крови пациента, — естественный стимул для регенерации без чужеродных компонентов.",
+          effect: "Улучшение качества кожи, упругость, ровный тон, ускорение восстановления.",
+          process: "У пациента берут небольшую пробу крови, центрифугируют и вводят полученную плазму микроинъекциями в кожу. Полностью совместимый, «свой» материал.",
+          indications: ["Возрастные изменения и снижение тонуса", "Тусклая, обезвоженная кожа", "Восстановление после агрессивных процедур"],
+          ba: true,
+          age: ["mid", "mature"], concern: ["dullness", "laxity", "dryness"], effect_tags: ["rejuv", "tone"]
+        }
+      ],
+      hair: [
+        {
+          no: "01", title: "Экзосомная терапия волос",
+          short: "Регенерация кожи головы и стимуляция роста волос экзосомами.",
+          lead: "Экзосомы — сигнальные везикулы, которые передают клеткам команды к восстановлению. В трихологии они мощно стимулируют волосяные фолликулы и оздоравливают кожу головы. Одна из самых современных регенеративных методик.",
+          effect: "Уплотнение и рост волос, заметное сокращение выпадения, здоровая кожа головы, сила и блеск волос.",
+          process: "Кожа головы обрабатывается препаратом экзосом микроинъекциями или с помощью аппарата. Безболезненно, без реабилитации. Проводится курсом, часто сочетается с PRP.",
+          indications: ["Выпадение и истончение волос", "Сниженная плотность волос", "Восстановление после стресса, родов, диет"],
+          ba: true,
+          age: ["young", "mid", "mature"], concern: ["hairloss"], effect_tags: ["hairgrowth"]
+        },
+        {
+          no: "02", title: "Плазмотерапия волос (PRP)",
+          short: "Стимуляция роста волос собственной плазмой крови.",
+          lead: "В кожу головы вводится обогащённая тромбоцитами плазма из собственной крови — естественный стимул, который пробуждает волосяные фолликулы и улучшает питание корней.",
+          effect: "Уменьшение выпадения, укрепление корней, рост новых волос, улучшение состояния кожи головы.",
+          process: "Берётся проба крови, плазма выделяется на центрифуге и вводится микроинъекциями в кожу головы по зонам роста. Курс из нескольких процедур.",
+          indications: ["Диффузное выпадение волос", "Истончение и ослабление волос", "Профилактика возрастной потери волос"],
+          ba: true,
+          age: ["young", "mid", "mature"], concern: ["hairloss"], effect_tags: ["hairgrowth"]
+        }
+      ]
+    };
+
+    const FILTERS = {
+      age: [["young", "До 30"], ["mid", "30–45"], ["mature", "45+"]],
+      concern: [
+        ["wrinkles", "Морщины"], ["laxity", "Потеря упругости"], ["pigment", "Пигментация"],
+        ["vessels", "Сосуды, купероз"], ["acne", "Акне, поры, жирность"], ["dryness", "Сухость кожи"],
+        ["dullness", "Тусклый тон"], ["edema", "Отёчность"], ["volume", "Потеря объёма"],
+        ["rash", "Высыпания, дерматит"], ["neoplasm", "Новообразования, родинки"],
+        ["hairremoval", "Нежелательные волосы"], ["hairloss", "Выпадение волос"]
+      ],
+      effect: [
+        ["treatment", "Лечение кожи"], ["lifting", "Лифтинг"], ["rejuv", "Омоложение"],
+        ["tone", "Ровный тон, сияние"], ["hydration", "Увлажнение"], ["volume", "Объём"],
+        ["cleansing", "Очищение"], ["smooth", "Гладкость кожи"], ["hairgrowth", "Рост волос"]
+      ]
+    };
+
+    (function () {
+      const overlay = document.getElementById("modal-overlay");
+      const elNo = document.getElementById("modal-no");
+      const elTitle = document.getElementById("modal-title");
+      const elLead = document.getElementById("modal-lead");
+      const elBody = document.getElementById("modal-body");
+      const closeBtn = document.getElementById("modal-close");
+
+      const ALL = [].concat(SERVICES.medical, SERVICES.hardware, SERVICES.injection, SERVICES.hair);
+      let currentService = null;
+
+      function esc(t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+      function card(s, displayNo) {
+        const btn = document.createElement("button");
+        btn.className = "svc";
+        btn.type = "button";
+        btn.innerHTML =
+          '<div class="no">' + (displayNo || s.no) + '</div>' +
+          '<h3>' + esc(s.title) + '</h3>' +
+          '<p>' + esc(s.short) + '</p>' +
+          '<span class="svc-more">Подробнее →</span>';
+        btn.addEventListener("click", function () { openModal(s); });
+        return btn;
+      }
+
+      function fill(gridId, list) {
+        const target = document.getElementById(gridId);
+        target.innerHTML = "";
+        list.forEach(function (s) { target.appendChild(card(s)); });
+      }
+      fill("grid-medical", SERVICES.medical);
+      fill("grid-hardware", SERVICES.hardware);
+      fill("grid-injection", SERVICES.injection);
+      fill("grid-hair", SERVICES.hair);
+
+      /* ---------- Modal ---------- */
+      function baBlock(s) {
+        const ba = s.ba;
+        if (!ba) return "";
+        let before, after;
+        if (ba === true) {
+          const placeholder = "Фото пациента<br>(с согласия)";
+          before = '<div class="ba-cell"><span class="ba-tag">До</span>' + placeholder + "</div>";
+          after = '<div class="ba-cell"><span class="ba-tag">После</span>' + placeholder + "</div>";
+        } else {
+          before = '<div class="ba-cell"><span class="ba-tag">До</span><img src="' + esc(ba.before) + '" alt="До процедуры"></div>';
+          after = '<div class="ba-cell"><span class="ba-tag">После</span><img src="' + esc(ba.after) + '" alt="После процедуры"></div>';
+        }
+        return '<div class="m-ba"><div class="m-sec" style="margin-top:0"><h4>Результат: до и после</h4></div>' +
+          '<div class="ba-pair">' + before + after + "</div>" +
+          '<div class="ba-note">Здесь размещаются реальные фотографии пациентов с их письменного согласия.</div></div>';
+      }
+
+      function openModal(s) {
+        currentService = s;
+        elNo.textContent = s.no;
+        elTitle.textContent = s.title;
+        elLead.textContent = s.lead;
+        let html = "";
+        if (s.effect) html += '<div class="m-sec"><h4>Результат</h4><p>' + esc(s.effect) + "</p></div>";
+        if (s.process) html += '<div class="m-sec"><h4>Как проходит</h4><p>' + esc(s.process) + "</p></div>";
+        if (s.indications && s.indications.length) {
+          html += '<div class="m-sec"><h4>Показания</h4><ul>' +
+            s.indications.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></div>";
+        }
+        html += baBlock(s);
+        if (s.note) html += '<div class="m-sec"><h4>Важно</h4><p>' + esc(s.note) + "</p></div>";
+        elBody.innerHTML = html;
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        overlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      closeBtn.addEventListener("click", closeModal);
+      overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+      document.getElementById("modal-cta").addEventListener("click", function () {
+        if (currentService) selectService(currentService.title);
+        closeModal();
+      });
+
+      /* ---------- Booking form ---------- */
+      const WHATSAPP_NUMBER = "79670874774"; // куда приходят заявки
+      const bookForm = document.getElementById("book-form");
+      const serviceSelect = document.getElementById("bf-service");
+
+      (function fillServiceOptions() {
+        const groups = [
+          ["Медицинская дерматология", SERVICES.medical],
+          ["Аппаратная косметология", SERVICES.hardware],
+          ["Инъекционная косметология", SERVICES.injection],
+          ["Терапия волос", SERVICES.hair]
+        ];
+        const consult = document.createElement("option");
+        consult.value = "Консультация"; consult.textContent = "Консультация (ещё не определилась)";
+        serviceSelect.appendChild(consult);
+        groups.forEach(function (g) {
+          const og = document.createElement("optgroup");
+          og.label = g[0];
+          g[1].forEach(function (s) {
+            const o = document.createElement("option");
+            o.value = s.title; o.textContent = s.title;
+            og.appendChild(o);
+          });
+          serviceSelect.appendChild(og);
+        });
+      })();
+
+      function selectService(title) {
+        const opt = Array.prototype.find.call(serviceSelect.options, function (o) { return o.value === title; });
+        if (opt) serviceSelect.value = title;
+      }
+
+      bookForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("bf-name").value.trim();
+        const phone = document.getElementById("bf-phone").value.trim();
+        const service = serviceSelect.value;
+        const date = document.getElementById("bf-date").value;
+        const time = document.getElementById("bf-time").value.trim();
+        const comment = document.getElementById("bf-comment").value.trim();
+
+        const lines = ["Здравствуйте! Хочу записаться на приём."];
+        lines.push("Имя: " + name);
+        lines.push("Телефон: " + phone);
+        lines.push("Процедура: " + service);
+        if (date) {
+          const d = date.split("-");
+          lines.push("Желаемая дата: " + d[2] + "." + d[1] + "." + d[0]);
+        }
+        if (time) lines.push("Время: " + time);
+        if (comment) lines.push("Комментарий: " + comment);
+
+        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
+        window.open(url, "_blank", "noopener");
+      });
+
+      /* ---------- Selector / filter ---------- */
+      const selected = { age: new Set(), concern: new Set(), effect: new Set() };
+      const results = document.getElementById("svc-results");
+      const catalog = document.getElementById("svc-catalog");
+      const countEl = document.getElementById("filter-count");
+
+      function buildChips(group) {
+        const wrap = document.querySelector('.chips[data-group="' + group + '"]');
+        FILTERS[group].forEach(function (pair) {
+          const b = document.createElement("button");
+          b.className = "chip"; b.type = "button"; b.textContent = pair[1];
+          b.addEventListener("click", function () {
+            if (selected[group].has(pair[0])) { selected[group].delete(pair[0]); b.classList.remove("active"); }
+            else { selected[group].add(pair[0]); b.classList.add("active"); }
+            update();
+          });
+          wrap.appendChild(b);
+        });
+      }
+      ["age", "concern", "effect"].forEach(buildChips);
+
+      function matches(s) {
+        if (selected.age.size && !s.age.some(function (a) { return selected.age.has(a); })) return false;
+        if (selected.concern.size && !s.concern.some(function (c) { return selected.concern.has(c); })) return false;
+        if (selected.effect.size && !s.effect_tags.some(function (e) { return selected.effect.has(e); })) return false;
+        return true;
+      }
+
+      function plural(n) {
+        const a = Math.abs(n) % 100, b = a % 10;
+        if (a > 10 && a < 20) return "процедур";
+        if (b > 1 && b < 5) return "процедуры";
+        if (b === 1) return "процедура";
+        return "процедур";
+      }
+
+      function update() {
+        const active = selected.age.size + selected.concern.size + selected.effect.size;
+        if (!active) {
+          results.hidden = true;
+          catalog.hidden = false;
+          return;
+        }
+        const found = ALL.filter(matches);
+        catalog.hidden = true;
+        results.hidden = false;
+        if (!found.length) {
+          countEl.textContent = "Подходящих процедур не нашлось — подберём на консультации.";
+          document.getElementById("grid-results").innerHTML = "";
+          return;
+        }
+        countEl.textContent = "Подходит: " + found.length + " " + plural(found.length);
+        const grid = document.getElementById("grid-results");
+        grid.innerHTML = "";
+        found.forEach(function (s, i) { grid.appendChild(card(s, String(i + 1).padStart(2, "0"))); });
+      }
+
+      document.getElementById("filter-reset").addEventListener("click", function () {
+        ["age", "concern", "effect"].forEach(function (g) { selected[g].clear(); });
+        document.querySelectorAll(".chip.active").forEach(function (c) { c.classList.remove("active"); });
+        update();
+      });
+    })();
+  </script>
+
+</body>
+</html>
