@@ -255,6 +255,33 @@
     @media (max-width: 560px) { .book-form .bf-row { flex-direction: column; } }
     @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
 
+    /* Anatomy — interactive skin cross-section */
+    .anat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 40px; }
+    .anat-figure { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+    .anat-figure svg { width: 100%; height: auto; display: block; }
+    .anat-layer { cursor: pointer; transition: opacity .3s; }
+    .anat-figure.dimmed .anat-layer:not(.active) { opacity: .25; }
+    .anat-layer .layer-band { transition: stroke .25s; }
+    .anat-layer.active .layer-band { stroke: var(--sage-dark); stroke-width: 2.5; }
+    .layer-tabs { display: flex; flex-direction: column; gap: 10px; }
+    .layer-tab {
+      text-align: left; border: 1px solid var(--line); background: var(--panel); color: #5c554b;
+      font-family: inherit; font-size: 15px; padding: 13px 18px; border-radius: var(--radius);
+      cursor: pointer; transition: all .2s; display: flex; align-items: baseline; gap: 12px;
+    }
+    .layer-tab:hover { border-color: var(--sage); }
+    .layer-tab.active { background: var(--sage-dark); border-color: var(--sage-dark); color: var(--cream); }
+    .layer-tab .lt-no { font-family: var(--serif); font-size: 16px; opacity: .65; }
+    .layer-tab .lt-name { font-family: var(--serif); font-size: 19px; }
+    .anat-desc { margin-top: 24px; border-left: 3px solid var(--sage); padding-left: 22px; min-height: 130px; }
+    .anat-desc h4 { font-family: var(--serif); color: var(--espresso); font-size: 23px; margin-bottom: 8px; }
+    .anat-desc p { color: #5c554b; font-size: 15px; margin-bottom: 14px; }
+    .anat-desc .ad-proc { color: var(--sage-dark); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 9px; }
+    .anat-desc .ad-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .anat-desc .ad-tags span { border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: 12px; color: #5c554b; background: var(--bg); }
+    .anat-hint { color: var(--muted); font-size: 13px; margin-top: 16px; font-style: italic; }
+    @media (max-width: 820px) { .anat-grid { grid-template-columns: 1fr; gap: 30px; } }
+
     footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; letter-spacing: 1px; }
     footer .logo { font-size: 18px; margin-bottom: 8px; }
   </style>
@@ -267,6 +294,7 @@
       <nav class="nav-links">
         <a href="#about">О враче</a>
         <a href="#approach">Подход</a>
+        <a href="#anatomy">Кожа</a>
         <a href="#services">Процедуры</a>
         <a href="#reviews">Отзывы</a>
         <a href="#contact">Контакты</a>
@@ -330,6 +358,135 @@
       <div class="principle"><p>«Не назначаю лишнего и честно говорю, когда процедура не нужна».</p></div>
     </div>
   </section>
+
+  <!-- ANATOMY -->
+  <section class="block anatomy" id="anatomy">
+    <div class="container">
+      <div class="eyebrow">Анатомия кожи</div>
+      <h2>Что происходит под кожей</h2>
+      <p class="approach-lead">Косметология работает не «по поверхности», а на конкретных слоях кожи. Выберите слой — покажу, что в нём находится и какие аппараты и процедуры на него действуют.</p>
+      <div class="anat-grid">
+        <div class="anat-figure" id="anat-figure">
+          <svg viewBox="0 0 480 480" role="img" aria-label="Интерактивный разрез кожи со слоями">
+            <!-- SMAS / muscle -->
+            <g class="anat-layer" data-layer="smas">
+              <rect class="layer-band" x="24" y="388" width="336" height="72" rx="3" fill="#c8ab95"/>
+              <g stroke="#a98a73" stroke-width="1.4" fill="none" opacity=".7">
+                <path d="M34 405 q40 -7 80 0 t80 0 t80 0 t80 0"/>
+                <path d="M34 422 q40 -7 80 0 t80 0 t80 0 t80 0"/>
+                <path d="M34 439 q40 -7 80 0 t80 0 t80 0 t80 0"/>
+              </g>
+            </g>
+            <!-- hypodermis -->
+            <g class="anat-layer" data-layer="hypodermis">
+              <rect class="layer-band" x="24" y="258" width="336" height="130" fill="#efe1c4"/>
+              <g fill="#e6d2ab" stroke="#cbb085" stroke-width="1.2">
+                <circle cx="66" cy="300" r="17"/><circle cx="116" cy="312" r="15"/><circle cx="166" cy="298" r="18"/>
+                <circle cx="218" cy="312" r="16"/><circle cx="268" cy="300" r="17"/><circle cx="318" cy="310" r="15"/>
+                <circle cx="92" cy="350" r="16"/><circle cx="150" cy="356" r="15"/><circle cx="206" cy="348" r="17"/>
+                <circle cx="262" cy="356" r="15"/><circle cx="316" cy="350" r="16"/>
+              </g>
+            </g>
+            <!-- dermis -->
+            <g class="anat-layer" data-layer="dermis">
+              <rect class="layer-band" x="24" y="110" width="336" height="148" fill="#ddc8a9"/>
+              <g stroke="#cdb78f" stroke-width="1" opacity=".55" fill="none">
+                <path d="M40 130 L80 150 M70 128 L110 152 M120 132 L160 156 M150 128 L188 150 M210 134 L250 156 M240 128 L280 150 M300 132 L338 154 M40 168 L78 188 M100 170 L140 190 M170 168 L210 188 M240 170 L282 190 M300 168 L340 188"/>
+              </g>
+              <path d="M40 222 q26 -18 52 0 t52 0 t52 0 t52 0 t52 0" fill="none" stroke="#8a9a7b" stroke-width="2.4"/>
+              <g fill="#e7d3a4" stroke="#cbab78" stroke-width="1.2">
+                <circle cx="178" cy="150" r="11"/><circle cx="196" cy="158" r="9"/><circle cx="174" cy="166" r="8"/>
+              </g>
+              <line x1="176" y1="162" x2="158" y2="200" stroke="#cbab78" stroke-width="1.4"/>
+              <ellipse cx="150" cy="238" rx="11" ry="15" fill="#c9b189" stroke="#b69a6c" stroke-width="1.4"/>
+              <circle cx="150" cy="246" r="4" fill="#a98a63"/>
+            </g>
+            <!-- epidermis -->
+            <g class="anat-layer" data-layer="epidermis">
+              <path class="layer-band" d="M24 66 L120 66 L150 80 L162 66 L240 66 L252 78 L264 66 L312 66 L324 77 L336 66 L360 66 L360 110 L24 110 Z" fill="#e8dac3"/>
+              <g fill="#d8c6a8" opacity=".7">
+                <path d="M60 70 l9 -3 2 6 -9 2 z"/><path d="M200 70 l9 -3 2 6 -9 2 z"/><path d="M290 70 l9 -3 2 6 -9 2 z"/>
+              </g>
+            </g>
+            <!-- hair shaft -->
+            <g pointer-events="none">
+              <path d="M150 30 L150 226" stroke="#7a6a52" stroke-width="2.6" fill="none"/>
+            </g>
+            <!-- labels -->
+            <g pointer-events="none" font-family="Manrope, sans-serif" font-size="11" fill="#8a8175">
+              <line x1="252" y1="78" x2="366" y2="73" stroke="#cbbfa9" stroke-width="1"/>
+              <text x="370" y="76">Поры</text>
+              <line x1="197" y1="156" x2="366" y2="150" stroke="#cbbfa9" stroke-width="1"/>
+              <text x="370" y="153">Сальная железа</text>
+              <line x1="300" y1="214" x2="366" y2="208" stroke="#cbbfa9" stroke-width="1"/>
+              <text x="370" y="211">Капилляр</text>
+              <line x1="161" y1="240" x2="366" y2="240" stroke="#cbbfa9" stroke-width="1"/>
+              <text x="370" y="243">Волос и фолликул</text>
+              <line x1="316" y1="350" x2="366" y2="350" stroke="#cbbfa9" stroke-width="1"/>
+              <text x="370" y="353">Жировая ткань</text>
+              <line x1="300" y1="424" x2="366" y2="420" stroke="#cbbfa9" stroke-width="1"/>
+              <text x="370" y="423">SMAS и мышца</text>
+            </g>
+          </svg>
+        </div>
+        <div class="anat-controls">
+          <div class="layer-tabs">
+            <button class="layer-tab" type="button" data-layer="epidermis"><span class="lt-no">01</span><span class="lt-name">Эпидермис</span></button>
+            <button class="layer-tab" type="button" data-layer="dermis"><span class="lt-no">02</span><span class="lt-name">Дерма</span></button>
+            <button class="layer-tab" type="button" data-layer="hypodermis"><span class="lt-no">03</span><span class="lt-name">Гиподерма</span></button>
+            <button class="layer-tab" type="button" data-layer="smas"><span class="lt-no">04</span><span class="lt-name">SMAS и мышцы</span></button>
+          </div>
+          <div class="anat-desc" id="anat-desc"></div>
+          <div class="anat-hint">Нажмите на слой на схеме или на кнопку выше.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const fig = document.getElementById("anat-figure");
+      if (!fig) return;
+      const tabs = Array.prototype.slice.call(document.querySelectorAll(".layer-tab"));
+      const layers = Array.prototype.slice.call(document.querySelectorAll(".anat-layer"));
+      const descBox = document.getElementById("anat-desc");
+      const DATA = {
+        epidermis: {
+          name: "Эпидермис",
+          text: "Верхний барьерный слой кожи. Здесь — поры, ороговевшие клетки и пигмент. Именно его состояние мы видим как тон, гладкость и «сияние».",
+          tags: ["Ультразвуковая чистка", "Карбоновый пилинг", "Газожидкостный пилинг", "IPL / BBL — тон", "Тулиевая терапия"]
+        },
+        dermis: {
+          name: "Дерма",
+          text: "«Каркас» кожи: коллаген, эластин, сосуды, корни волос и сальные железы. Здесь формируются упругость и морщины — основная зона работы по омоложению.",
+          tags: ["RF-лифтинг · Oligio", "Лазерное омоложение", "Биоревитализация", "Полинуклеотиды", "Мезотерапия"]
+        },
+        hypodermis: {
+          name: "Гиподерма",
+          text: "Подкожно-жировая клетчатка — жировые пакеты, создающие объём и контур лица. С возрастом они смещаются и уменьшаются, отсюда «усталый» овал.",
+          tags: ["Volumer (HIFU)", "Oligio (RF) — глубокий прогрев", "Восстановление объёма и контура"]
+        },
+        smas: {
+          name: "SMAS и мышцы",
+          text: "Глубокий мышечно-апоневротический слой — внутренний «каркас», который держит овал лица. С ним работают при безоперационной подтяжке и коррекции мимики.",
+          tags: ["Ultraformer · HIFU", "Volumer", "Ботулинотерапия"]
+        }
+      };
+      function select(key) {
+        fig.classList.add("dimmed");
+        layers.forEach(function (l) { l.classList.toggle("active", l.dataset.layer === key); });
+        tabs.forEach(function (t) { t.classList.toggle("active", t.dataset.layer === key); });
+        const d = DATA[key];
+        descBox.innerHTML =
+          "<h4>" + d.name + "</h4><p>" + d.text + "</p>" +
+          '<div class="ad-proc">Что работает на этом слое</div>' +
+          '<div class="ad-tags">' + d.tags.map(function (t) { return "<span>" + t + "</span>"; }).join("") + "</div>";
+      }
+      tabs.forEach(function (t) { t.addEventListener("click", function () { select(t.dataset.layer); }); });
+      layers.forEach(function (l) { l.addEventListener("click", function () { select(l.dataset.layer); }); });
+      select("epidermis");
+    })();
+  </script>
 
   <!-- SERVICES -->
   <section class="block services" id="services">
