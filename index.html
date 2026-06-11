@@ -65,7 +65,22 @@
     .btn:hover { background: #4a3d31; transform: translateY(-1px); }
     .btn-ghost { background: transparent; color: var(--espresso); border: 1px solid var(--sage-dark); }
     .btn-ghost:hover { background: rgba(138,154,123,.16); }
-    @media (max-width: 820px) { .nav-links { display: none; } }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .nav-phones { display: flex; flex-direction: column; line-height: 1.32; }
+    .nav-phones a { color: var(--espresso); font-size: 13px; font-weight: 500; letter-spacing: .2px; white-space: nowrap; transition: color .2s; }
+    .nav-phones a:hover { color: var(--sage-dark); }
+    .nav-social { display: flex; align-items: center; gap: 9px; }
+    .nav-social a {
+      width: 38px; height: 38px; border-radius: 999px; border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center; color: var(--espresso);
+      background: transparent; transition: all .2s;
+    }
+    .nav-social a:hover { border-color: var(--sage-dark); color: var(--sage-dark); background: rgba(138,154,123,.12); transform: translateY(-1px); }
+    .nav-social svg { width: 18px; height: 18px; display: block; fill: currentColor; }
+    .nav-social .ic-max { font-family: var(--sans); font-weight: 700; font-size: 11px; letter-spacing: .3px; }
+    @media (max-width: 1100px) { .nav-phones { display: none; } }
+    @media (max-width: 820px) { .nav-links { display: none; } .nav-phones { display: flex; } }
+    @media (max-width: 460px) { .nav-right .btn { display: none; } .logo { font-size: 18px; } .nav-phones a { font-size: 12px; } .nav-social a { width: 34px; height: 34px; } }
 
     /* Hero */
     .hero { padding: 96px 0 88px; border-bottom: 1px solid var(--line); }
@@ -216,6 +231,13 @@
     .review p { font-family: var(--serif); font-size: 22px; line-height: 1.5; color: var(--ink); margin-bottom: 18px; font-style: italic; }
     .review .who { color: var(--muted); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
     @media (max-width: 820px) { .reviews-grid { grid-template-columns: 1fr; } }
+    .reviews-sub { color: var(--muted); font-size: 15px; margin: -16px 0 30px; }
+    .reviews-sub a { color: var(--sage-dark); border-bottom: 1px solid var(--sage); }
+    .yandex-shots { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
+    .yandex-shot { flex: 1 1 300px; max-width: 350px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 9px; }
+    .yandex-shot img { width: 100%; height: auto; display: block; border-radius: 3px; }
+    .yandex-shot .ys-cap { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 11px 4px 3px; }
+    .yandex-shot .ys-cap .ys-stars { color: var(--sage-dark); letter-spacing: 2px; }
 
     /* Contact — dark espresso band for premium contrast */
     .contact { background: var(--espresso); border-bottom: none; }
@@ -299,7 +321,21 @@
         <a href="#reviews">Отзывы</a>
         <a href="#contact">Контакты</a>
       </nav>
-      <a href="#contact" class="btn">Запись</a>
+      <div class="nav-right">
+        <div class="nav-phones">
+          <a href="tel:+79670874774">+7 967 087-47-74</a>
+          <a href="tel:+79855808866">+7 985 580-88-66</a>
+        </div>
+        <div class="nav-social">
+          <a href="https://t.me/drdzhuraeva" target="_blank" rel="noopener" aria-label="Написать в Telegram" title="Написать в Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          </a>
+          <a href="https://max.ru/u/f9LHodD0cOKaZmXYkZSZlYwSudu6lvXAEYWiK92fXL7kN3eO7LAL0IgvtVM" target="_blank" rel="noopener" aria-label="Написать в MAX" title="Написать в MAX">
+            <span class="ic-max">MAX</span>
+          </a>
+        </div>
+        <a href="#contact" class="btn">Запись</a>
+      </div>
     </div>
   </header>
 
@@ -548,16 +584,22 @@
     <div class="container">
       <div class="eyebrow">Отзывы</div>
       <h2>Что говорят пациенты</h2>
+      <p class="reviews-sub">Реальные отзывы пациентов с Яндекс.Карт.</p>
+      <div class="yandex-shots">
+        <figure class="yandex-shot">
+          <img src="img/review-yandex-1.jpg" alt="Отзыв пациента о приёме у Джураевой Малики Дильмурадовны на Яндекс.Картах" loading="lazy" />
+          <figcaption class="ys-cap"><span class="ys-stars">★★★★★</span> Яндекс.Карты</figcaption>
+        </figure>
+        <figure class="yandex-shot">
+          <img src="img/review-yandex-2.jpg" alt="Отзыв пациента о приёме у Джураевой Малики Дильмурадовны на Яндекс.Картах" loading="lazy" />
+          <figcaption class="ys-cap"><span class="ys-stars">★★★★★</span> Яндекс.Карты</figcaption>
+        </figure>
+      </div>
       <div class="reviews-grid">
         <div class="review">
           <div class="stars">★★★★★</div>
-          <p>«<span class="ph">[Текст отзыва пациента.]</span>»</p>
-          <div class="who"><span class="ph">— Имя</span></div>
-        </div>
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <p>«<span class="ph">[Текст отзыва пациента.]</span>»</p>
-          <div class="who"><span class="ph">— Имя</span></div>
+          <p>«<span class="ph">[Отзыв пациента о процедуре BBL — пришлите реальные слова.]</span>»</p>
+          <div class="who"><span class="ph">— Имя</span> · BBL (фототерапия)</div>
         </div>
       </div>
     </div>
@@ -583,11 +625,11 @@
         </div>
         <div class="row">
           <span class="label">Telegram</span>
-          <span class="val"><a href="https://t.me/drdzhuraeva" target="_blank" rel="noopener">@drdzhuraeva</a> <span class="ph">[уточните ник, если другой]</span></span>
+          <span class="val"><a href="https://t.me/drdzhuraeva" target="_blank" rel="noopener">@drdzhuraeva</a></span>
         </div>
         <div class="row">
-          <span class="label">Адрес и часы приёма</span>
-          <span class="val"><span class="ph">[город, клиника, часы — пришлите]</span></span>
+          <span class="label">MAX</span>
+          <span class="val"><a href="https://max.ru/u/f9LHodD0cOKaZmXYkZSZlYwSudu6lvXAEYWiK92fXL7kN3eO7LAL0IgvtVM" target="_blank" rel="noopener">Написать в MAX</a></span>
         </div>
       </div>
       <div class="contact-cta">
