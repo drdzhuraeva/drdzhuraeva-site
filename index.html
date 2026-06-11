@@ -1029,7 +1029,6 @@
           html += '<div class="m-sec"><h4>Показания</h4><ul>' +
             s.indications.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></div>";
         }
-        html += baBlock(s);
         if (s.note) html += '<div class="m-sec"><h4>Важно</h4><p>' + esc(s.note) + "</p></div>";
         elBody.innerHTML = html;
         overlay.classList.add("open");
