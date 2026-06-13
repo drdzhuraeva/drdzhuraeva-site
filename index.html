@@ -305,6 +305,33 @@
 
     footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px; letter-spacing: 1px; }
     footer .logo { font-size: 18px; margin-bottom: 8px; }
+    footer .legal { margin-top: 10px; }
+    footer .legal a { color: var(--muted); border-bottom: 1px solid var(--line); }
+    footer .legal a:hover { color: var(--espresso); }
+
+    /* Consent checkbox in booking form (dark band) */
+    .bf-consent { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; margin-top: 2px; }
+    .bf-consent input { appearance: none; -webkit-appearance: none; flex: 0 0 18px; width: 18px; height: 18px; margin-top: 2px;
+      border: 1px solid rgba(138,154,123,.6); border-radius: 4px; background: rgba(255,255,255,.06); cursor: pointer; transition: all .2s; position: relative; }
+    .bf-consent input:checked { background: var(--sage-dark); border-color: var(--sage-dark); }
+    .bf-consent input:checked::after { content: ""; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid var(--cream); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+    .bf-consent span { color: #b3aa9c; font-size: 12.5px; line-height: 1.5; }
+    .bf-consent a { color: var(--sage); border-bottom: 1px solid rgba(138,154,123,.5); }
+    .bf-consent a:hover { color: var(--cream); }
+
+    /* Cookie banner */
+    .cookie-bar { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 200; max-width: 720px; margin: 0 auto;
+      background: var(--espresso); color: var(--cream); border: 1px solid var(--sage-dark); border-radius: var(--radius);
+      box-shadow: 0 14px 40px rgba(46,40,32,.3); padding: 18px 22px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+      transform: translateY(140%); transition: transform .4s ease; }
+    .cookie-bar.show { transform: translateY(0); }
+    .cookie-bar p { margin: 0; font-size: 13.5px; line-height: 1.55; color: #d8d0c2; flex: 1 1 320px; }
+    .cookie-bar a { color: var(--sage); border-bottom: 1px solid rgba(138,154,123,.5); }
+    .cookie-bar a:hover { color: var(--cream); }
+    .cookie-bar button { background: var(--cream); color: var(--espresso); border: none; cursor: pointer; font-family: inherit;
+      font-weight: 600; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 12px 24px; border-radius: 999px; transition: background .2s; white-space: nowrap; }
+    .cookie-bar button:hover { background: #fff; }
+    @media (max-width: 560px) { .cookie-bar { padding: 16px; gap: 12px; } .cookie-bar button { width: 100%; } }
   </style>
 </head>
 <body>
@@ -645,6 +672,10 @@
             <input type="text" id="bf-time" placeholder="Удобное время" />
           </div>
           <textarea id="bf-comment" placeholder="Комментарий (необязательно)" rows="2"></textarea>
+          <label class="bf-consent">
+            <input type="checkbox" id="bf-consent" required />
+            <span>Я согласен(а) на обработку персональных данных и принимаю <a href="privacy.html" target="_blank" rel="noopener">Политику конфиденциальности</a>.</span>
+          </label>
           <button type="submit" class="btn">Записаться через WhatsApp</button>
           <div class="bf-alt">Заявка откроется в WhatsApp уже заполненной. Или напрямую:
             <a href="https://t.me/drdzhuraeva" target="_blank" rel="noopener">Telegram</a> ·
@@ -658,9 +689,16 @@
   <footer>
     <div class="container">
       <div class="logo">Dr. <span style="color:var(--sage-dark)">Dzhuraeva</span></div>
-      © 2026 Джураева Малика Дильмурадовна · drdzhuraeva.ru
+      © 2026 ИП Джураева Малика Дильмурадовна · drdzhuraeva.ru
+      <div class="legal"><a href="privacy.html">Политика конфиденциальности</a></div>
     </div>
   </footer>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-bar" id="cookie-bar" role="dialog" aria-label="Уведомление об использовании cookie">
+    <p>Мы используем только технические cookie, необходимые для работы сайта. Аналитики и рекламы нет. Подробнее — в <a href="privacy.html" target="_blank" rel="noopener">Политике конфиденциальности</a>.</p>
+    <button type="button" id="cookie-accept">Принять</button>
+  </div>
 
   <!-- SERVICE MODAL -->
   <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -1081,6 +1119,10 @@
 
       bookForm.addEventListener("submit", function (e) {
         e.preventDefault();
+        if (!document.getElementById("bf-consent").checked) {
+          document.getElementById("bf-consent").reportValidity();
+          return;
+        }
         const name = document.getElementById("bf-name").value.trim();
         const phone = document.getElementById("bf-phone").value.trim();
         const service = serviceSelect.value;
@@ -1164,6 +1206,20 @@
         ["age", "concern", "effect"].forEach(function (g) { selected[g].clear(); });
         document.querySelectorAll(".chip.active").forEach(function (c) { c.classList.remove("active"); });
         update();
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var KEY = "cookieConsent";
+      var bar = document.getElementById("cookie-bar");
+      if (!bar) return;
+      try { if (localStorage.getItem(KEY) === "1") return; } catch (e) {}
+      setTimeout(function () { bar.classList.add("show"); }, 700);
+      document.getElementById("cookie-accept").addEventListener("click", function () {
+        try { localStorage.setItem(KEY, "1"); } catch (e) {}
+        bar.classList.remove("show");
       });
     })();
   </script>
