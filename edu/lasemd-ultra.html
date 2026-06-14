@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LaseMD Ultra (тулиевый лазер) — протоколы · Образовательный портал</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="edu.css" />
+  <style>
+    .term { color: var(--sage-dark); border-bottom: 1px dashed var(--sage); cursor: help; }
+    .term:hover, .term:focus { color: var(--espresso); border-bottom-color: var(--sage-dark); outline: none; }
+    .term::after { content: "?"; font-size: 9px; vertical-align: super; color: var(--sage-dark); margin-left: 1px; font-weight: 600; }
+    .term-pop { position: absolute; z-index: 200; max-width: 330px; background: var(--espresso); color: #efe7da;
+      font-size: 14px; line-height: 1.55; padding: 15px 17px; border-radius: 6px; box-shadow: 0 14px 36px rgba(40,30,20,.3); font-weight: 300; }
+    .term-pop .tp-title { font-family: var(--serif); font-size: 18px; display: block; margin-bottom: 7px; color: #fff; }
+    .term-pop b { color: #fff; }
+    .term-pop::before { content: ""; position: absolute; top: -7px; left: var(--ax, 22px); border: 7px solid transparent; border-bottom-color: var(--espresso); border-top: 0; }
+    .term-pop.below::before { top: auto; bottom: -7px; border-bottom-color: transparent; border-top-color: var(--espresso); border-bottom: 0; }
+    table.params td:first-child { white-space: nowrap; }
+    .ph-tag { display:inline-block; font-size:11px; font-weight:600; padding:1px 7px; border-radius:999px; background:var(--bg-2); color:var(--espresso); margin-right:4px; }
+    .chan-fig { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 22px 0; max-width: 560px; }
+    .chan-fig svg { width: 100%; height: auto; display:block; }
+    .chan-cap { color: var(--muted); font-size: 13px; margin-top: 10px; text-align:center; }
+  </style>
+</head>
+<body class="locked">
+
+  <div class="gate" id="edu-gate">
+    <div class="gate-card">
+      <span class="eyebrow">Только для специалистов</span>
+      <h1>Образовательный портал</h1>
+      <p>Материалы предназначены для врачей-косметологов, дерматологов и специалистов эстетической медицины. Содержат клиническую информацию и параметры процедур.</p>
+      <form id="gate-form">
+        <input type="password" id="gate-pass" placeholder="Пароль доступа" autocomplete="off" />
+        <label class="chk"><input type="checkbox" id="gate-chk" />
+          <span>Я подтверждаю, что являюсь специалистом с медицинским образованием и понимаю, что информация не является инструкцией к самолечению.</span></label>
+        <button type="submit" class="btn">Войти</button>
+        <div class="gate-err" id="gate-err"></div>
+      </form>
+      <div class="gate-foot">Доступ к паролю предоставляет автор курса. <a href="../index.html">← На сайт клиники</a></div>
+    </div>
+  </div>
+
+  <header class="edu-header" data-protected>
+    <div class="container edu-nav">
+      <a href="index.html" class="edu-logo">Dr. <span>Dzhuraeva</span><small>Education · для специалистов</small></a>
+      <div class="crumbs"><a href="index.html">Портал</a> · <span>LaseMD Ultra</span></div>
+      <a href="../index.html" class="edu-back">← Сайт клиники</a>
+    </div>
+  </header>
+
+  <main class="edu-main" data-protected>
+    <div class="container">
+
+      <div class="lead-block">
+        <span class="eyebrow">Аппаратные методики · лазеры</span>
+        <h1 style="font-size:40px;line-height:1.1;margin:12px 0;">LaseMD Ultra — тулиевый лазер 1927 нм</h1>
+        <div class="role-line">Механизм · режимы · насадки · протоколы по фототипам · трансдермальная доставка</div>
+        <p style="color:#5c554b;font-size:17px;max-width:780px;">Фракционный неаблятивный тулиевый лазер (Lutronic). Хромофор — вода, мягкий поверхностный прогрев и создание микроканалов для трансдермальной доставки сывороток. Ниже — рабочие протоколы по показаниям и фототипам в формате «всегда у аппарата».</p>
+      </div>
+
+      <div class="note verify"><b>Важно.</b> Все параметры приведены по официальному руководству <b>Lutronic (LaseMD Ultra, Ред. 4)</b> как образовательный ориентир и <b>требуют верификации</b>: производитель прямо указывает устанавливать значения с учётом состояния кожи, анамнеза и клинической картины. Ответственность за результат — на специалисте.</div>
+
+      <!-- МЕХАНИЗМ -->
+      <section class="section">
+        <h2>Механизм действия</h2>
+        <p>Длина волны <b>1927 нм</b> (тулий), основной хромофор — <span class="term" data-term="chromophore">вода</span>. Энергия поглощается в поверхностных слоях кожи, создавая контролируемый прогрев около <b>70 °C</b> — на границе абляции и неабляции. В коже формируются <span class="term" data-term="vaporization">зона вапоризации</span> (микроканал) и зона коагуляции вокруг неё. Микроканалы открывают путь для <span class="term" data-term="transdermal">трансдермальной доставки</span> сывороток сразу после процедуры.</p>
+        <ul>
+          <li>Минимальная реабилитация — процедура «обеденного перерыва», всесезонная.</li>
+          <li>Микро-струпья отпадают самостоятельно за 3–7 дней — не снимать.</li>
+          <li>Комбинация с ампулами/лечебными средствами всегда эффективнее монотерапии.</li>
+        </ul>
+        <div class="chan-fig">
+          <svg viewBox="0 0 520 260" role="img" aria-label="Микроканалы и трансдермальная доставка">
+            <rect x="20" y="30" width="480" height="26" fill="#f0dcc0" stroke="#d8c8b2"/>
+            <rect x="20" y="56" width="480" height="120" fill="#f0cdb4" stroke="#d8c8b2"/>
+            <rect x="20" y="176" width="480" height="60" fill="#f6ecb4" stroke="#d8c8b2"/>
+            <text x="28" y="47" font-family="Manrope,sans-serif" font-size="11" fill="#6b5a44">Эпидермис</text>
+            <text x="28" y="120" font-family="Manrope,sans-serif" font-size="11" fill="#6b5a44">Дерма</text>
+            <text x="28" y="210" font-family="Manrope,sans-serif" font-size="11" fill="#6b5a44">Гиподерма</text>
+            <!-- channels -->
+            <g stroke="#b06f52" stroke-width="3" fill="none" opacity="0.8">
+              <path d="M120,30 L120,118"/><path d="M200,30 L200,118"/><path d="M280,30 L280,118"/><path d="M360,30 L360,118"/><path d="M440,30 L440,118"/>
+            </g>
+            <!-- coagulation halo -->
+            <g fill="#c98a6d" opacity="0.28">
+              <ellipse cx="120" cy="90" rx="14" ry="46"/><ellipse cx="200" cy="90" rx="14" ry="46"/><ellipse cx="280" cy="90" rx="14" ry="46"/><ellipse cx="360" cy="90" rx="14" ry="46"/><ellipse cx="440" cy="90" rx="14" ry="46"/>
+            </g>
+            <!-- serum drops -->
+            <g fill="#6c7b5b"><circle cx="120" cy="20" r="5"/><circle cx="200" cy="20" r="5"/><circle cx="280" cy="20" r="5"/><circle cx="360" cy="20" r="5"/><circle cx="440" cy="20" r="5"/></g>
+          </svg>
+          <div class="chan-cap">Микроканал (вапоризация) с зоной коагуляции вокруг — путь для трансдермальной доставки сыворотки.</div>
+        </div>
+      </section>
+
+      <!-- РЕЖИМЫ -->
+      <section class="section">
+        <h2>Режимы работы</h2>
+        <p>Два уровня настройки: <span class="term" data-term="energy-mode">режим Energy</span> (мДж) для стандартной работы и <span class="term" data-term="power-mode">режим Power</span> (Вт, 5–20) для деликатной. Внутри — четыре рабочих режима подачи:</p>
+        <div class="tbl-wrap">
+          <table class="params">
+            <thead><tr><th>Режим</th><th>Подача</th><th>Насадки</th><th>Тип луча</th><th>Плотность</th></tr></thead>
+            <tbody>
+              <tr><td><b><span class="term" data-term="dynamic">Dynamic</span></b></td><td>педаль + ролик</td><td>только ролик</td><td>регулярный</td><td>25 точек/см²</td></tr>
+              <tr><td><b><span class="term" data-term="random">Random</span></b></td><td>педаль + ролик</td><td>только ролик</td><td>хаотичный (CCT)</td><td>40 точек/см²</td></tr>
+              <tr><td><b><span class="term" data-term="static">Static</span></b></td><td>только педаль (интервал 0,5/1,0/2,0 с)</td><td>ролик, квадрат., комбин., C5</td><td>регулярный</td><td>C1 100; C5 100/144/225 точек/см²</td></tr>
+              <tr><td><b><span class="term" data-term="cw">CW</span></b></td><td>педаль, непрерывно</td><td>ролик, квадрат., комбин.</td><td>непрерывный</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">Random быстрее и однороднее, но инвазивнее (выше плотность энергии), чем Dynamic. Плотность 100/144/225 точек/см² доступна только с C5 в Static. CW — для кожи головы и роста волос.</div>
+      </section>
+
+      <!-- НАСАДКИ -->
+      <section class="section">
+        <h2>Насадки (4 типа)</h2>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Насадка</th><th>Микролуч</th><th>Область / назначение</th><th>Режимы</th></tr></thead>
+            <tbody>
+              <tr><td><b>Ролик (C1)</b></td><td>200 мкм</td><td>Лицо и тело — основная рабочая насадка</td><td>Dynamic / Random / Static / CW</td></tr>
+              <tr><td><b>C5</b></td><td>350 мкм</td><td>Лицо и тело; пилинг, локальный пигмент. <b>Не терпит наслоения</b></td><td>только Static</td></tr>
+              <tr><td><b>Квадратная</b></td><td>—</td><td>Лицо и тело; точечно по рубцам</td><td>Static / CW</td></tr>
+              <tr><td><b>Комбинированная</b></td><td>—</td><td>Стимуляция роста волос, кожа головы</td><td>Static / CW</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note danger"><b>Безопасность насадки C5.</b> Категорически избегать наслоения на уже обработанные участки (риск ожога). Роликовые насадки — дезинфекция и центрифугирование; одноразовость по требованию производителя.</div>
+      </section>
+
+      <!-- ОБЩИЕ ПРАВИЛА -->
+      <section class="section">
+        <h2>Общие правила безопасности</h2>
+        <ul>
+          <li><b>Тёмная кожа (&gt; тип III):</b> не превышать <span class="term" data-term="coverage">охват</span> <b>&lt; 15%</b> — риск временного потемнения.</li>
+          <li><b>Зоны мелазмы:</b> охват <b>&lt; 5%</b> — риск рецидива; мелазму вести <b>отдельным протоколом</b>, не смешивать с UltraGlow на той же зоне.</li>
+          <li>Анестезирующий крем за <b>30 мин – 1 ч</b>, если энергия <b>&gt; 5 мДж</b>.</li>
+          <li>Перекрытие проходов — правило <b>50%</b>; воздушное охлаждение (Zimmer) по комфорту.</li>
+          <li><b>Запрещено</b> сочетать с CO₂ и эрбиевым лазером. С BBL/RF — только с выверенными интервалами.</li>
+        </ul>
+      </section>
+
+      <!-- БАЗОВЫЕ ПРОТОКОЛЫ -->
+      <section class="section">
+        <h2>Базовые протоколы</h2>
+
+        <h3>UltraGlow (всё лицо) — омоложение, тон и текстура</h3>
+        <p>Базовый метод: сначала обрабатывают всё лицо по UltraGlow, затем точечно по показаниям. Общая энергия по возрасту: 20–30 лет — 0,2–0,3 кДж; 40–60 лет — 0,4–0,5 кДж на всё лицо.</p>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим</th><th>Проходы</th><th>Охват %</th><th>Общая, кДж</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody>
+            <tr><td>I–III</td><td>C1 ролик</td><td>10–15</td><td>Random</td><td>4–6</td><td>12–25</td><td rowspan="2">0,2–0,5</td><td rowspan="2">3–5</td><td rowspan="2">3–4 нед</td></tr>
+            <tr><td>III–VI</td><td>C1 ролик</td><td>8–10</td><td>Random</td><td>2–4</td><td>5–12</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>Тулиевый пилинг — преомоложение, тон/текстура (≥20 лет)</h3>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим / плотность</th><th>Проходы</th><th>Охват %</th><th>Общая, кДж</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody>
+            <tr><td>I–VI</td><td>C5</td><td>1–3</td><td>Static · 225 точек/см² · 50% перекрытие</td><td>1–2</td><td>8–10</td><td>0,1–0,2</td><td>3–5</td><td>2 нед</td></tr>
+          </tbody>
+        </table></div>
+        <span class="badge-verify">проверить</span> <span style="font-size:13px;color:var(--muted)">Параметры — Lutronic, Ред. 4.</span>
+      </section>
+
+      <!-- ПИГМЕНТАЦИЯ -->
+      <section class="section">
+        <h2>Пигментация</h2>
+
+        <h3><span class="term" data-term="melasma">Мелазма</span> / <span class="term" data-term="pvg">ПВГ</span> — отдельный протокол</h3>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим</th><th>Проходы</th><th>Охват %</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody>
+            <tr><td>I–II</td><td>C1 ролик</td><td>3–5</td><td>Random</td><td>2–4</td><td>~5</td><td rowspan="2">3–5</td><td rowspan="2">2 нед</td></tr>
+            <tr><td>III–VI</td><td>C1 ролик</td><td>1–3</td><td>Random</td><td>2–4</td><td>~2</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note danger">Избегать зон мелазмы при обработке всего лица по UltraGlow. Уход: транексамовая кислота (ампула). Охват в зоне мелазмы &lt; 5%.</div>
+
+        <h3>Эпидермальная пигментация — <span class="term" data-term="lentigo">лентиго</span>, <span class="term" data-term="seb-keratosis">себорейный кератоз</span>, «кофе с молоком»</h3>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим / плотн.</th><th>Проходы</th><th>Охват %</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody>
+            <tr><td>I–II</td><td>C5</td><td>10–15</td><td>Static · 225</td><td>2–3</td><td>20–30</td><td rowspan="2">3–4</td><td rowspan="2">4 нед</td></tr>
+            <tr><td>III–VI</td><td>C5</td><td>5–10</td><td>Static · 225</td><td>1–2</td><td>8–12</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">Заходить немного за края поражения. Критерий остановки — лёгкая эритема и посерение. Микро-корку <b>не снимать</b> (риск ПВГ).</div>
+
+        <h3><span class="term" data-term="riehl">Меланоз Риля</span></h3>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим</th><th>Проходы</th><th>Охват %</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody><tr><td>I–VI</td><td>C1 ролик</td><td>8–10</td><td>Random</td><td>3–4</td><td>7–13</td><td>3</td><td>3–4 нед</td></tr></tbody>
+        </table></div>
+        <p style="font-size:13px;color:var(--muted)"><span class="badge-verify">проверить</span> Все таблицы — Lutronic, Ред. 4.</p>
+      </section>
+
+      <!-- РУБЦЫ -->
+      <section class="section">
+        <h2>Рубцы и постакне</h2>
+        <p><b>Постугревые рубцы</b> — два шага: ① точечно по глубоким рубцам, затем ② всё лицо.</p>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Шаг</th><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим</th><th>Проходы</th><th>Охват %</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody>
+            <tr><td>① рубцы</td><td>I–VI</td><td>C1 квадрат.</td><td>15–20</td><td>Static</td><td>1–2</td><td>15–20</td><td rowspan="2">3–5</td><td rowspan="2">4 нед</td></tr>
+            <tr><td>② лицо</td><td>I–VI</td><td>C1 ролик</td><td>10–15</td><td>Random</td><td>2–3</td><td>6–12</td></tr>
+          </tbody>
+        </table></div>
+        <h3>Атрофические/линейные рубцы, стрии</h3>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим</th><th>Проходы</th><th>Охват %</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody><tr><td>I–VI</td><td>C1 ролик</td><td>10</td><td>Random / Static</td><td>3–4</td><td>10–12</td><td>3–5</td><td>4 нед</td></tr></tbody>
+        </table></div>
+        <div class="note">Аппарат <b>неэффективен</b> для гипертрофических и келоидных рубцов. Гематомы (после филлеров/нитей): C1 ролик 10 мДж, Random, 4 прохода, охват 12, как можно раньше (до 24 ч, до пожелтения), 1 процедура.</div>
+      </section>
+
+      <!-- ПОРЫ И АКНЕ -->
+      <section class="section">
+        <h2>Поры и акне</h2>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Показание</th><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим</th><th>Проходы</th><th>Охват %</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody>
+            <tr><td>Расширенные поры, <span class="term" data-term="seborrhea">себорея</span>, розацеа</td><td>I–VI</td><td>C1 ролик</td><td>10–15</td><td>Static</td><td>2–3</td><td>10–30</td><td>3–5</td><td>3–4 нед</td></tr>
+            <tr><td>Активное акне (папулы, пустулы, узлы)</td><td>I–VI</td><td>C1 ролик</td><td>15</td><td>Static</td><td>2</td><td>20</td><td>3–5</td><td>3–4 нед</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">Схема: ① всё лицо UltraGlow → ② точечно (поры/себорея/розацеа ИЛИ активное акне), напр. T-зона и нос. Охлаждать зону для комфорта.</div>
+      </section>
+
+      <!-- ОСОБЫЕ ЗОНЫ -->
+      <section class="section">
+        <h2>Особые зоны</h2>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Зона</th><th>Фототип</th><th>Насадка</th><th>Энергия, мДж</th><th>Режим</th><th>Проходы</th><th>Охват %</th><th>Курс</th><th>Интервал</th></tr></thead>
+          <tbody>
+            <tr><td>Морщины вокруг глаз (веки)</td><td>I–II / III–VI</td><td>C1 ролик</td><td>8–12 / 5–8</td><td>Static/Random</td><td>2–4</td><td>8–15 / 5–8</td><td>3–5</td><td>3–4 нед</td></tr>
+            <tr><td>Губы (тон, морщинки)</td><td>I–VI</td><td>C5</td><td>3–5</td><td>Static</td><td>3–4</td><td>15–22</td><td>3–6</td><td>3–4 нед</td></tr>
+            <tr><td>Шея / декольте / руки</td><td>I–II / III–VI</td><td>C1 ролик</td><td>10–15 / 5–10</td><td>Random</td><td>3–5</td><td>12–18 / 5–12</td><td>3–5</td><td>3–4 нед</td></tr>
+            <tr><td>Кожа головы / рост волос</td><td>—</td><td>C1 комбин.</td><td>3</td><td>Static (CW)</td><td>2 (без перекрытия)</td><td>4–5</td><td>4–6</td><td>3–4 нед</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">Веки: создавать натяжение кожи, на верхнем веке на 1–2 прохода меньше, защитные очки. Губы: мокрая марля между зубов и губ, анестетик 5–10 мин.</div>
+      </section>
+
+      <!-- ТРАНСДЕРМАЛЬНАЯ ДОСТАВКА -->
+      <section class="section">
+        <h2>Трансдермальная доставка (наружное применение)</h2>
+        <ul>
+          <li>Шаг 1 — обработать всё лицо насадкой C5 (касание кожи).</li>
+          <li>Шаг 2 — равномерно распределить раствор по поверхности; впитывание на единой глубине.</li>
+          <li>Ампулы LaseMD активируются в станции (центрифуга ~6 мин), хранятся в холодильнике &lt;5 °C, свойства — до 2 недель.</li>
+          <li>Преимущества C5: больший микролуч и охват, отсутствие эпидермального повреждения, быстрое восстановление.</li>
+        </ul>
+        <div class="note verify">Перечень конкретных сывороток/биоревитализантов согласуйте и верифицируйте отдельно (упоминались ампулы LaseMD, корейские составы). Не выдавать как зарегистрированное показание без подтверждения.</div>
+      </section>
+
+      <!-- ПРОТИВОПОКАЗАНИЯ -->
+      <section class="section">
+        <h2>Противопоказания</h2>
+        <ul>
+          <li>Аллергия на местные анестетики/антибиотики и др. препараты</li>
+          <li>Беременность и/или лактация</li>
+          <li>Рак кожи, любой рак или предраковые невусы</li>
+          <li>Иммуносупрессия (ВИЧ/СПИД, приём иммунодепрессантов)</li>
+          <li>Нарушения гемостаза / приём <span class="term" data-term="anticoagulants">антикоагулянтов</span>; препараты железа, гинкго, женьшень, чеснок, тетрациклин, зверобой — за 2 недели</li>
+          <li><span class="term" data-term="photosens">Фотосенсибилизирующие</span> препараты — отменить за 3–5 дней</li>
+          <li>Герпес (ВПГ 1/2) в зоне — при активных высыпаниях запрещено; при частых рецидивах — профилактика</li>
+          <li>Инфекция/дерматоз в зоне (нарыв, псориаз, экзема, сыпь), открытые раны</li>
+          <li>Келоиды, атипичное заживление в анамнезе</li>
+          <li>Ботулотоксин в зоне — за 2 недели; натуральные филлеры в зоне — за 4–6 недель</li>
+        </ul>
+      </section>
+
+      <!-- УХОД -->
+      <section class="section">
+        <h2>Подготовка и уход</h2>
+        <h3>До процедуры</h3>
+        <ul>
+          <li>За несколько недель — без загара и раздражающих наружных средств</li>
+          <li>Чистая кожа без косметики; при необходимости — анестетик</li>
+        </ul>
+        <h3>После процедуры</h3>
+        <ul>
+          <li>Жжение 1–2 ч — холод через сухую марлю; увлажнение, без скрабов</li>
+          <li>Без ретинола/AHA, спиртовых средств — минимум неделю (или по разрешению врача)</li>
+          <li>Без спорта/сауны/алкоголя до заживления (1 неделя)</li>
+          <li><b>SPF 50 / PA+++ ежедневно минимум 20 дней</b>; шелушение 5–7 дней — не снимать</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Источник</h2>
+        <p>Параметры систематизированы по официальному руководству <b>Lutronic «LaseMD Ultra», Ред. 4</b> (русскоязычная версия). Изображения и слайды производителя не воспроизводятся. Перед клиническим применением сверяйте значения с действующим руководством и инструкцией, адаптируйте под пациента.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="edu-footer" data-protected>
+    <div class="container">
+      <div>© 2026 ИП Джураева Малика Дильмурадовна · образовательный портал для специалистов</div>
+      <div class="disclaimer">Материалы носят образовательный характер для специалистов с медицинским образованием, не являются инструкцией к самолечению и не заменяют официальные инструкции к оборудованию. Все параметры требуют верификации и применяются под ответственность специалиста. <a href="../privacy.html">Политика конфиденциальности</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var G = {
+        "chromophore": ["Хромофор", "Вещество в коже, поглощающее лазерную энергию определённой длины волны. У тулиевого лазера это вода — поэтому воздействие поверхностное и контролируемое."],
+        "vaporization": ["Зона вапоризации", "Микроканал, где вода мгновенно испаряется под действием лазера. Вокруг него — зона коагуляции (теплового свёртывания), запускающая обновление кожи."],
+        "transdermal": ["Трансдермальная доставка", "Введение активных веществ (сывороток, биоревитализантов) через микроканалы, созданные лазером, сразу после процедуры — глубже и равномернее, чем при обычном нанесении."],
+        "energy-mode": ["Режим Energy", "Стандартный режим: задаётся энергия импульса в мДж (1–20). Для большинства протоколов."],
+        "power-mode": ["Режим Power", "Деликатный режим: задаётся мощность в Вт (5–20). Для более мягкой/чувствительной работы."],
+        "dynamic": ["Dynamic", "Подача по педали при движении ролика, регулярный рисунок, плотность 25 точек/см². Наименее инвазивный режим."],
+        "random": ["Random", "Хаотичный рисунок (CCT), плотность 40 точек/см². Быстрее и однороднее, но инвазивнее Dynamic (выше плотность энергии)."],
+        "static": ["Static", "Подача только по педали с настраиваемым интервалом (0,5/1,0/2,0 с). С насадкой C5 доступна плотность 100/144/225 точек/см²."],
+        "cw": ["CW (непрерывный)", "Непрерывная подача, пока нажата педаль. Специально для кожи головы и стимуляции роста волос."],
+        "coverage": ["Охват (%)", "Доля площади кожи, обработанная микролучами за процедуру. Чем выше охват, тем сильнее воздействие и риск; на тёмной коже ограничивают."],
+        "melasma": ["Мелазма", "Приобретённая симметричная гиперпигментация лица, гормонозависимая, склонная к рецидиву. Ведётся отдельным щадящим протоколом; высокий охват провоцирует рецидив."],
+        "pvg": ["ПВГ — поствоспалительная гиперпигментация", "Потемнение кожи после воспаления/травмы из-за избытка меланина. Частый риск тулиевого лазера на тёмной коже при избыточном охвате."],
+        "lentigo": ["Солнечное лентиго", "Доброкачественные плоские пигментные пятна на участках хронической инсоляции («возрастные пятна»). Эпидермальный пигмент, хорошо отвечает на лазер."],
+        "seb-keratosis": ["Себорейный кератоз", "Доброкачественное возрастное образование («бородавка старости»), часто пигментированное. Поверхностное, эпидермальное."],
+        "riehl": ["Меланоз Риля", "Контактный дерматит-ассоциированная сетчатая гиперпигментация лица/шеи, часто от косметики. Дермо-эпидермальный пигмент, требует осторожности."],
+        "seborrhea": ["Себорея / себорейный дерматит", "Состояние с избыточной продукцией кожного сала, расширением пор и воспалением; кожа жирная, желтоватая, склонна к покраснению."],
+        "anticoagulants": ["Антикоагулянты", "Препараты, снижающие свёртываемость крови (варфарин, НОАК, аспирин и др.). Повышают риск кровоподтёков и кровотечения — учитывают перед процедурой."],
+        "photosens": ["Фотосенсибилизаторы", "Средства/состояния, повышающие чувствительность кожи к свету (некоторые антибиотики, ретиноиды, зверобой и др.). Повышают риск ожога — отменяют заранее."]
+      };
+      var pop = null;
+      function close() { if (pop) { pop.remove(); pop = null; } }
+      function open(el) {
+        close();
+        var d = G[el.getAttribute("data-term")];
+        if (!d) return;
+        pop = document.createElement("div");
+        pop.className = "term-pop";
+        pop.innerHTML = '<span class="tp-title">' + d[0] + "</span>" + d[1];
+        document.body.appendChild(pop);
+        var r = el.getBoundingClientRect(), sx = window.scrollX, sy = window.scrollY;
+        var top = r.bottom + sy + 10, left = r.left + sx, pw = pop.offsetWidth;
+        if (left + pw > window.innerWidth + sx - 12) left = window.innerWidth + sx - pw - 12;
+        if (left < sx + 8) left = sx + 8;
+        if (r.bottom + 10 + pop.offsetHeight > window.innerHeight) { top = r.top + sy - pop.offsetHeight - 10; pop.classList.add("below"); }
+        pop.style.top = top + "px"; pop.style.left = left + "px";
+        pop.style.setProperty("--ax", Math.max(12, Math.min(r.left + sx - left + r.width / 2 - 7, pw - 20)) + "px");
+        pop._for = el;
+      }
+      document.addEventListener("click", function (e) {
+        var t = e.target.closest(".term");
+        if (t) { e.preventDefault(); if (pop && pop._for === t) close(); else open(t); return; }
+        if (!e.target.closest(".term-pop")) close();
+      });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+      window.addEventListener("resize", close);
+      document.querySelectorAll(".term").forEach(function (el) {
+        el.setAttribute("tabindex", "0"); el.setAttribute("role", "button");
+        el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(el); } });
+      });
+    })();
+  </script>
+  <script src="edu.js"></script>
+</body>
+</html>
