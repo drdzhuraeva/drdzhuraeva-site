@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veloce 4800 (Q-switched Nd:YAG) — протоколы · Образовательный портал</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="edu.css" />
+</head>
+<body class="locked">
+
+  <div class="gate" id="edu-gate">
+    <div class="gate-card">
+      <span class="eyebrow">Только для специалистов</span>
+      <h1>Образовательный портал</h1>
+      <p>Материалы предназначены для врачей-косметологов, дерматологов и специалистов эстетической медицины. Содержат клиническую информацию и параметры процедур.</p>
+      <form id="gate-form">
+        <input type="password" id="gate-pass" placeholder="Пароль доступа" autocomplete="off" />
+        <label class="chk"><input type="checkbox" id="gate-chk" />
+          <span>Я подтверждаю, что являюсь специалистом с медицинским образованием и понимаю, что информация не является инструкцией к самолечению.</span></label>
+        <button type="submit" class="btn">Войти</button>
+        <div class="gate-err" id="gate-err"></div>
+      </form>
+      <div class="gate-foot">Доступ к паролю предоставляет автор курса. <a href="../index.html">← На сайт клиники</a></div>
+    </div>
+  </div>
+
+  <header class="edu-header" data-protected>
+    <div class="container edu-nav">
+      <a href="index.html" class="edu-logo">Dr. <span>Dzhuraeva</span><small>Education · для специалистов</small></a>
+      <div class="crumbs"><a href="index.html">Портал</a> · <span>Veloce 4800</span></div>
+      <a href="../index.html" class="edu-back">← Сайт клиники</a>
+    </div>
+  </header>
+
+  <main class="edu-main" data-protected>
+    <div class="container">
+
+      <div class="lead-block">
+        <span class="eyebrow">Аппаратные методики · лазер (Q-switched)</span>
+        <h1 style="font-size:40px;line-height:1.1;margin:12px 0;">Veloce 4800 — Q-switched Nd:YAG 1064/532 нм</h1>
+        <div class="role-line">Пигмент · тату · laser toning · две длины волны</div>
+        <p style="color:#5c554b;font-size:17px;max-width:780px;">Наносекундный <span class="term" data-term="qswitch">Q-switched</span> Nd:YAG-лазер (Classys) с двумя длинами волны и суперохлаждением. Работает по пигменту и татуировкам за счёт фотоакустического разрушения частиц меланина/красителя.</p>
+      </div>
+
+      <div class="note verify"><b>Важно.</b> По Veloce 4800 в открытых источниках мало детальных протоколов. Механизм и применения — из <b>опубликованных данных и описания производителя</b>; <b>конкретные настройки (флюенс, размер пятна, частота) обязательно сверять по официальному мануалу Classys</b> и обучению. Все значения требуют верификации.</div>
+
+      <section class="section">
+        <h2>Механизм действия</h2>
+        <p><span class="term" data-term="qswitch">Q-switched</span> режим даёт сверхкороткие (наносекундные) импульсы высокой пиковой мощности — пигмент поглощает энергию и разрушается фотоакустически (<span class="term" data-term="photoacoustic">фотоакустический эффект</span>), дробясь на частицы, которые выводятся макрофагами. Эпидермис при правильных параметрах не повреждается.</p>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Длина волны</th><th>Глубина / мишень</th><th>Применение</th></tr></thead>
+          <tbody>
+            <tr><td><b>1064 нм</b></td><td>Глубже; дермальный пигмент</td><td>Дермальный пигмент, тёмные тату, laser toning (мелазма), невус Оты</td></tr>
+            <tr><td><b>532 нм</b></td><td>Поверхностно; эпидермальный пигмент</td><td>Лентиго, веснушки, красные/яркие тату</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="section">
+        <h2>Применения</h2>
+        <ul>
+          <li><b>Пигмент:</b> солнечное лентиго, веснушки, неровный тон</li>
+          <li><b>Laser toning</b> — низкофлюенсный многопроходный режим 1064 нм для <span class="term" data-term="melasma">мелазмы</span> и осветления (осторожно, курсами)</li>
+          <li><b>Татуировки:</b> 1064 нм — тёмные, 532 нм — красные/яркие</li>
+          <li><b>Carbon peel</b> (углеродный пилинг) — поры, жирность, тон</li>
+        </ul>
+        <div class="note verify"><span class="badge-verify">проверить</span> Флюенс, размер пятна и частота для каждого применения — по официальному мануалу Classys (в открытом доступе не опубликованы).</div>
+      </section>
+
+      <section class="section">
+        <h2>Противопоказания</h2>
+        <ul>
+          <li>Активный загар / недавняя инсоляция (для пигментзависимых режимов)</li>
+          <li>Беременность (относительно), приём <span class="term" data-term="photosens">фотосенсибилизаторов</span></li>
+          <li>Активный герпес, инфекция/дерматоз в зоне</li>
+          <li>Подозрительные пигментные/меланоцитарные образования — сначала исключить меланому</li>
+          <li>Склонность к келоидам; высокий фототип — осторожно (риск ПВГ)</li>
+        </ul>
+        <div class="note verify">Список не исчерпывающий — сверяйтесь с инструкцией Classys и собирайте анамнез; при мелазме предпочтителен щадящий toning.</div>
+      </section>
+
+      <section class="section">
+        <h2>Подготовка и уход</h2>
+        <h3>До</h3>
+        <ul><li>Без загара; чистая кожа; защита глаз; тест-зона при сомнениях</li></ul>
+        <h3>После</h3>
+        <ul>
+          <li>Эритема, лёгкое посерение/корочка по пигменту — не сдирать</li>
+          <li>Строгая фотозащита <b>SPF 50</b>; без загара; мягкий уход</li>
+          <li>Курс и интервалы по показанию (особенно toning при мелазме)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Источники</h2>
+        <ul>
+          <li>Описание Super Veloce 4800 (дистрибьюторы Classys)</li>
+          <li>Общие принципы Q-switched Nd:YAG (1064/532 нм) — рецензируемые публикации</li>
+        </ul>
+        <p style="color:var(--muted);font-size:14px;">Точные настройки требуют официального мануала Classys и обучения. Изображения производителя не воспроизводятся.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="edu-footer" data-protected>
+    <div class="container">
+      <div>© 2026 ИП Джураева Малика Дильмурадовна · образовательный портал для специалистов</div>
+      <div class="disclaimer">Материалы носят образовательный характер для специалистов с медицинским образованием, не являются инструкцией к самолечению и не заменяют официальные инструкции к оборудованию. Все параметры требуют верификации и применяются под ответственность специалиста. <a href="../privacy.html">Политика конфиденциальности</a></div>
+    </div>
+  </footer>
+
+  <script>
+    window.GLOSSARY = {
+      "qswitch": ["Q-switched", "Режим лазера со сверхкороткими (наносекундными) импульсами очень высокой пиковой мощности. Разрушает частицы пигмента/красителя фотоакустически, минимально нагревая окружающую ткань."],
+      "photoacoustic": ["Фотоакустический эффект", "Мгновенное расширение нагретой частицы пигмента создаёт ударную волну, дробящую её на мелкие фрагменты, которые затем выводятся макрофагами."],
+      "melasma": ["Мелазма", "Приобретённая симметричная гиперпигментация лица, склонная к рецидиву. Лечится осторожно, низкофлюенсным laser toning; агрессивные параметры провоцируют рецидив."],
+      "photosens": ["Фотосенсибилизаторы", "Средства/состояния, повышающие чувствительность кожи к свету. Повышают риск ожога — отменяют заранее."]
+    };
+  </script>
+  <script src="glossary.js"></script>
+  <script src="edu.js"></script>
+</body>
+</html>

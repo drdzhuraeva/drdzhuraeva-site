@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumecca (IPL) — протоколы · Образовательный портал</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="edu.css" />
+</head>
+<body class="locked">
+
+  <div class="gate" id="edu-gate">
+    <div class="gate-card">
+      <span class="eyebrow">Только для специалистов</span>
+      <h1>Образовательный портал</h1>
+      <p>Материалы предназначены для врачей-косметологов, дерматологов и специалистов эстетической медицины. Содержат клиническую информацию и параметры процедур.</p>
+      <form id="gate-form">
+        <input type="password" id="gate-pass" placeholder="Пароль доступа" autocomplete="off" />
+        <label class="chk"><input type="checkbox" id="gate-chk" />
+          <span>Я подтверждаю, что являюсь специалистом с медицинским образованием и понимаю, что информация не является инструкцией к самолечению.</span></label>
+        <button type="submit" class="btn">Войти</button>
+        <div class="gate-err" id="gate-err"></div>
+      </form>
+      <div class="gate-foot">Доступ к паролю предоставляет автор курса. <a href="../index.html">← На сайт клиники</a></div>
+    </div>
+  </div>
+
+  <header class="edu-header" data-protected>
+    <div class="container edu-nav">
+      <a href="index.html" class="edu-logo">Dr. <span>Dzhuraeva</span><small>Education · для специалистов</small></a>
+      <div class="crumbs"><a href="index.html">Портал</a> · <span>Lumecca</span></div>
+      <a href="../index.html" class="edu-back">← Сайт клиники</a>
+    </div>
+  </header>
+
+  <main class="edu-main" data-protected>
+    <div class="container">
+
+      <div class="lead-block">
+        <span class="eyebrow">Аппаратные методики · свет (IPL)</span>
+        <h1 style="font-size:40px;line-height:1.1;margin:12px 0;">Lumecca — интенсивный импульсный свет (IPL)</h1>
+        <div class="role-line">Фильтры 515/580 · флюенс · пигмент и сосуды · фототипы</div>
+        <p style="color:#5c554b;font-size:17px;max-width:780px;">Высокопиковый <span class="term" data-term="ipl">IPL</span> (InMode). Высокая пиковая мощность смещает спектр к 500–600 нм — зоне максимального поглощения меланина и гемоглобина, что эффективно для пигмента и сосудов.</p>
+      </div>
+
+      <div class="note verify"><b>Важно.</b> Параметры — из <b>опубликованных клинических источников и материалов InMode</b> (ссылки внизу), образовательный ориентир, <b>требует верификации</b>: точные флюенсы задаются по фототипу и тест-зоне.</div>
+
+      <section class="section">
+        <h2>Механизм действия</h2>
+        <p>Принцип — <span class="term" data-term="spt">селективный фототермолиз</span>: свет поглощается меланином (пигмент) и оксигемоглобином (сосуды) и нагревает мишень. <span class="term" data-term="peakpower">Высокая пиковая мощность</span> Lumecca сдвигает спектр в коротковолновую область (500–600 нм), повышая эффективность по пигменту и сосудам за меньшее число процедур.</p>
+      </section>
+
+      <section class="section">
+        <h2>Параметры</h2>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Параметр</th><th>Значение<span class="badge-verify">проверить</span></th></tr></thead>
+          <tbody>
+            <tr><td>Спектр</td><td>500–670 нм (+ 850–1200 нм)</td></tr>
+            <tr><td>Фильтры</td><td>515 нм и 580 нм</td></tr>
+            <tr><td>Длительность импульса</td><td>3–100 мс</td></tr>
+            <tr><td>Флюенс</td><td>до 80 Дж/см² (сосуды ≈ 12–14 Дж/см² + усиленное охлаждение)</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note"><b>Выбор фильтра.</b> 515 нм — светлый поверхностный пигмент (фототипы I–III); 580 нм — более глубокие элементы и более тёмная кожа, а также чтобы снизить риск <span class="term" data-term="purpura">пурпуры</span>. Длинный импульс на 515 нм — мягче.</div>
+      </section>
+
+      <section class="section">
+        <h2>Показания и курс</h2>
+        <ul>
+          <li>Пигмент: лентиго, неровный тон, фотоповреждение</li>
+          <li>Сосуды: эритема, розацеа, телеангиэктазии</li>
+          <li>Часто достаточно 1 процедуры; для сосудистых изменений — обычно курс из 3</li>
+        </ul>
+        <div class="note danger"><b>Фототипы.</b> I–III — оптимально; на более тёмной коже — длинный фильтр (580), ниже флюенс, охлаждение, тест-зона; фототип VI — как правило не показан. Эндпоинты: пигмент темнеет с эритемой, сосуды темнеют/спазмируются.</div>
+      </section>
+
+      <section class="section">
+        <h2>Противопоказания</h2>
+        <ul>
+          <li>Активный загар / недавняя инсоляция; высокий фототип для коротких фильтров</li>
+          <li>Беременность (относительно), приём <span class="term" data-term="photosens">фотосенсибилизаторов</span>, изотретиноин — отсрочка</li>
+          <li>Активный герпес, инфекция/дерматоз в зоне</li>
+          <li>Подозрительные пигментные образования, онкология кожи; фотодерматозы</li>
+        </ul>
+        <div class="note verify">Список не исчерпывающий — сверяйтесь с инструкцией InMode, при сомнениях — тест-зона.</div>
+      </section>
+
+      <section class="section">
+        <h2>Подготовка и уход</h2>
+        <h3>До</h3>
+        <ul><li>Без загара 2–4 недели; чистая кожа, гель, защита глаз</li></ul>
+        <h3>После</h3>
+        <ul>
+          <li>Эритема часы–сутки; пигмент темнеет и отшелушивается за дни — <b>не сдирать</b></li>
+          <li>Строгая фотозащита <b>SPF 50</b>, без загара 2–4 недели; мягкий уход</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Источники</h2>
+        <ul>
+          <li>InMode — Lumecca (inmodemd.com), «Peak Power Effect on Skin Rejuvenation»</li>
+          <li>JCDSA / PMC — клинические исследования IPL по сосудам и пигменту</li>
+        </ul>
+        <p style="color:var(--muted);font-size:14px;">Параметры — образовательный ориентир, требуют верификации по официальному обучению InMode. Изображения производителя не воспроизводятся.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="edu-footer" data-protected>
+    <div class="container">
+      <div>© 2026 ИП Джураева Малика Дильмурадовна · образовательный портал для специалистов</div>
+      <div class="disclaimer">Материалы носят образовательный характер для специалистов с медицинским образованием, не являются инструкцией к самолечению и не заменяют официальные инструкции к оборудованию. Все параметры требуют верификации и применяются под ответственность специалиста. <a href="../privacy.html">Политика конфиденциальности</a></div>
+    </div>
+  </footer>
+
+  <script>
+    window.GLOSSARY = {
+      "ipl": ["IPL — интенсивный импульсный свет", "Не лазер, а широкий спектр света, ограничиваемый фильтрами. Действует на меланин и гемоглобин; применяется для пигмента, сосудов, тона, эпиляции."],
+      "spt": ["Селективный фототермолиз", "Принцип, при котором длина волны и длительность импульса подобраны так, чтобы энергия поглощалась только мишенью, не повреждая соседние ткани."],
+      "peakpower": ["Пиковая мощность", "Максимальная мощность вспышки. Высокая пиковая мощность Lumecca смещает спектр к коротким волнам (500–600 нм), где поглощение меланина и гемоглобина максимально — выше эффективность."],
+      "purpura": ["Пурпура", "Точечные кровоизлияния (синячки) от разрыва сосудов при слишком агрессивном воздействии. Снижают риск более длинным фильтром (580 нм) и длинным импульсом."],
+      "photosens": ["Фотосенсибилизаторы", "Средства/состояния, повышающие чувствительность кожи к свету (некоторые антибиотики, ретиноиды, зверобой и др.). Повышают риск ожога — отменяют заранее."]
+    };
+  </script>
+  <script src="glossary.js"></script>
+  <script src="edu.js"></script>
+</body>
+</html>
