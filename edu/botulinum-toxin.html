@@ -33,6 +33,11 @@
     .nerve.fine { stroke-width: 1.5; opacity: .7; }
     .nerve-pt { fill: #cf9b1e; stroke: #fff; stroke-width: 1.5; }
     .nerve-lbl { font-family: var(--sans); font-size: 9.5px; fill: #9a6a12; font-weight: 600; }
+    .plate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin: 22px 0; }
+    .plate { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin: 0; }
+    .plate img { width: 100%; height: auto; display: block; border-radius: 2px; }
+    .plate figcaption { margin-top: 12px; font-size: 13px; color: var(--muted); text-align: center; line-height: 1.4; }
+    .plate-attr { color: var(--muted); font-size: 13px; }
     .face-outline { fill: #f7efe6; stroke: var(--line); stroke-width: 2; }
     .skin-line { fill: none; stroke: #c9b9a3; stroke-width: 2; stroke-linecap: round; }
     .skin-soft { fill: #efe4d4; stroke: #d8c8b2; stroke-width: 1.5; }
@@ -103,9 +108,21 @@
 
       <div class="note verify"><b>Важно.</b> Все дозировки и точки приведены как образовательный ориентир из опубликованных источников и консенсусов; они <b>требуют верификации</b> и подбираются индивидуально. Единицы указаны для onabotulinumtoxinA (Botox); для других препаратов действуют свои коэффициенты пересчёта.</div>
 
-      <!-- ============ ATLAS ============ -->
+      <!-- ============ АНАТОМИЧЕСКИЕ ТАБЛИЦЫ ============ -->
+      <section class="section">
+        <h2>Анатомические таблицы</h2>
+        <p>Классические анатомические таблицы лица — мышцы, сосуды и нервы. Реалистичные иллюстрации для ориентирования перед работой с инъекционной картой ниже.</p>
+        <div class="plate-grid">
+          <figure class="plate"><img src="img/Gray378.png" alt="Мимические мышцы лица и головы (латеральный вид)" loading="lazy" /><figcaption>Мимические мышцы лица и головы</figcaption></figure>
+          <figure class="plate"><img src="img/Gray508.png" alt="Артерии лица и волосистой части головы" loading="lazy" /><figcaption>Артерии лица и волосистой части головы</figcaption></figure>
+          <figure class="plate"><img src="img/Gray784.png" alt="Чувствительные нервы лица — ветви тройничного нерва" loading="lazy" /><figcaption>Чувствительные нервы лица (зоны ветвей тройничного нерва)</figcaption></figure>
+        </div>
+        <p class="plate-attr">Источник: <i>Gray's Anatomy</i> (20-е изд., 1918) — общественное достояние (public domain).</p>
+      </section>
+
+      <!-- ============ ATLAS (инъекционная карта) ============ -->
       <section class="atlas section" data-atlas>
-        <h2>Анатомический атлас лица</h2>
+        <h2>Интерактивная карта инъекций</h2>
         <p>Включайте и выключайте слои, нажимайте на точки инъекций — справа появятся мышца, вектор её сокращения, ориентировочная доза и техника.</p>
 
         <div class="atlas-grid">
