@@ -37,15 +37,22 @@
       var d = DATA[id];
       if (!d || !info) return;
       var rows = "";
-      if (d.muscle) rows += row("Мышца", d.muscle);
-      if (d.action) rows += row("Действие / вектор", d.action);
-      if (d.units) rows += row("Ориентир, единиц", d.units + verifyBadge(d.verify));
-      if (d.depth) rows += row("Глубина / техника", d.depth);
-      if (d.indication) rows += row("Показание", d.indication);
+      if (Array.isArray(d.rows)) {
+        // Гибкий формат: массив [метка, значение, withBadge?]
+        d.rows.forEach(function (r) {
+          rows += row(r[0], r[1] + (r[2] ? verifyBadge(true) : ""));
+        });
+      } else {
+        if (d.muscle) rows += row("Мышца", d.muscle);
+        if (d.action) rows += row("Действие / вектор", d.action);
+        if (d.units) rows += row("Ориентир, единиц", d.units + verifyBadge(d.verify));
+        if (d.depth) rows += row("Глубина / техника", d.depth);
+        if (d.indication) rows += row("Показание", d.indication);
+      }
       info.innerHTML =
         '<div class="ai-title">' + (d.title || id) + "</div>" +
         '<dl class="ai-list">' + rows + "</dl>" +
-        (d.verify ? '<p class="ai-verify">⚠ Параметры ориентировочны, требуют верификации врачом и зависят от препарата.</p>' : "");
+        (d.verify ? '<p class="ai-verify">⚠ Параметры ориентировочны, требуют верификации врачом и зависят от аппарата/препарата.</p>' : "");
     }
 
     function row(k, v) { return "<dt>" + k + "</dt><dd>" + v + "</dd>"; }

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лазеры: длины волн и глубины · Образовательный портал</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="edu.css" />
+  <style>
+    .atlas { margin: 40px 0 56px; }
+    .atlas-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 34px; align-items: start; }
+    .atlas-figure-wrap { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; position: sticky; top: 88px; }
+    .atlas svg { width: 100%; height: auto; display: block; }
+    .atlas-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .lyr-btn { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .5px; cursor: pointer;
+      border: 1px solid var(--sage-dark); background: var(--sage-dark); color: #fff; padding: 7px 14px; border-radius: 999px; transition: all .2s; }
+    .lyr-btn.off { background: transparent; color: var(--muted); border-color: var(--line); }
+    .lyr-btn .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+    .atlas-reset { margin-left: auto; background: transparent; color: var(--muted); border: none; font-size: 12px; cursor: pointer; text-decoration: underline; }
+    .atlas-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 12px; }
+    .atlas-legend i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+
+    .hide-ablative .layer-ablative, .hide-nonablative .layer-nonablative,
+    .hide-vascular .layer-vascular, .hide-epilation .layer-epilation { display: none; }
+
+    .skin-corneum { fill: #e7d6bd; }
+    .skin-epidermis { fill: #f0dcc0; }
+    .skin-papillary { fill: #f3c9b0; }
+    .skin-reticular { fill: #ecb89c; }
+    .skin-hypodermis { fill: #f6ecb4; }
+    .skin-fascia { fill: #dcd0b8; }
+    .skin-band { stroke: #d8c8b2; stroke-width: 1; }
+    .layer-lbl { font-family: var(--sans); font-size: 10.5px; fill: #6b5a44; font-weight: 600; }
+    .ruler-line { stroke: #b9ad9b; stroke-width: 1.2; }
+    .ruler-tick { stroke: #b9ad9b; stroke-width: 1.2; }
+    .ruler-lbl { font-family: var(--sans); font-size: 9.5px; fill: var(--muted); }
+
+    .pen-bar { fill-opacity: .42; }
+    .pen-bar.ab { fill: var(--artery); stroke: var(--artery); }
+    .pen-bar.na { fill: var(--sage-dark); stroke: var(--sage-dark); }
+    .pen-bar.va { fill: var(--vein); stroke: var(--vein); }
+    .pen-bar.ep { fill: var(--muscle-2); stroke: var(--muscle-2); }
+    .wl-lbl { font-family: var(--sans); font-size: 8.5px; font-weight: 600; fill: var(--espresso); text-anchor: middle; }
+    .point { stroke: #fff; stroke-width: 2; transition: r .15s; }
+    .point.ab { fill: var(--artery); } .point.na { fill: var(--sage-dark); }
+    .point.va { fill: var(--vein); } .point.ep { fill: var(--muscle-2); }
+    .point.active { r: 11; stroke: #2e2820; }
+
+    .atlas-info { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 26px; min-height: 260px; }
+    .atlas-info .hint { color: var(--muted); font-size: 15px; }
+    .ai-title { font-family: var(--serif); font-size: 24px; color: var(--espresso); margin-bottom: 14px; }
+    .ai-list { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 14.5px; }
+    .ai-list dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .5px; padding-top: 3px; }
+    .ai-list dd { color: var(--ink); }
+    .ai-verify { margin-top: 16px; font-size: 13px; color: #8a6d1f; background: #f6efdd; border-radius: var(--radius); padding: 10px 14px; }
+
+    @media (max-width: 900px) { .atlas-grid { grid-template-columns: 1fr; } .atlas-figure-wrap { position: static; } }
+  </style>
+</head>
+<body class="locked">
+
+  <!-- GATE -->
+  <div class="gate" id="edu-gate">
+    <div class="gate-card">
+      <span class="eyebrow">Только для специалистов</span>
+      <h1>Образовательный портал</h1>
+      <p>Материалы предназначены для врачей-косметологов, дерматологов и специалистов эстетической медицины. Содержат клиническую информацию и параметры процедур.</p>
+      <form id="gate-form">
+        <input type="password" id="gate-pass" placeholder="Пароль доступа" autocomplete="off" />
+        <label class="chk"><input type="checkbox" id="gate-chk" />
+          <span>Я подтверждаю, что являюсь специалистом с медицинским образованием и понимаю, что информация не является инструкцией к самолечению.</span></label>
+        <button type="submit" class="btn">Войти</button>
+        <div class="gate-err" id="gate-err"></div>
+      </form>
+      <div class="gate-foot">Доступ к паролю предоставляет автор курса. <a href="../index.html">← На сайт клиники</a></div>
+    </div>
+  </div>
+
+  <header class="edu-header" data-protected>
+    <div class="container edu-nav">
+      <a href="index.html" class="edu-logo">Dr. <span>Dzhuraeva</span><small>Education · для специалистов</small></a>
+      <div class="crumbs"><a href="index.html">Портал</a> · <span>Лазеры</span></div>
+      <a href="../index.html" class="edu-back">← Сайт клиники</a>
+    </div>
+  </header>
+
+  <main class="edu-main" data-protected>
+    <div class="container">
+
+      <div class="lead-block">
+        <span class="eyebrow">Аппаратные методики</span>
+        <h1 style="font-size:42px;line-height:1.08;margin:12px 0;">Лазеры: длины волн и глубины воздействия</h1>
+        <div class="role-line">Хромофоры · слои кожи · аблятивные и неаблятивные · фототипы</div>
+        <p style="color:#5c554b;font-size:17px;max-width:760px;">Базовая физика лазерного воздействия: какая длина волны на какую мишень (хромофор) работает, как глубоко проникает и почему параметры зависят от фототипа кожи. Интерактивный срез кожи — слева.</p>
+      </div>
+
+      <div class="note verify"><b>Важно.</b> Глубины, флюенс и режимы — образовательный ориентир из опубликованных источников; зависят от конкретного аппарата, насадки и кожи и <b>требуют верификации</b> по инструкции производителя. Срез кожи — схема, не в масштабе.</div>
+
+      <!-- ATLAS -->
+      <section class="atlas section" data-atlas>
+        <h2>Срез кожи и глубина проникновения</h2>
+        <p>Включайте классы лазеров, нажимайте на маркеры внизу столбцов — справа появятся мишень, глубина, тип воздействия и применение.</p>
+
+        <div class="atlas-grid">
+          <div class="atlas-figure-wrap">
+            <div class="atlas-controls">
+              <button class="lyr-btn" data-toggle="ablative" aria-pressed="true"><span class="dot" style="background:var(--artery)"></span>Аблятивные</button>
+              <button class="lyr-btn" data-toggle="nonablative" aria-pressed="true"><span class="dot" style="background:var(--sage-dark)"></span>Неаблятивные</button>
+              <button class="lyr-btn" data-toggle="vascular" aria-pressed="true"><span class="dot" style="background:var(--vein)"></span>Сосуд./пигмент</button>
+              <button class="lyr-btn" data-toggle="epilation" aria-pressed="true"><span class="dot" style="background:var(--muscle-2)"></span>Эпиляция</button>
+              <button class="atlas-reset" data-atlas-reset>сбросить</button>
+            </div>
+
+            <div data-atlas-figure>
+              <svg viewBox="0 0 600 720" role="img" aria-label="Срез кожи и глубина проникновения лазеров">
+                <!-- БАЗА: слои кожи -->
+                <g class="skin-base">
+                  <rect class="skin-corneum skin-band" x="70" y="88" width="232" height="16" />
+                  <rect class="skin-epidermis skin-band" x="70" y="104" width="232" height="66" />
+                  <rect class="skin-papillary skin-band" x="70" y="170" width="232" height="64" />
+                  <rect class="skin-reticular skin-band" x="70" y="234" width="232" height="220" />
+                  <rect class="skin-hypodermis skin-band" x="70" y="454" width="232" height="206" />
+                  <rect class="skin-fascia skin-band" x="70" y="660" width="232" height="40" />
+                  <text class="layer-lbl" x="80" y="100">Роговой слой</text>
+                  <text class="layer-lbl" x="80" y="142">Эпидермис</text>
+                  <text class="layer-lbl" x="80" y="206">Сосочковая дерма</text>
+                  <text class="layer-lbl" x="80" y="348">Сетчатая дерма</text>
+                  <text class="layer-lbl" x="80" y="560">Гиподерма (жир)</text>
+                  <text class="layer-lbl" x="80" y="684">Фасция / SMAS</text>
+
+                  <!-- линейка глубины -->
+                  <line class="ruler-line" x1="56" y1="88" x2="56" y2="700" />
+                  <g>
+                    <line class="ruler-tick" x1="50" y1="88"  x2="56" y2="88" /><text class="ruler-lbl" x="30" y="92">0</text>
+                    <line class="ruler-tick" x1="50" y1="170" x2="56" y2="170" /><text class="ruler-lbl" x="20" y="174">0.1 мм</text>
+                    <line class="ruler-tick" x1="50" y1="234" x2="56" y2="234" /><text class="ruler-lbl" x="20" y="238">0.3 мм</text>
+                    <line class="ruler-tick" x1="50" y1="320" x2="56" y2="320" /><text class="ruler-lbl" x="28" y="324">1 мм</text>
+                    <line class="ruler-tick" x1="50" y1="454" x2="56" y2="454" /><text class="ruler-lbl" x="28" y="458">2 мм</text>
+                    <line class="ruler-tick" x1="50" y1="560" x2="56" y2="560" /><text class="ruler-lbl" x="28" y="564">4 мм</text>
+                  </g>
+                </g>
+
+                <!-- АБЛЯТИВНЫЕ -->
+                <g class="layer-ablative">
+                  <rect class="pen-bar ab" x="335" y="88" width="20" height="40" rx="3" />
+                  <circle class="point ab" data-point="er-yag" cx="345" cy="128" r="8" />
+                  <text class="wl-lbl" x="345" y="146">Er:YAG</text>
+                  <rect class="pen-bar ab" x="371" y="88" width="20" height="112" rx="3" />
+                  <circle class="point ab" data-point="co2" cx="381" cy="200" r="8" />
+                  <text class="wl-lbl" x="381" y="218">CO₂</text>
+                </g>
+
+                <!-- НЕАБЛЯТИВНЫЕ -->
+                <g class="layer-nonablative">
+                  <rect class="pen-bar na" x="407" y="88" width="20" height="212" rx="3" />
+                  <circle class="point na" data-point="er-glass" cx="417" cy="300" r="8" />
+                  <text class="wl-lbl" x="417" y="318">Er:Glass</text>
+                </g>
+
+                <!-- СОСУДИСТЫЕ / ПИГМЕНТ -->
+                <g class="layer-vascular">
+                  <rect class="pen-bar va" x="443" y="88" width="20" height="122" rx="3" />
+                  <circle class="point va" data-point="ktp" cx="453" cy="210" r="8" />
+                  <text class="wl-lbl" x="453" y="228">KTP 532</text>
+                  <rect class="pen-bar va" x="479" y="88" width="20" height="152" rx="3" />
+                  <circle class="point va" data-point="pdl" cx="489" cy="240" r="8" />
+                  <text class="wl-lbl" x="489" y="258">PDL 595</text>
+                </g>
+
+                <!-- ЭПИЛЯЦИЯ / ГЛУБОКИЕ -->
+                <g class="layer-epilation">
+                  <rect class="pen-bar ep" x="515" y="88" width="20" height="252" rx="3" />
+                  <circle class="point ep" data-point="alex" cx="525" cy="340" r="8" />
+                  <text class="wl-lbl" x="525" y="358">755</text>
+                  <rect class="pen-bar ep" x="551" y="88" width="20" height="312" rx="3" />
+                  <circle class="point ep" data-point="diode" cx="561" cy="400" r="8" />
+                  <text class="wl-lbl" x="561" y="418">808</text>
+                  <rect class="pen-bar ep" x="551" y="88" width="20" height="382" rx="3" fill-opacity="0.22" />
+                  <circle class="point ep" data-point="ndyag" cx="525" cy="470" r="8" />
+                  <text class="wl-lbl" x="525" y="488">1064</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="atlas-legend">
+              <span><i style="background:var(--artery)"></i>аблятивные</span>
+              <span><i style="background:var(--sage-dark)"></i>неаблятивные</span>
+              <span><i style="background:var(--vein)"></i>сосуд./пигмент</span>
+              <span><i style="background:var(--muscle-2)"></i>эпиляция</span>
+            </div>
+          </div>
+
+          <div class="atlas-info" data-atlas-info>
+            <p class="hint">Нажмите на <b>маркер длины волны</b> внизу столбца — здесь появятся мишень (хромофор), глубина проникновения, тип воздействия и применение.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ТИПЫ ЛАЗЕРОВ -->
+      <section class="section">
+        <h2>Типы лазеров и длины волн</h2>
+        <p>Принцип селективного фототермолиза: длина волны выбирается под целевой хромофор (вода, гемоглобин, меланин), а длительность импульса — под время термической релаксации мишени.</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Длина волны</th><th>Мишень</th><th>Тип</th><th>Глубина<span class="badge-verify">проверить</span></th><th>Применение</th></tr></thead>
+            <tbody>
+              <tr><td><b>Er:YAG 2940 нм</b></td><td>Вода</td><td>Аблятивный</td><td>Очень поверхностно</td><td>Точная шлифовка, минимальный нагрев</td></tr>
+              <tr><td><b>CO₂ 10600 нм</b></td><td>Вода</td><td>Аблятивный + коагуляция</td><td>Эпидермис → сосочковая дерма</td><td>Глубокая шлифовка, рубцы, лифтинг-эффект</td></tr>
+              <tr><td><b>Er:Glass 1540/1550 нм</b></td><td>Вода</td><td>Неаблятивный фракционный</td><td>Сосочковая / средняя дерма</td><td>Омоложение, постакне, малый даунтайм</td></tr>
+              <tr><td><b>KTP 532 нм</b></td><td>Оксигемоглобин, меланин</td><td>Неаблятивный</td><td>Поверхностно</td><td>Купероз, лентиго; осторожно на тёмной коже</td></tr>
+              <tr><td><b>PDL 595 нм</b></td><td>Оксигемоглобин</td><td>Неаблятивный</td><td>Сосочковая дерма</td><td>Розацеа, эритема, сосуды</td></tr>
+              <tr><td><b>Александрит 755 нм</b></td><td>Меланин</td><td>Неаблятивный</td><td>~1–2 мм</td><td>Эпиляция, пигмент; риск на тёмной коже</td></tr>
+              <tr><td><b>Диод 808/810 нм</b></td><td>Меланин</td><td>Неаблятивный</td><td>Глубина фолликула</td><td>Эпиляция, универсальный по фототипам</td></tr>
+              <tr><td><b>Nd:YAG 1064 нм</b></td><td>Меланин (слабее), гемоглобин</td><td>Неаблятивный</td><td>Самый глубокий</td><td>Эпиляция тёмной кожи, глубокие сосуды, стимуляция коллагена</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ФРАКЦИОННЫЙ ПРИНЦИП -->
+      <section class="section">
+        <h2>Фракционный принцип</h2>
+        <p>Фракционный лазер создаёт сетку микротермальных зон (MTZ), оставляя между ними интактную кожу — это ускоряет заживление и снижает риски по сравнению с тотальной (full-field) шлифовкой.</p>
+        <ul>
+          <li><b>Плотность / покрытие</b> — доля обработанной площади; выше плотность = сильнее эффект и дольше восстановление.</li>
+          <li><b>Глубина MTZ</b> — задаётся энергией импульса; определяет, до какого слоя дермы доходит воздействие.</li>
+          <li><b>Число проходов</b> — суммирует воздействие; на чувствительных зонах — консервативно.</li>
+        </ul>
+        <div class="note">Аблятивный фракционный (CO₂/Er:YAG) — сильнее и с даунтаймом; неаблятивный фракционный (Er:Glass) — мягче, курсами. Выбор — по запросу, типу кожи и допустимому восстановлению.</div>
+      </section>
+
+      <!-- ФОТОТИПЫ -->
+      <section class="section">
+        <h2>Параметры по фототипам (Фитцпатрик)</h2>
+        <p>Чем больше меланина, тем выше конкуренция эпидермиса за энергию на «меланиновых» длинах волн (532/755 нм) и тем выше риск ожога и поствоспалительной гиперпигментации (ПВГ).</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Фототип</th><th>Риск ПВГ/ожога</th><th>Тактика<span class="badge-verify">проверить</span></th><th>Предпочтительно</th></tr></thead>
+            <tbody>
+              <tr><td>I–II</td><td>Низкий</td><td>Стандартные флюенсы, активное охлаждение</td><td>Широкий выбор длин волн</td></tr>
+              <tr><td>III–IV</td><td>Средний</td><td>Ниже флюенс, больше длина импульса, тест-зона, охлаждение</td><td>Диод 808, аккуратно 755</td></tr>
+              <tr><td>V–VI</td><td>Высокий</td><td>Минимальные «меланиновые» воздействия, длинные импульсы, усиленное охлаждение, премедикация по показаниям</td><td>Nd:YAG 1064</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note danger"><b>Осторожно.</b> Загар = «временно повышенный фототип»: процедуры на пигментзависимых длинах волн откладывают. Всегда тест-зона при IV–VI и при сомнениях.</div>
+      </section>
+
+      <!-- ПОКАЗАНИЯ -->
+      <section class="section">
+        <h2>Показания</h2>
+        <ul>
+          <li>Рубцы постакне, атрофические рубцы — фракционные CO₂/Er:Glass</li>
+          <li>Фотостарение, текстура, поры, мелкие морщины</li>
+          <li>Пигментные образования (лентиго) — KTP/Q-switched</li>
+          <li>Сосудистые (купероз, розацеа, телеангиэктазии) — PDL/KTP/Nd:YAG</li>
+          <li>Удаление волос — александрит/диод/Nd:YAG по фототипу</li>
+        </ul>
+      </section>
+
+      <!-- ПРОТИВОПОКАЗАНИЯ -->
+      <section class="section">
+        <h2>Противопоказания и осторожность</h2>
+        <ul>
+          <li>Активный загар, недавняя инсоляция (для пигментзависимых методик)</li>
+          <li>Приём изотретиноина — отсрочка по аблятивным процедурам (сверять актуальные рекомендации)</li>
+          <li>Активная инфекция/герпес в зоне, дерматоз в обострении</li>
+          <li>Фотосенсибилизирующие препараты и состояния</li>
+          <li>Склонность к келоидам, нарушения заживления</li>
+          <li>Беременность (относительно), онкология в зоне, нереалистичные ожидания</li>
+        </ul>
+        <div class="note verify">Список не исчерпывающий — сверяйтесь с инструкцией аппарата и собирайте анамнез, оформляйте информированное согласие.</div>
+      </section>
+
+      <!-- РЕАБИЛИТАЦИЯ -->
+      <section class="section">
+        <h2>Реабилитация и уход</h2>
+        <ul>
+          <li>Аблятивные: ранозаживляющие средства, защита от солнца SPF 50, исключить механическую травму корок</li>
+          <li>Неаблятивные: увлажнение, фотозащита, мягкий уход</li>
+          <li>Строгая фотозащита 2–4 недели для профилактики ПВГ</li>
+          <li>Контроль, повтор курса по протоколу аппарата</li>
+        </ul>
+      </section>
+
+      <!-- ИСТОЧНИКИ -->
+      <section class="section">
+        <h2>Источники для верификации</h2>
+        <ul>
+          <li>Инструкции и протоколы производителей конкретных аппаратов</li>
+          <li>Принцип селективного фототермолиза (Anderson R., Parrish J.)</li>
+          <li>Рекомендации по лазерной безопасности и работе с фототипами IV–VI</li>
+          <li>Реестр Росздравнадзора — проверка регистрации оборудования (roszdravnadzor.ru)</li>
+        </ul>
+        <p style="color:var(--muted);font-size:14px;">Точные ссылки и редакции добавим после верификации параметров.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="edu-footer" data-protected>
+    <div class="container">
+      <div>© 2026 ИП Джураева Малика Дильмурадовна · образовательный портал для специалистов</div>
+      <div class="disclaimer">Материалы носят образовательный характер для специалистов с медицинским образованием, не являются инструкцией к самолечению и не заменяют официальные инструкции к оборудованию. Все параметры и техники требуют верификации и применяются под ответственность специалиста. <a href="../privacy.html">Политика конфиденциальности</a></div>
+    </div>
+  </footer>
+
+  <script>
+    window.ATLAS_POINTS = {
+      "er-yag": { title: "Er:YAG 2940 нм", verify: true, rows: [
+        ["Мишень", "вода (высокое поглощение)"],
+        ["Тип", "аблятивный"],
+        ["Глубина", "очень поверхностно, минимальный нагрев", true],
+        ["Применение", "точная шлифовка, текстура"]
+      ]},
+      "co2": { title: "CO₂ 10600 нм", verify: true, rows: [
+        ["Мишень", "вода"],
+        ["Тип", "аблятивный + коагуляция"],
+        ["Глубина", "эпидермис → сосочковая дерма", true],
+        ["Применение", "глубокая шлифовка, рубцы, лифтинг-эффект; даунтайм"]
+      ]},
+      "er-glass": { title: "Er:Glass 1540/1550 нм", verify: true, rows: [
+        ["Мишень", "вода (мягче)"],
+        ["Тип", "неаблятивный фракционный"],
+        ["Глубина", "сосочковая / средняя дерма (~0.5–1.5 мм)", true],
+        ["Применение", "омоложение, постакне, малый даунтайм"]
+      ]},
+      "ktp": { title: "KTP 532 нм", verify: true, rows: [
+        ["Мишень", "оксигемоглобин, меланин"],
+        ["Тип", "неаблятивный"],
+        ["Глубина", "поверхностно", true],
+        ["Применение", "купероз, лентиго; осторожно на тёмной коже"]
+      ]},
+      "pdl": { title: "PDL 595 нм", verify: true, rows: [
+        ["Мишень", "оксигемоглобин"],
+        ["Тип", "неаблятивный (сосудистый)"],
+        ["Глубина", "сосочковая дерма", true],
+        ["Применение", "розацеа, эритема, телеангиэктазии"]
+      ]},
+      "alex": { title: "Александрит 755 нм", verify: true, rows: [
+        ["Мишень", "меланин (сильное поглощение)"],
+        ["Тип", "неаблятивный"],
+        ["Глубина", "~1–2 мм", true],
+        ["Применение", "эпиляция, пигмент; высокий риск на фототипах IV–VI"]
+      ]},
+      "diode": { title: "Диод 808/810 нм", verify: true, rows: [
+        ["Мишень", "меланин"],
+        ["Тип", "неаблятивный"],
+        ["Глубина", "до фолликула (~1.5–3 мм)", true],
+        ["Применение", "эпиляция, относительно универсален по фототипам"]
+      ]},
+      "ndyag": { title: "Nd:YAG 1064 нм", verify: true, rows: [
+        ["Мишень", "меланин (слабее), гемоглобин"],
+        ["Тип", "неаблятивный, самый глубокий"],
+        ["Глубина", "до ~3–5 мм", true],
+        ["Применение", "эпиляция тёмной кожи (безопаснее), глубокие сосуды, коллаген"]
+      ]}
+    };
+  </script>
+  <script src="edu.js"></script>
+  <script src="anatomy-face.js"></script>
+</body>
+</html>
