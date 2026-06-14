@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LED-фототерапия — портал для специалистов</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="edu.css" />
+</head>
+<body class="locked">
+
+  <div class="gate" id="edu-gate">
+    <div class="gate-card">
+      <span class="eyebrow">Только для специалистов</span>
+      <h1>Образовательный портал</h1>
+      <p>Материалы предназначены для врачей-косметологов, дерматологов и специалистов эстетической медицины. Содержат клиническую информацию и параметры процедур.</p>
+      <form id="gate-form">
+        <input type="password" id="gate-pass" placeholder="Пароль доступа" autocomplete="off" />
+        <label class="chk"><input type="checkbox" id="gate-chk" />
+          <span>Я подтверждаю, что являюсь специалистом с медицинским образованием и понимаю, что информация не является инструкцией к самолечению.</span></label>
+        <button type="submit" class="btn">Войти</button>
+        <div class="gate-err" id="gate-err"></div>
+      </form>
+      <div class="gate-foot">Доступ к паролю предоставляет автор курса. <a href="../index.html">← На сайт клиники</a></div>
+    </div>
+  </div>
+
+  <header class="edu-header" data-protected>
+    <div class="container edu-nav">
+      <a href="index.html" class="edu-logo">Dr. <span>Dzhuraeva</span><small>Education · для специалистов</small></a>
+      <div class="crumbs"><a href="index.html">Портал</a> · <span>LED-фототерапия</span></div>
+      <a href="../index.html" class="edu-back">← Сайт клиники</a>
+    </div>
+  </header>
+
+  <main class="edu-main" data-protected>
+    <div class="container">
+
+      <div class="lead-block">
+        <span class="eyebrow">Аппаратные методики · свет</span>
+        <h1 style="font-size:40px;line-height:1.1;margin:12px 0;">LED-фототерапия</h1>
+        <div class="role-line">Спектры · фотобиомодуляция · показания · протоколы</div>
+        <p style="color:#5c554b;font-size:17px;max-width:780px;">Низкоинтенсивный свет светодиодов запускает <span class="term" data-term="pbm">фотобиомодуляцию</span> — нетепловое влияние на клетки. Мягкая процедура без даунтайма, часто как дополнение к основным методикам.</p>
+      </div>
+
+      <div class="note verify"><b>Важно.</b> Спектры и протоколы — образовательный ориентир; <b>требуют верификации</b> по инструкции конкретного аппарата.</div>
+
+      <section class="section">
+        <h2>Спектры и действие</h2>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Свет</th><th>Длина волны</th><th>Действие / показания</th></tr></thead>
+          <tbody>
+            <tr><td><b>Синий</b></td><td>≈ 415 нм</td><td>Антибактериальное (порфирины C. acnes) — акне</td></tr>
+            <tr><td><b>Красный</b></td><td>≈ 630–660 нм</td><td>Противовоспалительное, стимуляция фибробластов, заживление</td></tr>
+            <tr><td><b>Ближний ИК</b></td><td>≈ 830 нм</td><td>Глубже: регенерация, восстановление после процедур</td></tr>
+            <tr><td>Жёлтый/зелёный</td><td>≈ 560–590 нм</td><td>Эритема, тон (по данным производителей)</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="section">
+        <h2>Показания и протоколы</h2>
+        <ul>
+          <li>Акне (синий ± красный), постпроцедурное восстановление, чувствительная кожа</li>
+          <li>Поддержка омоложения, противовоспалительный эффект</li>
+          <li>Сеансы 10–20 мин, курсами 2–3 раза в неделю; хорошо сочетается с уходом и аппаратными методиками</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Противопоказания</h2>
+        <ul>
+          <li>Приём фотосенсибилизаторов; фотодерматозы; светочувствительная эпилепсия (относительно)</li>
+          <li>Онкология кожи в зоне; активная инфекция в зоне</li>
+        </ul>
+        <div class="note verify">Список не исчерпывающий — сверяйтесь с инструкцией аппарата.</div>
+      </section>
+
+      <section class="section">
+        <h2>Источники</h2>
+        <ul><li>Инструкции производителей LED-устройств</li><li>Обзоры по фотобиомодуляции в дерматологии</li></ul>
+        <p style="color:var(--muted);font-size:14px;">Образовательный ориентир, требует верификации.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="edu-footer" data-protected>
+    <div class="container">
+      <div>© 2026 ИП Джураева Малика Дильмурадовна · образовательный портал для специалистов</div>
+      <div class="disclaimer">Материалы носят образовательный характер для специалистов с медицинским образованием, не являются инструкцией к самолечению и не заменяют официальные инструкции к оборудованию. Все параметры требуют верификации и применяются под ответственность специалиста. <a href="../privacy.html">Политика конфиденциальности</a></div>
+    </div>
+  </footer>
+
+  <script>
+    window.GLOSSARY = {
+      "pbm": ["Фотобиомодуляция", "Нетепловое воздействие света на клетки: фотоны поглощаются хромофорами митохондрий, влияя на выработку АТФ и сигнальные процессы — отсюда противовоспалительный и регенеративный эффект."]
+    };
+  </script>
+  <script src="glossary.js"></script>
+  <script src="edu.js"></script>
+</body>
+</html>
