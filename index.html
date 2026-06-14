@@ -308,6 +308,7 @@
     footer .legal { margin-top: 10px; }
     footer .legal a { color: var(--muted); border-bottom: 1px solid var(--line); }
     footer .legal a:hover { color: var(--espresso); }
+    footer .disclaimer { max-width: 640px; margin: 14px auto 0; font-size: 11.5px; line-height: 1.6; letter-spacing: .3px; color: var(--muted); opacity: .85; }
 
     /* Consent checkbox in booking form (dark band) */
     .bf-consent { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; margin-top: 2px; }
@@ -674,7 +675,7 @@
           <textarea id="bf-comment" placeholder="Комментарий (необязательно)" rows="2"></textarea>
           <label class="bf-consent">
             <input type="checkbox" id="bf-consent" required />
-            <span>Я согласен(а) на обработку персональных данных и принимаю <a href="privacy.html" target="_blank" rel="noopener">Политику конфиденциальности</a>.</span>
+            <span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="privacy.html" target="_blank" rel="noopener">Политику конфиденциальности</a>.</span>
           </label>
           <button type="submit" class="btn">Записаться через WhatsApp</button>
           <div class="bf-alt">Заявка откроется в WhatsApp уже заполненной. Или напрямую:
@@ -690,7 +691,8 @@
     <div class="container">
       <div class="logo">Dr. <span style="color:var(--sage-dark)">Dzhuraeva</span></div>
       © 2026 ИП Джураева Малика Дильмурадовна · drdzhuraeva.ru
-      <div class="legal"><a href="privacy.html">Политика конфиденциальности</a></div>
+      <div class="legal"><a href="privacy.html">Политика конфиденциальности</a> · <a href="consent.html">Согласие на обработку ПДн</a></div>
+      <div class="disclaimer">Информация на сайте носит справочный характер, не является публичной офертой и не заменяет очную консультацию врача. Необходимость и возможность проведения процедур определяются специалистом на приёме. Имеются противопоказания, необходима консультация специалиста.</div>
     </div>
   </footer>
 
