@@ -126,6 +126,22 @@ td b { color: var(--espresso); }
 .edu-footer a { color: var(--sage); border-bottom: 1px solid rgba(138,154,123,.4); }
 .edu-footer .disclaimer { margin-top: 14px; line-height: 1.6; max-width: 880px; }
 
+/* ===================== Глоссарий (кликабельные сноски) ===================== */
+.term { color: var(--sage-dark); border-bottom: 1px dashed var(--sage); cursor: help; }
+.term:hover, .term:focus { color: var(--espresso); border-bottom-color: var(--sage-dark); outline: none; }
+.term::after { content: "?"; font-size: 9px; vertical-align: super; color: var(--sage-dark); margin-left: 1px; font-weight: 600; }
+.term-pop { position: absolute; z-index: 200; max-width: 330px; background: var(--espresso); color: #efe7da;
+  font-size: 14px; line-height: 1.55; padding: 15px 17px; border-radius: 6px; box-shadow: 0 14px 36px rgba(40,30,20,.3); font-weight: 300; }
+.term-pop .tp-title { font-family: var(--serif); font-size: 18px; display: block; margin-bottom: 7px; color: #fff; }
+.term-pop b { color: #fff; }
+.term-pop::before { content: ""; position: absolute; top: -7px; left: var(--ax, 22px); border: 7px solid transparent; border-bottom-color: var(--espresso); border-top: 0; }
+.term-pop.below::before { top: auto; bottom: -7px; border-bottom-color: transparent; border-top-color: var(--espresso); border-bottom: 0; }
+/* Параметрические таблицы и подписи устройств */
+table.params td:first-child { white-space: nowrap; }
+.dev-fig { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 22px 0; max-width: 560px; }
+.dev-fig svg { width: 100%; height: auto; display: block; }
+.dev-cap { color: var(--muted); font-size: 13px; margin-top: 10px; text-align: center; }
+
 /* ===================== Gate (специалистам) ===================== */
 .gate {
   position: fixed; inset: 0; z-index: 999; background: var(--bg);
