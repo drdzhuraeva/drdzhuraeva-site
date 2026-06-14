@@ -142,28 +142,66 @@
                   <marker id="vec" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
                     <path d="M0,0 L9,4.5 L0,9 Z" fill="#2f6f64" />
                   </marker>
+                  <radialGradient id="skin" cx="50%" cy="40%" r="65%">
+                    <stop offset="0%" stop-color="#f9f0e3" />
+                    <stop offset="58%" stop-color="#f1e1cb" />
+                    <stop offset="100%" stop-color="#e0c8a9" />
+                  </radialGradient>
+                  <radialGradient id="blush" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#e7b29a" stop-opacity="0.55" />
+                    <stop offset="100%" stop-color="#e7b29a" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="sheen" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#fffaf2" stop-opacity="0.5" />
+                    <stop offset="100%" stop-color="#fffaf2" stop-opacity="0" />
+                  </radialGradient>
                 </defs>
 
-                <!-- БАЗА: контур и ориентиры (всегда видимы) -->
+                <!-- БАЗА: человеческое округлое лицо (всегда видимо) -->
                 <g class="face-base">
-                  <path class="face-outline" d="M300,78 C360,78 430,110 452,190 C470,250 472,330 455,400 C442,470 410,545 360,600 C335,635 312,660 300,668 C288,660 265,635 240,600 C190,545 158,470 145,400 C128,330 130,250 148,190 C170,110 240,78 300,78 Z" />
-                  <!-- шея/платизма (контур) -->
-                  <path class="skin-soft" d="M250,640 C255,690 250,730 250,756 L350,756 C350,730 345,690 350,640 C335,665 312,685 300,690 C288,685 265,665 250,640 Z" />
+                  <!-- шея -->
+                  <path class="skin-soft" d="M256,612 C258,668 252,712 250,756 L350,756 C348,712 342,668 344,612 C330,646 314,664 300,668 C286,664 270,646 256,612 Z" fill="url(#skin)" />
+                  <!-- овал лица -->
+                  <path class="face-outline" d="M300,96 C250,96 200,118 174,168 C152,210 144,268 148,330 C152,402 172,474 214,542 C244,590 272,628 300,648 C328,628 356,590 386,542 C428,474 448,402 452,330 C456,268 448,210 426,168 C400,118 350,96 300,96 Z" fill="url(#skin)" />
+                  <!-- объём: блик лба и румянец щёк -->
+                  <ellipse cx="300" cy="232" rx="120" ry="120" fill="url(#sheen)" />
+                  <ellipse cx="206" cy="392" rx="58" ry="46" fill="url(#blush)" />
+                  <ellipse cx="394" cy="392" rx="58" ry="46" fill="url(#blush)" />
+                  <ellipse cx="300" cy="600" rx="46" ry="34" fill="url(#sheen)" />
+                  <!-- лёгкая боковая тень для округлости -->
+                  <path d="M148,330 C152,402 172,474 214,542 C244,590 272,628 300,648 C300,648 250,612 224,548 C188,470 170,398 166,332 C162,272 170,214 190,176 C172,210 146,268 148,330 Z" fill="#cbab86" opacity="0.16" />
+                  <path d="M452,330 C448,402 428,474 386,542 C356,590 328,628 300,648 C300,648 350,612 376,548 C412,470 430,398 434,332 C438,272 430,214 410,176 C428,210 454,268 452,330 Z" fill="#cbab86" opacity="0.16" />
+
                   <!-- брови -->
-                  <path class="skin-line" d="M178,260 C205,246 248,244 272,254" />
-                  <path class="skin-line" d="M422,260 C395,246 352,244 328,254" />
+                  <path d="M186,272 C212,255 252,257 276,270 C252,263 214,261 192,280 Z" fill="#8a7050" />
+                  <path d="M414,272 C388,255 348,257 324,270 C348,263 386,261 408,280 Z" fill="#8a7050" />
+
                   <!-- глаза -->
-                  <ellipse class="skin-line" cx="225" cy="300" rx="40" ry="20" />
-                  <ellipse class="skin-line" cx="375" cy="300" rx="40" ry="20" />
-                  <circle cx="225" cy="300" r="8" fill="#7a6f5e" />
-                  <circle cx="375" cy="300" r="8" fill="#7a6f5e" />
+                  <path class="skin-line" d="M192,306 C208,287 250,287 266,306 C250,322 208,322 192,306 Z" fill="#fbf7ef" />
+                  <path class="skin-line" d="M334,306 C350,287 392,287 408,306 C392,322 350,322 334,306 Z" fill="#fbf7ef" />
+                  <circle cx="229" cy="307" r="14" fill="#6f5a42" />
+                  <circle cx="371" cy="307" r="14" fill="#6f5a42" />
+                  <circle cx="229" cy="307" r="6.5" fill="#33281d" />
+                  <circle cx="371" cy="307" r="6.5" fill="#33281d" />
+                  <circle cx="224" cy="302" r="3" fill="#fff" opacity="0.85" />
+                  <circle cx="366" cy="302" r="3" fill="#fff" opacity="0.85" />
+                  <path d="M191,305 C208,286 251,286 267,305" fill="none" stroke="#6a5740" stroke-width="2.4" stroke-linecap="round" />
+                  <path d="M333,305 C350,286 393,286 409,305" fill="none" stroke="#6a5740" stroke-width="2.4" stroke-linecap="round" />
+
                   <!-- нос -->
-                  <path class="skin-line" d="M300,262 L300,392" />
-                  <path class="skin-line" d="M300,392 C282,400 272,392 276,378" />
-                  <path class="skin-line" d="M300,392 C318,400 328,392 324,378" />
+                  <path class="skin-line" d="M296,300 C293,344 289,378 284,396" />
+                  <path class="skin-line" d="M304,300 C307,344 311,378 316,396" />
+                  <ellipse cx="300" cy="398" rx="17" ry="13" fill="url(#skin)" stroke="#d8c2a4" stroke-width="1" />
+                  <path class="skin-line" d="M284,396 C275,390 268,398 273,408 C279,414 288,412 291,405" />
+                  <path class="skin-line" d="M316,396 C325,390 332,398 327,408 C321,414 312,412 309,405" />
+                  <ellipse cx="288" cy="405" rx="4.5" ry="3" fill="#b08f6e" />
+                  <ellipse cx="312" cy="405" rx="4.5" ry="3" fill="#b08f6e" />
+
                   <!-- губы -->
-                  <path class="skin-line" d="M256,520 C278,508 322,508 344,520 C322,532 278,532 256,520 Z" />
-                  <path class="skin-line" d="M300,520 L300,510" />
+                  <path d="M260,520 C273,512 284,510 293,515 C296,511 304,511 307,515 C316,510 327,512 340,520 C330,540 270,540 260,520 Z" fill="#c98e84" stroke="#b07a70" stroke-width="1" />
+                  <path d="M260,520 C285,525 315,525 340,520" fill="none" stroke="#a96f66" stroke-width="1.6" stroke-linecap="round" />
+                  <path class="skin-line" d="M294,500 L293,513" />
+                  <path class="skin-line" d="M306,500 L307,513" />
                 </g>
 
                 <!-- СЛОЙ: МЫШЦЫ -->
