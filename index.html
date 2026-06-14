@@ -306,6 +306,19 @@
     .course .btn { padding: 11px 22px; }
     .edu-note { color: var(--muted); font-size: 14px; margin-top: 30px; max-width: 720px; }
     .edu-note a { color: var(--sage-dark); border-bottom: 1px solid var(--sage); }
+    .edu-portal { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; margin-top: 40px;
+      background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 44px 44px; }
+    .edu-portal .ep-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .edu-portal .ep-tags span { font-size: 12px; color: var(--sage-dark); border: 1px solid var(--sage); border-radius: 999px; padding: 5px 13px; letter-spacing: .3px; }
+    .edu-portal h3 { font-size: 26px; line-height: 1.25; margin-bottom: 14px; }
+    .edu-portal p { color: #5c554b; font-size: 16px; margin-bottom: 22px; }
+    .edu-portal .ep-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .edu-portal .ep-locked { color: var(--muted); font-size: 13px; }
+    .edu-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .edu-list li { position: relative; padding-left: 26px; color: #5c554b; font-size: 15px; }
+    .edu-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 12px; height: 6px;
+      border-left: 1.5px solid var(--sage-dark); border-bottom: 1.5px solid var(--sage-dark); transform: rotate(-45deg); }
+    @media (max-width: 760px) { .edu-portal { grid-template-columns: 1fr; padding: 32px 28px; } }
 
     /* Anatomy — interactive skin cross-section */
     .anat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 40px; }
@@ -669,72 +682,29 @@
     <div class="container">
       <div class="edu-head">
         <div class="eyebrow">Обучение для специалистов</div>
-        <h2>Образовательные курсы для косметологов</h2>
-        <p>Авторские программы для врачей-косметологов и специалистов эстетической медицины. Доказательный подход, разбор клинических случаев и готовые протоколы для работы.</p>
+        <h2>Образовательный портал для косметологов</h2>
+        <p>Авторская база знаний для врачей-косметологов и специалистов эстетической медицины: аппараты, инъекционные препараты и интерактивная анатомия лица.</p>
       </div>
 
-      <div class="edu-grid">
-
-        <!-- COURSE 1 -->
-        <article class="course">
-          <span class="tag">Онлайн</span>
-          <h3>Аппаратная косметология: база</h3>
-          <p class="c-desc">Систематизация знаний по аппаратным методикам: показания, противопоказания и построение программы для пациента.</p>
-          <ul class="c-list">
-            <li>Физика и механизмы действия аппаратов</li>
-            <li>Подбор методики под тип кожи и запрос</li>
-            <li>Сочетание процедур и интервалы</li>
-            <li>Разбор реальных клинических случаев</li>
-          </ul>
-          <div class="c-meta"><span><b>8</b> модулей</span><span><b>~12</b> часов</span><span>Сертификат</span></div>
-          <div class="c-foot">
-            <div class="price">19 900 ₽ <small>/ доступ навсегда</small></div>
-            <!-- TODO: вставьте ссылку на оплату (ЮKassa / Tinkoff / Robokassa) в href -->
-            <a href="#" target="_blank" rel="noopener" class="btn">Оплатить курс</a>
+      <div class="edu-portal">
+        <div>
+          <div class="ep-tags"><span>Анатомический атлас</span><span>Аппараты</span><span>Препараты</span><span>Протоколы</span></div>
+          <h3>Интерактивные разборы методик с моделью мышц, сосудов и точек воздействия</h3>
+          <p>Авторская SVG-модель лица: мышцы, сосуды, точки инъекций и векторы тяги мышц. Параметры по типам кожи и лица, разбор составов и брендов. Открывается в отдельном окне.</p>
+          <div class="ep-cta">
+            <a href="edu/index.html" target="_blank" rel="noopener" class="btn">Войти в портал</a>
+            <span class="ep-locked">🔒 Доступ только для специалистов — по паролю</span>
           </div>
-        </article>
-
-        <!-- COURSE 2 -->
-        <article class="course">
-          <span class="tag">Онлайн + практика</span>
-          <h3>Дерматоскопия для косметолога</h3>
-          <p class="c-desc">Как видеть кожу глубже: распознавание состояний, маршрутизация пациента и грамотные рекомендации.</p>
-          <ul class="c-list">
-            <li>Базовая дерматоскопическая картина</li>
-            <li>Красные флаги и когда направить к врачу</li>
-            <li>Документирование и динамическое наблюдение</li>
-            <li>Практические задания с обратной связью</li>
-          </ul>
-          <div class="c-meta"><span><b>6</b> модулей</span><span><b>~10</b> часов</span><span>Сертификат</span></div>
-          <div class="c-foot">
-            <div class="price">24 900 ₽ <small>/ доступ навсегда</small></div>
-            <!-- TODO: вставьте ссылку на оплату (ЮKassa / Tinkoff / Robokassa) в href -->
-            <a href="#" target="_blank" rel="noopener" class="btn">Оплатить курс</a>
-          </div>
-        </article>
-
-        <!-- COURSE 3 -->
-        <article class="course">
-          <span class="tag">Менторство</span>
-          <h3>Ведение пациента: от диагностики до результата</h3>
-          <p class="c-desc">Индивидуальное сопровождение: разбор ваших случаев, выстраивание программ и работа с возражениями пациентов.</p>
-          <ul class="c-list">
-            <li>Личные онлайн-сессии с разбором кейсов</li>
-            <li>Построение долгосрочных программ ухода</li>
-            <li>Коммуникация и удержание пациента</li>
-            <li>Доступ к закрытому чату поддержки</li>
-          </ul>
-          <div class="c-meta"><span><b>4</b> сессии</span><span><b>1:1</b> формат</span><span>Чат поддержки</span></div>
-          <div class="c-foot">
-            <div class="price">49 900 ₽ <small>/ пакет</small></div>
-            <!-- TODO: вставьте ссылку на оплату (ЮKassa / Tinkoff / Robokassa) в href -->
-            <a href="#" target="_blank" rel="noopener" class="btn">Оплатить курс</a>
-          </div>
-        </article>
-
+        </div>
+        <ul class="edu-list">
+          <li>Ботулинотерапия: зоны, дозы и векторы мышц</li>
+          <li>Биоревитализация и гиалуроновая кислота</li>
+          <li>Филлеры, мезотерапия, коллагеностимуляторы</li>
+          <li>Лазеры, RF, HIFU, IPL — параметры по типам кожи</li>
+        </ul>
       </div>
 
-      <p class="edu-note">Курсы предназначены для специалистов с медицинским образованием. После оплаты доступ к материалам открывается в течение рабочего дня. Остались вопросы по программе — <a href="#contact">напишите нам</a>.</p>
+      <p class="edu-note">Доступ предоставляется специалистам с медицинским образованием. Пароль выдаёт автор курса. Остались вопросы — <a href="#contact">напишите нам</a>.</p>
     </div>
   </section>
 

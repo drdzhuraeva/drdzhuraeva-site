@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Образовательный портал для специалистов · Dr. Dzhuraeva</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="edu.css" />
+</head>
+<body class="locked">
+
+  <!-- ============ GATE ============ -->
+  <div class="gate" id="edu-gate">
+    <div class="gate-card">
+      <span class="eyebrow">Только для специалистов</span>
+      <h1>Образовательный портал</h1>
+      <p>Материалы предназначены для врачей-косметологов, дерматологов и специалистов эстетической медицины. Содержат клиническую информацию и параметры процедур.</p>
+      <form id="gate-form">
+        <input type="password" id="gate-pass" placeholder="Пароль доступа" autocomplete="off" />
+        <label class="chk"><input type="checkbox" id="gate-chk" />
+          <span>Я подтверждаю, что являюсь специалистом с медицинским образованием и понимаю, что информация не является инструкцией к самолечению.</span></label>
+        <button type="submit" class="btn">Войти</button>
+        <div class="gate-err" id="gate-err"></div>
+      </form>
+      <div class="gate-foot">Доступ к паролю предоставляет автор курса. <a href="../index.html">← На сайт клиники</a></div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="edu-header" data-protected>
+    <div class="container edu-nav">
+      <a href="index.html" class="edu-logo">Dr. <span>Dzhuraeva</span><small>Education · для специалистов</small></a>
+      <a href="../index.html" class="edu-back">← Сайт клиники</a>
+    </div>
+  </header>
+
+  <section class="edu-hero" data-protected>
+    <div class="container">
+      <span class="eyebrow">Образовательный портал</span>
+      <h1>Косметология: анатомия, аппараты и препараты</h1>
+      <p>Разборы методик для специалистов: интерактивная анатомия лица, протоколы по аппаратам и инъекционным препаратам, подбор под тип кожи и лица. Каждый раздел — с атласной моделью мышц, сосудов и точек воздействия.</p>
+    </div>
+  </section>
+
+  <main data-protected>
+    <!-- ИНЪЕКЦИОННЫЕ ПРЕПАРАТЫ -->
+    <section class="cat-section">
+      <div class="container">
+        <h2>Инъекционные препараты</h2>
+        <p class="sub">Составы, бренды, подбор под тип кожи, зоны и техники с анатомической моделью.</p>
+        <div class="card-grid">
+          <a class="ecard" href="botulinum-toxin.html">
+            <span class="tag">Готово</span>
+            <h3>Ботулинотерапия</h3>
+            <p>Мимические мышцы, зоны, векторы тяги и дозы. Бренды и пересчёт единиц.</p>
+            <span class="go">Открыть →</span>
+          </a>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Биоревитализация и гиалуронка</h3><p>Марки, молекулярная масса, сшивка, подбор под тип кожи.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Филлеры (контурная пластика)</h3><p>Реология, зоны, опасные сосуды, осложнения и их коррекция.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Мезотерапия</h3><p>Коктейли, активные компоненты, показания по состояниям.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Полинуклеотиды / биорепаранты</h3><p>Механизм, бренды, протоколы и сочетания.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Коллагеностимуляторы</h3><p>CaHA, PLLA, PCL: показания, реакции тканей, тактика.</p><span class="go">В работе</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- АППАРАТНЫЕ МЕТОДИКИ -->
+    <section class="cat-section">
+      <div class="container">
+        <h2>Аппаратные методики</h2>
+        <p class="sub">Принцип действия, параметры по типам кожи, показания и противопоказания. Список наполняется под ваше оборудование.</p>
+        <div class="card-grid">
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Лазерное омоложение</h3><p>Аблятивные/неаблятивные, фракционные: длины волн и параметры.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>RF-лифтинг</h3><p>Моно-/би-/мультиполярные, микроигольчатый RF: настройки.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>SMAS-ультразвук (HIFU)</h3><p>Глубины фокуса, линии, энергия по зонам.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Фотоомоложение (IPL)</h3><p>Фильтры, флюенс, тип кожи по Фитцпатрику.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Лазерная эпиляция</h3><p>Александрит / диод / Nd:YAG, параметры по фототипу.</p><span class="go">В работе</span></div>
+          <div class="ecard soon"><span class="tag">Скоро</span><h3>Пилинги</h3><p>Кислоты, глубина, протоколы и реабилитация.</p><span class="go">В работе</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="edu-footer" data-protected>
+    <div class="container">
+      <div>© 2026 ИП Джураева Малика Дильмурадовна · образовательный портал для специалистов</div>
+      <div class="disclaimer">Материалы носят образовательный характер для специалистов с медицинским образованием, не являются инструкцией к самолечению и не заменяют официальные инструкции к препаратам и оборудованию. Все параметры и техники требуют верификации и применяются под ответственность специалиста. <a href="../privacy.html">Политика конфиденциальности</a></div>
+    </div>
+  </footer>
+
+  <script src="edu.js"></script>
+</body>
+</html>

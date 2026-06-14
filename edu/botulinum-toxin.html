@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ботулинотерапия — атлас и протоколы · Образовательный портал</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="edu.css" />
+  <style>
+    /* ---- Анатомический атлас (специфично для страницы) ---- */
+    .atlas { margin: 40px 0 56px; }
+    .atlas-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 34px; align-items: start; }
+    .atlas-figure-wrap { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; position: sticky; top: 88px; }
+    .atlas svg { width: 100%; height: auto; display: block; }
+    .atlas-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .lyr-btn { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .5px; cursor: pointer;
+      border: 1px solid var(--sage-dark); background: var(--sage-dark); color: #fff; padding: 7px 14px; border-radius: 999px; transition: all .2s; }
+    .lyr-btn.off { background: transparent; color: var(--muted); border-color: var(--line); }
+    .lyr-btn .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+    .atlas-reset { margin-left: auto; background: transparent; color: var(--muted); border: none; font-size: 12px; cursor: pointer; text-decoration: underline; }
+    .atlas-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); margin-top: 12px; }
+    .atlas-legend i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+
+    /* Слои SVG */
+    .hide-muscles .layer-muscles, .hide-vessels .layer-vessels,
+    .hide-points .layer-points, .hide-vectors .layer-vectors { display: none; }
+    .face-outline { fill: #f7efe6; stroke: var(--line); stroke-width: 2; }
+    .skin-line { fill: none; stroke: #c9b9a3; stroke-width: 2; stroke-linecap: round; }
+    .skin-soft { fill: #efe4d4; stroke: #d8c8b2; stroke-width: 1.5; }
+    .muscle { fill: var(--muscle); fill-opacity: .58; stroke: var(--muscle-2); stroke-width: 1.2; }
+    .muscle.light { fill-opacity: .32; }
+    .muscle-lbl { font-family: var(--sans); font-size: 10px; fill: #7a4a32; font-weight: 600; letter-spacing: .2px; }
+    .artery { fill: none; stroke: var(--artery); stroke-width: 3; stroke-linecap: round; }
+    .vein { fill: none; stroke: var(--vein); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1 5; }
+    .vessel-lbl { font-family: var(--sans); font-size: 9.5px; fill: #9a3b33; font-weight: 600; }
+    .point { fill: var(--sage-dark); stroke: #fff; stroke-width: 2; transition: r .15s, fill .15s; }
+    .point:hover { fill: var(--espresso); }
+    .point.active { fill: var(--danger); r: 11; }
+    .vector { fill: none; stroke: #2f6f64; stroke-width: 3; stroke-linecap: round; }
+
+    /* Инфо-панель */
+    .atlas-info { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 26px; min-height: 260px; }
+    .atlas-info .hint { color: var(--muted); font-size: 15px; }
+    .ai-title { font-family: var(--serif); font-size: 24px; color: var(--espresso); margin-bottom: 14px; }
+    .ai-list { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 14.5px; }
+    .ai-list dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .5px; padding-top: 3px; }
+    .ai-list dd { color: var(--ink); }
+    .ai-verify { margin-top: 16px; font-size: 13px; color: #8a6d1f; background: #f6efdd; border-radius: var(--radius); padding: 10px 14px; }
+
+    @media (max-width: 900px) {
+      .atlas-grid { grid-template-columns: 1fr; }
+      .atlas-figure-wrap { position: static; }
+    }
+  </style>
+</head>
+<body class="locked">
+
+  <!-- ============ GATE: вход для специалистов ============ -->
+  <div class="gate" id="edu-gate">
+    <div class="gate-card">
+      <span class="eyebrow">Только для специалистов</span>
+      <h1>Образовательный портал</h1>
+      <p>Материалы предназначены для врачей-косметологов, дерматологов и специалистов эстетической медицины. Содержат клиническую информацию и параметры процедур.</p>
+      <form id="gate-form">
+        <input type="password" id="gate-pass" placeholder="Пароль доступа" autocomplete="off" />
+        <label class="chk"><input type="checkbox" id="gate-chk" />
+          <span>Я подтверждаю, что являюсь специалистом с медицинским образованием и понимаю, что информация не является инструкцией к самолечению.</span></label>
+        <button type="submit" class="btn">Войти</button>
+        <div class="gate-err" id="gate-err"></div>
+      </form>
+      <div class="gate-foot">Доступ к паролю предоставляет автор курса. <a href="../index.html">← На сайт клиники</a></div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="edu-header" data-protected>
+    <div class="container edu-nav">
+      <a href="index.html" class="edu-logo">Dr. <span>Dzhuraeva</span><small>Education · для специалистов</small></a>
+      <div class="crumbs"><a href="index.html">Портал</a> · <span>Ботулинотерапия</span></div>
+      <a href="../index.html" class="edu-back">← Сайт клиники</a>
+    </div>
+  </header>
+
+  <main class="edu-main" data-protected>
+    <div class="container">
+
+      <!-- INTRO -->
+      <div class="lead-block">
+        <span class="eyebrow">Инъекционные методики</span>
+        <h1 style="font-size:42px;line-height:1.08;margin:12px 0;">Ботулинотерапия лица</h1>
+        <div class="role-line">Анатомия · мимические мышцы · зоны и векторы · протоколы</div>
+        <p style="color:#5c554b;font-size:17px;max-width:760px;">Интерактивный разбор: какие мышцы за какие морщины отвечают, куда вводить препарат, в какую сторону тянет мышца и какие сосуды рядом. Ниже — обзор препаратов, ориентировочные дозировки по зонам и подбор под тип лица.</p>
+      </div>
+
+      <div class="note verify"><b>Важно.</b> Все дозировки и точки приведены как образовательный ориентир из опубликованных источников и консенсусов; они <b>требуют верификации</b> и подбираются индивидуально. Единицы указаны для onabotulinumtoxinA (Botox); для других препаратов действуют свои коэффициенты пересчёта.</div>
+
+      <!-- ============ ATLAS ============ -->
+      <section class="atlas section" data-atlas>
+        <h2>Анатомический атлас лица</h2>
+        <p>Включайте и выключайте слои, нажимайте на точки инъекций — справа появятся мышца, вектор её сокращения, ориентировочная доза и техника.</p>
+
+        <div class="atlas-grid">
+          <div class="atlas-figure-wrap">
+            <div class="atlas-controls">
+              <button class="lyr-btn" data-toggle="muscles" aria-pressed="true"><span class="dot" style="background:var(--muscle)"></span>Мышцы</button>
+              <button class="lyr-btn" data-toggle="vessels" aria-pressed="true"><span class="dot" style="background:var(--artery)"></span>Сосуды</button>
+              <button class="lyr-btn" data-toggle="points" aria-pressed="true"><span class="dot" style="background:var(--sage-dark)"></span>Точки</button>
+              <button class="lyr-btn" data-toggle="vectors" aria-pressed="true"><span class="dot" style="background:#2f6f64"></span>Векторы</button>
+              <button class="atlas-reset" data-atlas-reset>сбросить</button>
+            </div>
+
+            <div data-atlas-figure>
+              <svg viewBox="0 0 600 760" role="img" aria-label="Схема лица: мышцы, сосуды и точки инъекций">
+                <defs>
+                  <marker id="vec" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+                    <path d="M0,0 L9,4.5 L0,9 Z" fill="#2f6f64" />
+                  </marker>
+                </defs>
+
+                <!-- БАЗА: контур и ориентиры (всегда видимы) -->
+                <g class="face-base">
+                  <path class="face-outline" d="M300,78 C360,78 430,110 452,190 C470,250 472,330 455,400 C442,470 410,545 360,600 C335,635 312,660 300,668 C288,660 265,635 240,600 C190,545 158,470 145,400 C128,330 130,250 148,190 C170,110 240,78 300,78 Z" />
+                  <!-- шея/платизма (контур) -->
+                  <path class="skin-soft" d="M250,640 C255,690 250,730 250,756 L350,756 C350,730 345,690 350,640 C335,665 312,685 300,690 C288,685 265,665 250,640 Z" />
+                  <!-- брови -->
+                  <path class="skin-line" d="M178,260 C205,246 248,244 272,254" />
+                  <path class="skin-line" d="M422,260 C395,246 352,244 328,254" />
+                  <!-- глаза -->
+                  <ellipse class="skin-line" cx="225" cy="300" rx="40" ry="20" />
+                  <ellipse class="skin-line" cx="375" cy="300" rx="40" ry="20" />
+                  <circle cx="225" cy="300" r="8" fill="#7a6f5e" />
+                  <circle cx="375" cy="300" r="8" fill="#7a6f5e" />
+                  <!-- нос -->
+                  <path class="skin-line" d="M300,262 L300,392" />
+                  <path class="skin-line" d="M300,392 C282,400 272,392 276,378" />
+                  <path class="skin-line" d="M300,392 C318,400 328,392 324,378" />
+                  <!-- губы -->
+                  <path class="skin-line" d="M256,520 C278,508 322,508 344,520 C322,532 278,532 256,520 Z" />
+                  <path class="skin-line" d="M300,520 L300,510" />
+                </g>
+
+                <!-- СЛОЙ: МЫШЦЫ -->
+                <g class="layer-muscles">
+                  <!-- frontalis -->
+                  <path class="muscle" d="M292,118 C250,112 212,122 206,150 C198,190 200,225 214,248 C240,256 270,252 290,244 C294,200 294,150 292,118 Z" />
+                  <path class="muscle" d="M308,118 C350,112 388,122 394,150 C402,190 400,225 386,248 C360,256 330,252 310,244 C306,200 306,150 308,118 Z" />
+                  <text class="muscle-lbl" x="232" y="180">m. frontalis</text>
+                  <!-- procerus -->
+                  <path class="muscle" d="M293,252 L307,252 L305,300 L295,300 Z" />
+                  <text class="muscle-lbl" x="312" y="282">procerus</text>
+                  <!-- corrugator -->
+                  <path class="muscle" d="M236,258 C248,250 268,252 278,262 C270,270 250,272 240,268 Z" />
+                  <path class="muscle" d="M364,258 C352,250 332,252 322,262 C330,270 350,272 360,268 Z" />
+                  <text class="muscle-lbl" x="196" y="250">corrugator</text>
+                  <!-- orbicularis oculi (ring) -->
+                  <path class="muscle" fill-rule="evenodd" d="M163,300 a62,46 0 1,0 124,0 a62,46 0 1,0 -124,0 M191,300 a34,24 0 1,1 68,0 a34,24 0 1,1 -68,0" />
+                  <path class="muscle" fill-rule="evenodd" d="M313,300 a62,46 0 1,0 124,0 a62,46 0 1,0 -124,0 M341,300 a34,24 0 1,1 68,0 a34,24 0 1,1 -68,0" />
+                  <text class="muscle-lbl" x="120" y="356">orbicularis oculi</text>
+                  <!-- nasalis -->
+                  <path class="muscle" d="M285,338 L300,346 L292,372 L278,360 Z" />
+                  <path class="muscle" d="M315,338 L300,346 L308,372 L322,360 Z" />
+                  <text class="muscle-lbl" x="324" y="356">nasalis</text>
+                  <!-- zygomaticus (light) -->
+                  <path class="muscle light" d="M210,356 L224,350 L272,510 L254,518 Z" />
+                  <path class="muscle light" d="M390,356 L376,350 L328,510 L346,518 Z" />
+                  <!-- orbicularis oris (ring) -->
+                  <path class="muscle" fill-rule="evenodd" d="M242,522 a58,34 0 1,0 116,0 a58,34 0 1,0 -116,0 M266,522 a34,17 0 1,1 68,0 a34,17 0 1,1 -68,0" />
+                  <text class="muscle-lbl" x="252" y="566">orbicularis oris</text>
+                  <!-- DAO -->
+                  <path class="muscle" d="M256,540 L243,606 L274,558 Z" />
+                  <path class="muscle" d="M344,540 L357,606 L326,558 Z" />
+                  <text class="muscle-lbl" x="206" y="600">DAO</text>
+                  <!-- mentalis -->
+                  <ellipse class="muscle" cx="288" cy="616" rx="13" ry="22" />
+                  <ellipse class="muscle" cx="312" cy="616" rx="13" ry="22" />
+                  <text class="muscle-lbl" x="322" y="640">mentalis</text>
+                  <!-- masseter -->
+                  <path class="muscle" d="M408,408 L452,420 L440,524 L398,502 Z" />
+                  <path class="muscle" d="M192,408 L148,420 L160,524 L202,502 Z" />
+                  <text class="muscle-lbl" x="408" y="470">masseter</text>
+                </g>
+
+                <!-- СЛОЙ: СОСУДЫ -->
+                <g class="layer-vessels">
+                  <!-- arteries -->
+                  <path class="artery" d="M286,250 C283,210 282,170 286,128" />
+                  <path class="artery" d="M314,250 C317,210 318,170 314,128" />
+                  <path class="artery" d="M268,252 C262,212 260,175 266,140" />
+                  <path class="artery" d="M332,252 C338,212 340,175 334,140" />
+                  <path class="artery" d="M262,288 C268,322 272,362 280,398 C284,440 280,500 262,580" />
+                  <path class="artery" d="M338,288 C332,322 328,362 320,398 C316,440 320,500 338,580" />
+                  <path class="artery" d="M158,332 C152,278 156,222 170,182" />
+                  <path class="artery" d="M442,332 C448,278 444,222 430,182" />
+                  <!-- veins -->
+                  <path class="vein" d="M250,290 C246,250 246,205 252,165" />
+                  <path class="vein" d="M350,290 C354,250 354,205 348,165" />
+                  <text class="vessel-lbl" x="292" y="120">a. supratrochlearis</text>
+                  <text class="vessel-lbl" x="236" y="540" transform="rotate(78 236 540)">a. facialis</text>
+                </g>
+
+                <!-- СЛОЙ: ВЕКТОРЫ (направление тяги мышцы) -->
+                <g class="layer-vectors">
+                  <!-- frontalis: вверх -->
+                  <path class="vector" marker-end="url(#vec)" d="M240,205 L240,152" />
+                  <path class="vector" marker-end="url(#vec)" d="M360,205 L360,152" />
+                  <!-- corrugator: к центру и вниз -->
+                  <path class="vector" marker-end="url(#vec)" d="M252,256 L288,272" />
+                  <path class="vector" marker-end="url(#vec)" d="M348,256 L312,272" />
+                  <!-- procerus: вниз -->
+                  <path class="vector" marker-end="url(#vec)" d="M300,256 L300,296" />
+                  <!-- orbicularis oculi: смыкание (к центру) -->
+                  <path class="vector" marker-end="url(#vec)" d="M170,300 L202,300" />
+                  <path class="vector" marker-end="url(#vec)" d="M430,300 L398,300" />
+                  <!-- DAO: вниз -->
+                  <path class="vector" marker-end="url(#vec)" d="M250,558 L246,602" />
+                  <path class="vector" marker-end="url(#vec)" d="M350,558 L354,602" />
+                  <!-- mentalis: вверх -->
+                  <path class="vector" marker-end="url(#vec)" d="M300,640 L300,600" />
+                  <!-- masseter: вверх (смыкание челюсти) -->
+                  <path class="vector" marker-end="url(#vec)" d="M426,500 L426,440" />
+                  <path class="vector" marker-end="url(#vec)" d="M174,500 L174,440" />
+                </g>
+
+                <!-- СЛОЙ: ТОЧКИ ИНЪЕКЦИЙ -->
+                <g class="layer-points">
+                  <!-- frontalis -->
+                  <circle class="point" data-point="frontalis" cx="222" cy="160" r="9" />
+                  <circle class="point" data-point="frontalis" cx="262" cy="150" r="9" />
+                  <circle class="point" data-point="frontalis" cx="300" cy="146" r="9" />
+                  <circle class="point" data-point="frontalis" cx="338" cy="150" r="9" />
+                  <circle class="point" data-point="frontalis" cx="378" cy="160" r="9" />
+                  <!-- corrugator -->
+                  <circle class="point" data-point="corrugator" cx="252" cy="258" r="9" />
+                  <circle class="point" data-point="corrugator" cx="348" cy="258" r="9" />
+                  <!-- procerus -->
+                  <circle class="point" data-point="procerus" cx="300" cy="276" r="9" />
+                  <!-- orbicularis oculi (crow's feet) -->
+                  <circle class="point" data-point="orbicularis-oculi" cx="150" cy="288" r="9" />
+                  <circle class="point" data-point="orbicularis-oculi" cx="146" cy="312" r="9" />
+                  <circle class="point" data-point="orbicularis-oculi" cx="158" cy="334" r="9" />
+                  <circle class="point" data-point="orbicularis-oculi" cx="450" cy="288" r="9" />
+                  <circle class="point" data-point="orbicularis-oculi" cx="454" cy="312" r="9" />
+                  <circle class="point" data-point="orbicularis-oculi" cx="442" cy="334" r="9" />
+                  <!-- nasalis -->
+                  <circle class="point" data-point="nasalis" cx="284" cy="342" r="9" />
+                  <circle class="point" data-point="nasalis" cx="316" cy="342" r="9" />
+                  <!-- DAO -->
+                  <circle class="point" data-point="dao" cx="250" cy="576" r="9" />
+                  <circle class="point" data-point="dao" cx="350" cy="576" r="9" />
+                  <!-- mentalis -->
+                  <circle class="point" data-point="mentalis" cx="288" cy="628" r="9" />
+                  <circle class="point" data-point="mentalis" cx="312" cy="628" r="9" />
+                  <!-- masseter -->
+                  <circle class="point" data-point="masseter" cx="424" cy="460" r="9" />
+                  <circle class="point" data-point="masseter" cx="430" cy="488" r="9" />
+                  <circle class="point" data-point="masseter" cx="176" cy="460" r="9" />
+                  <circle class="point" data-point="masseter" cx="170" cy="488" r="9" />
+                </g>
+              </svg>
+            </div>
+
+            <div class="atlas-legend">
+              <span><i style="background:var(--muscle)"></i>мышцы</span>
+              <span><i style="background:var(--artery)"></i>артерии</span>
+              <span><i style="background:var(--vein)"></i>вены</span>
+              <span><i style="background:#2f6f64"></i>вектор тяги мышцы</span>
+              <span><i style="background:var(--sage-dark)"></i>точка инъекции</span>
+            </div>
+          </div>
+
+          <div class="atlas-info" data-atlas-info>
+            <p class="hint">Нажмите на любую <b>точку инъекции</b> на схеме слева — здесь появится мышца, направление её тяги (вектор), ориентировочная доза и техника введения.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ПРЕПАРАТЫ ============ -->
+      <section class="section">
+        <h2>Препараты ботулотоксина типа A</h2>
+        <p>На рынке РФ зарегистрировано несколько препаратов на основе ботулотоксина типа A. Они отличаются по составу комплекса, наличию белков-носителей и единицам активности — <b>единицы разных препаратов не эквивалентны</b> и не пересчитываются «один к одному».</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Препарат (МНН)</th><th>Производитель</th><th>Особенности состава</th><th>Пересчёт к Botox<span class="badge-verify">проверить</span></th></tr></thead>
+            <tbody>
+              <tr><td><b>Botox</b> (onabotulinumtoxinA)</td><td>AbbVie/Allergan</td><td>Комплекс с белками ~900 кДа</td><td>1 (эталон)</td></tr>
+              <tr><td><b>Dysport</b> (abobotulinumtoxinA)</td><td>Ipsen</td><td>Меньший размер комплекса</td><td>≈ 2,5–3 : 1</td></tr>
+              <tr><td><b>Xeomin</b> (incobotulinumtoxinA)</td><td>Merz</td><td>Без комплексообразующих белков</td><td>≈ 1 : 1</td></tr>
+              <tr><td><b>Релатокс</b></td><td>Микроген (РФ)</td><td>Отечественный, тип A</td><td>≈ 1 : 1 (ориентир)</td></tr>
+              <tr><td><b>Ботулакс / Нейронокс</b></td><td>Hugel / Medytox (Корея)</td><td>Тип A</td><td>≈ 1 : 1 (ориентир)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note verify">Коэффициенты пересчёта — ориентировочные и обсуждаемые в литературе; всегда сверяйтесь с действующей инструкцией конкретного препарата.</div>
+      </section>
+
+      <!-- ============ ДОЗЫ ПО ЗОНАМ ============ -->
+      <section class="section">
+        <h2>Ориентировочные дозы по зонам</h2>
+        <p>Диапазоны для <b>onabotulinumtoxinA (Botox)</b> на основе опубликованных консенсусов. Реальная доза зависит от силы мимики, пола, анатомии и цели.</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Зона / мышца</th><th>Морщины</th><th>Всего, Ед<span class="badge-verify">проверить</span></th><th>Точки</th></tr></thead>
+            <tbody>
+              <tr><td>Глабелла (corrugator + procerus)</td><td>Межбровные «11»</td><td>20–25</td><td>5</td></tr>
+              <tr><td>Лоб (frontalis)</td><td>Горизонтальные</td><td>10–20</td><td>4–8</td></tr>
+              <tr><td>Периорбитальная (orbicularis oculi)</td><td>«Гусиные лапки»</td><td>12–24 (6–12/сторона)</td><td>2–4/сторона</td></tr>
+              <tr><td>Спинка носа (nasalis)</td><td>Bunny lines</td><td>4–10</td><td>1–2/сторона</td></tr>
+              <tr><td>DAO</td><td>Опущенные углы рта</td><td>4–10</td><td>1/сторона</td></tr>
+              <tr><td>Mentalis</td><td>«Булыжная» текстура подбородка</td><td>4–10</td><td>1–2</td></tr>
+              <tr><td>Masseter</td><td>Бруксизм / коррекция овала</td><td>40–60 (20–30/сторона)</td><td>3/сторона</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note danger"><b>Зоны осторожности.</b> Глабелла и спинка носа — близко проходят <b>a. supratrochlearis</b> и <b>a. angularis</b> (риск при сочетании с филлерами). Латеральнее средней линии лба — риск птоза брови; над орбитой соблюдайте безопасный отступ. Глубокая инъекция в области нижнего века/щеки — риск диффузии в нежелательные мышцы.</div>
+      </section>
+
+      <!-- ============ ПОДБОР ПОД ТИП ЛИЦА ============ -->
+      <section class="section">
+        <h2>Подбор под тип лица и паттерн мимики</h2>
+        <h3>«Тяжёлый» лоб / низкая бровь</h3>
+        <p>Осторожно с frontalis: полное расслабление опустит бровь. Лечат глабеллу, лоб — консервативно и выше, сохраняя нижние волокна как «лифт».</p>
+        <h3>Гиперактивная глабелла</h3>
+        <p>Выраженные corrugator/procerus — стандартный 5-точечный паттерн, при необходимости больше единиц медиально.</p>
+        <h3>Широкий нижний контур (гипертрофия massster)</h3>
+        <p>Коррекция жевательных мышц формирует овал; эффект развивается недели, нужны повторы.</p>
+        <h3>«Гневное» / опущенное выражение рта</h3>
+        <p>DAO + при необходимости mentalis; учитывать баланс с леваторами, чтобы не нарушить улыбку.</p>
+        <div class="note">Тип кожи (по Фитцпатрику) на дозу ботулотоксина прямо не влияет, но определяет тактику сопутствующих процедур и риск ПВГ при комбинировании — это разберём в разделах по аппаратам и пилингам.</div>
+      </section>
+
+      <!-- ============ ПРОТИВОПОКАЗАНИЯ ============ -->
+      <section class="section">
+        <h2>Противопоказания и осторожность</h2>
+        <ul>
+          <li>Беременность и лактация</li>
+          <li>Миастения, синдром Ламберта–Итона и др. нервно-мышечные заболевания</li>
+          <li>Гиперчувствительность к компонентам, инфекция/воспаление в зоне</li>
+          <li>Приём аминогликозидов и др. средств, влияющих на нервно-мышечную передачу</li>
+          <li>Нереалистичные ожидания, дисморфофобия</li>
+        </ul>
+        <div class="note verify">Список не исчерпывающий — сверяйтесь с инструкцией препарата и собирайте анамнез.</div>
+      </section>
+
+      <!-- ============ ИСТОЧНИКИ ============ -->
+      <section class="section">
+        <h2>Источники для верификации</h2>
+        <ul>
+          <li>Инструкции по применению зарегистрированных препаратов (ГРЛС, вкладыши производителей)</li>
+          <li>Consensus recommendations (Carruthers J., Carruthers A. и соавт.) по применению ботулотоксина в верхней/нижней трети лица</li>
+          <li>FDA prescribing information для onabotulinumtoxinA</li>
+          <li>Атласы анатомии головы и шеи для уточнения хода сосудов и мышц</li>
+        </ul>
+        <p style="color:var(--muted);font-size:14px;">Конкретные ссылки и редакции добавим после вашей верификации параметров.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="edu-footer" data-protected>
+    <div class="container">
+      <div>© 2026 ИП Джураева Малика Дильмурадовна · образовательный портал для специалистов</div>
+      <div class="disclaimer">Материалы носят образовательный характер для специалистов с медицинским образованием, не являются инструкцией к самолечению и не заменяют официальные инструкции к препаратам. Все дозировки и техники требуют верификации и применяются под ответственность специалиста. <a href="../privacy.html">Политика конфиденциальности</a></div>
+    </div>
+  </footer>
+
+  <script>
+    /* Данные точек инъекций (образовательный ориентир, требуют верификации). */
+    window.ATLAS_POINTS = {
+      "frontalis": {
+        title: "Лобная мышца (m. frontalis)",
+        muscle: "m. frontalis — парная, вертикальные волокна лба",
+        action: "Поднимает брови вверх → вектор тяги ВВЕРХ. Полное расслабление опускает бровь.",
+        units: "10–20 на зону, 4–8 точек", verify: true,
+        depth: "Поверхностно, внутримышечно; держать отступ от брови (≈2–2,5 см), латеральные точки — выше",
+        indication: "Горизонтальные морщины лба"
+      },
+      "corrugator": {
+        title: "Мышца, сморщивающая бровь (corrugator supercilii)",
+        muscle: "m. corrugator supercilii",
+        action: "Тянет бровь медиально и вниз → вектор К ЦЕНТРУ и ВНИЗ (формирует «11»)",
+        units: "часть глабеллярных 20–25 Ед", verify: true,
+        depth: "Глубоко, у медиального конца брови; рядом a./v. supratrochlearis",
+        indication: "Межбровные вертикальные морщины"
+      },
+      "procerus": {
+        title: "Мышца гордецов (procerus)",
+        muscle: "m. procerus — по средней линии у корня носа",
+        action: "Тянет медиальную бровь/кожу переносицы ВНИЗ → вектор ВНИЗ",
+        units: "часть глабеллярных 20–25 Ед", verify: true,
+        depth: "В точку по средней линии переносицы",
+        indication: "Горизонтальная складка переносицы"
+      },
+      "orbicularis-oculi": {
+        title: "Круговая мышца глаза (orbicularis oculi)",
+        muscle: "m. orbicularis oculi — сфинктер вокруг глаза",
+        action: "Смыкает веки → вектор К ЦЕНТРУ (концентрическое сжатие). Латеральная часть даёт «гусиные лапки».",
+        units: "6–12 на сторону, 2–4 точки", verify: true,
+        depth: "Поверхностно (подкожно/внутрикожно) латеральнее костного края орбиты",
+        indication: "Латеральные периорбитальные морщины"
+      },
+      "nasalis": {
+        title: "Носовая мышца (nasalis)",
+        muscle: "m. nasalis (поперечная часть)",
+        action: "Сморщивает спинку носа → вектор ВВЕРХ и МЕДИАЛЬНО (bunny lines)",
+        units: "2–5 на сторону", verify: true,
+        depth: "Поверхностно по боковой стенке носа; рядом a. angularis",
+        indication: "Косые морщины спинки носа"
+      },
+      "dao": {
+        title: "Мышца, опускающая угол рта (DAO)",
+        muscle: "m. depressor anguli oris",
+        action: "Опускает угол рта ВНИЗ → вектор ВНИЗ. Расслабление «приподнимает» уголки.",
+        units: "2–5 на сторону", verify: true,
+        depth: "Латерально и ниже угла рта, по краю нижней челюсти; не задеть depressor labii",
+        indication: "Опущенные («грустные») уголки рта"
+      },
+      "mentalis": {
+        title: "Подбородочная мышца (mentalis)",
+        muscle: "m. mentalis",
+        action: "Поднимает и выпячивает нижнюю губу, морщит подбородок → вектор ВВЕРХ",
+        units: "4–10 суммарно", verify: true,
+        depth: "Глубоко по средней линии подбородка (1–2 точки)",
+        indication: "«Булыжная» текстура / ямочки подбородка"
+      },
+      "masseter": {
+        title: "Жевательная мышца (masseter)",
+        muscle: "m. masseter",
+        action: "Поднимает нижнюю челюсть (смыкание) → вектор ВВЕРХ",
+        units: "20–30 на сторону, ~3 точки", verify: true,
+        depth: "Глубоко внутримышечно в нижне-задней части мышцы (зона сжатия зубов)",
+        indication: "Бруксизм, гипертрофия, коррекция овала лица"
+      }
+    };
+  </script>
+  <script src="edu.js"></script>
+  <script src="anatomy-face.js"></script>
+</body>
+</html>
