@@ -27,7 +27,12 @@
 
     /* Слои SVG */
     .hide-muscles .layer-muscles, .hide-vessels .layer-vessels,
-    .hide-points .layer-points, .hide-vectors .layer-vectors { display: none; }
+    .hide-points .layer-points, .hide-vectors .layer-vectors,
+    .hide-nerves .layer-nerves { display: none; }
+    .nerve { fill: none; stroke: #cf9b1e; stroke-width: 2.2; stroke-linecap: round; }
+    .nerve.fine { stroke-width: 1.5; opacity: .7; }
+    .nerve-pt { fill: #cf9b1e; stroke: #fff; stroke-width: 1.5; }
+    .nerve-lbl { font-family: var(--sans); font-size: 9.5px; fill: #9a6a12; font-weight: 600; }
     .face-outline { fill: #f7efe6; stroke: var(--line); stroke-width: 2; }
     .skin-line { fill: none; stroke: #c9b9a3; stroke-width: 2; stroke-linecap: round; }
     .skin-soft { fill: #efe4d4; stroke: #d8c8b2; stroke-width: 1.5; }
@@ -110,10 +115,11 @@
               <button class="lyr-btn" data-toggle="vessels" aria-pressed="true"><span class="dot" style="background:var(--artery)"></span>Сосуды</button>
               <button class="lyr-btn" data-toggle="points" aria-pressed="true"><span class="dot" style="background:var(--sage-dark)"></span>Точки</button>
               <button class="lyr-btn" data-toggle="vectors" aria-pressed="true"><span class="dot" style="background:#2f6f64"></span>Векторы</button>
+              <button class="lyr-btn off" data-toggle="nerves" aria-pressed="false"><span class="dot" style="background:#cf9b1e"></span>Нервы</button>
               <button class="atlas-reset" data-atlas-reset>сбросить</button>
             </div>
 
-            <div data-atlas-figure>
+            <div data-atlas-figure class="hide-nerves">
               <svg viewBox="0 0 600 760" role="img" aria-label="Схема лица: мышцы, сосуды и точки инъекций">
                 <defs>
                   <marker id="vec" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
@@ -186,20 +192,79 @@
 
                 <!-- СЛОЙ: СОСУДЫ -->
                 <g class="layer-vessels">
-                  <!-- arteries -->
-                  <path class="artery" d="M286,250 C283,210 282,170 286,128" />
-                  <path class="artery" d="M314,250 C317,210 318,170 314,128" />
-                  <path class="artery" d="M268,252 C262,212 260,175 266,140" />
-                  <path class="artery" d="M332,252 C338,212 340,175 334,140" />
-                  <path class="artery" d="M262,288 C268,322 272,362 280,398 C284,440 280,500 262,580" />
-                  <path class="artery" d="M338,288 C332,322 328,362 320,398 C316,440 320,500 338,580" />
-                  <path class="artery" d="M158,332 C152,278 156,222 170,182" />
-                  <path class="artery" d="M442,332 C448,278 444,222 430,182" />
-                  <!-- veins -->
-                  <path class="vein" d="M250,290 C246,250 246,205 252,165" />
-                  <path class="vein" d="M350,290 C354,250 354,205 348,165" />
-                  <text class="vessel-lbl" x="292" y="120">a. supratrochlearis</text>
-                  <text class="vessel-lbl" x="236" y="540" transform="rotate(78 236 540)">a. facialis</text>
+                  <!-- arteries (red) -->
+                  <path class="artery" d="M286,250 C284,206 283,166 287,126" />
+                  <path class="artery" d="M314,250 C316,206 317,166 313,126" />
+                  <path class="artery" d="M268,250 C262,210 261,172 267,138" />
+                  <path class="artery" d="M332,250 C338,210 339,172 333,138" />
+                  <path class="artery" d="M270,302 C274,332 278,362 284,394" />
+                  <path class="artery" d="M330,302 C326,332 322,362 316,394" />
+                  <path class="artery" d="M252,598 C260,552 250,508 270,470 C277,450 273,422 270,398" />
+                  <path class="artery" d="M348,598 C340,552 350,508 330,470 C323,450 327,422 330,398" />
+                  <path class="artery" d="M158,332 C150,280 156,222 172,182" />
+                  <path class="artery" d="M172,182 C178,162 170,142 160,130" />
+                  <path class="artery" d="M442,332 C450,280 444,222 428,182" />
+                  <path class="artery" d="M428,182 C422,162 430,142 440,130" />
+                  <path class="artery" d="M252,340 C250,354 252,368 258,380" />
+                  <path class="artery" d="M348,340 C350,354 348,368 342,380" />
+                  <path class="artery" d="M258,508 C280,498 320,498 342,508" />
+                  <path class="artery" d="M262,534 C282,544 318,544 338,534" />
+                  <!-- veins (blue, dashed) -->
+                  <path class="vein" d="M252,300 C248,258 248,214 254,170" />
+                  <path class="vein" d="M348,300 C352,258 352,214 346,170" />
+                  <path class="vein" d="M272,598 C278,548 284,500 292,462" />
+                  <path class="vein" d="M328,598 C322,548 316,500 308,462" />
+                  <!-- labels -->
+                  <text class="vessel-lbl" x="248" y="114">a. supratrochlearis</text>
+                  <text class="vessel-lbl" x="92" y="150">a. supraorbitalis</text>
+                  <text class="vessel-lbl" x="92" y="330">a. temporalis superf.</text>
+                  <text class="vessel-lbl" x="92" y="476">v. facialis</text>
+                  <text class="vessel-lbl" x="452" y="300">a. angularis</text>
+                  <text class="vessel-lbl" x="452" y="470">a. facialis</text>
+                  <text class="vessel-lbl" x="452" y="520">aa. labiales</text>
+                </g>
+
+                <!-- СЛОЙ: НЕРВЫ -->
+                <g class="layer-nerves">
+                  <!-- facial nerve motor branches (fan from parotid) -->
+                  <path class="nerve fine" d="M150,360 C180,330 210,302 242,286" />
+                  <path class="nerve fine" d="M150,366 C185,360 215,355 248,352" />
+                  <path class="nerve fine" d="M150,380 C185,400 215,415 250,430" />
+                  <path class="nerve fine" d="M150,396 C180,440 210,480 246,510" />
+                  <path class="nerve fine" d="M450,360 C420,330 390,302 358,286" />
+                  <path class="nerve fine" d="M450,366 C415,360 385,355 352,352" />
+                  <path class="nerve fine" d="M450,380 C415,400 385,415 350,430" />
+                  <path class="nerve fine" d="M450,396 C420,440 390,480 354,510" />
+                  <!-- supraorbital nerve (forehead) -->
+                  <path class="nerve" d="M258,250 C254,212 252,176 256,140" />
+                  <path class="nerve" d="M258,250 C268,216 272,186 278,150" />
+                  <path class="nerve" d="M342,250 C346,212 348,176 344,140" />
+                  <path class="nerve" d="M342,250 C332,216 328,186 322,150" />
+                  <circle class="nerve-pt" cx="258" cy="250" r="4" />
+                  <circle class="nerve-pt" cx="342" cy="250" r="4" />
+                  <!-- infraorbital nerve (below orbit) -->
+                  <path class="nerve" d="M252,346 C244,340 236,336 230,334" />
+                  <path class="nerve" d="M252,346 C250,360 250,374 254,388" />
+                  <path class="nerve" d="M252,346 C262,352 270,356 278,358" />
+                  <path class="nerve" d="M348,346 C356,340 364,336 370,334" />
+                  <path class="nerve" d="M348,346 C350,360 350,374 346,388" />
+                  <path class="nerve" d="M348,346 C338,352 330,356 322,358" />
+                  <circle class="nerve-pt" cx="252" cy="346" r="4" />
+                  <circle class="nerve-pt" cx="348" cy="346" r="4" />
+                  <!-- mental nerve (chin) -->
+                  <path class="nerve" d="M266,598 C260,604 254,610 250,616" />
+                  <path class="nerve" d="M266,598 C270,610 274,620 276,632" />
+                  <path class="nerve" d="M266,598 C274,592 282,588 290,586" />
+                  <path class="nerve" d="M334,598 C340,604 346,610 350,616" />
+                  <path class="nerve" d="M334,598 C330,610 326,620 324,632" />
+                  <path class="nerve" d="M334,598 C326,592 318,588 310,586" />
+                  <circle class="nerve-pt" cx="266" cy="598" r="4" />
+                  <circle class="nerve-pt" cx="334" cy="598" r="4" />
+                  <!-- labels -->
+                  <text class="nerve-lbl" x="92" y="210">n. supraorbitalis</text>
+                  <text class="nerve-lbl" x="92" y="364">n. infraorbitalis</text>
+                  <text class="nerve-lbl" x="92" y="566">n. mentalis</text>
+                  <text class="nerve-lbl" x="118" y="392">n. facialis (ветви)</text>
                 </g>
 
                 <!-- СЛОЙ: ВЕКТОРЫ (направление тяги мышцы) -->
@@ -267,6 +332,7 @@
               <span><i style="background:var(--muscle)"></i>мышцы</span>
               <span><i style="background:var(--artery)"></i>артерии</span>
               <span><i style="background:var(--vein)"></i>вены</span>
+              <span><i style="background:#cf9b1e"></i>нервы</span>
               <span><i style="background:#2f6f64"></i>вектор тяги мышцы</span>
               <span><i style="background:var(--sage-dark)"></i>точка инъекции</span>
             </div>
