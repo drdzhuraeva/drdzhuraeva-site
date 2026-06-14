@@ -73,6 +73,9 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; letter-spacing: .5
 .cat-section h2 { font-size: 34px; margin-bottom: 6px; }
 .cat-section .sub { color: var(--muted); font-size: 15px; margin-bottom: 32px; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.subhead { font-family: var(--serif); font-size: 22px; color: var(--espresso); margin: 38px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.subhead:first-of-type { margin-top: 8px; }
+.brands { color: var(--muted); font-size: 12.5px; margin-top: 6px; line-height: 1.5; }
 .ecard {
   background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 28px 26px; display: flex; flex-direction: column; transition: background .2s, transform .2s, box-shadow .2s;
