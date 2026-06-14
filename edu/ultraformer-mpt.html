@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ultraformer MPT (HIFU/MMFU) — протоколы · Образовательный портал</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="edu.css" />
+  <style>
+    .term { color: var(--sage-dark); border-bottom: 1px dashed var(--sage); cursor: help; }
+    .term:hover, .term:focus { color: var(--espresso); border-bottom-color: var(--sage-dark); outline: none; }
+    .term::after { content: "?"; font-size: 9px; vertical-align: super; color: var(--sage-dark); margin-left: 1px; font-weight: 600; }
+    .term-pop { position: absolute; z-index: 200; max-width: 330px; background: var(--espresso); color: #efe7da;
+      font-size: 14px; line-height: 1.55; padding: 15px 17px; border-radius: 6px; box-shadow: 0 14px 36px rgba(40,30,20,.3); font-weight: 300; }
+    .term-pop .tp-title { font-family: var(--serif); font-size: 18px; display: block; margin-bottom: 7px; color: #fff; }
+    .term-pop b { color: #fff; }
+    .term-pop::before { content: ""; position: absolute; top: -7px; left: var(--ax, 22px); border: 7px solid transparent; border-bottom-color: var(--espresso); border-top: 0; }
+    .term-pop.below::before { top: auto; bottom: -7px; border-bottom-color: transparent; border-top-color: var(--espresso); border-bottom: 0; }
+    .depth-fig { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 22px 0; max-width: 560px; }
+    .depth-fig svg { width: 100%; height: auto; display:block; }
+    .depth-cap { color: var(--muted); font-size: 13px; margin-top: 10px; text-align:center; }
+  </style>
+</head>
+<body class="locked">
+
+  <div class="gate" id="edu-gate">
+    <div class="gate-card">
+      <span class="eyebrow">Только для специалистов</span>
+      <h1>Образовательный портал</h1>
+      <p>Материалы предназначены для врачей-косметологов, дерматологов и специалистов эстетической медицины. Содержат клиническую информацию и параметры процедур.</p>
+      <form id="gate-form">
+        <input type="password" id="gate-pass" placeholder="Пароль доступа" autocomplete="off" />
+        <label class="chk"><input type="checkbox" id="gate-chk" />
+          <span>Я подтверждаю, что являюсь специалистом с медицинским образованием и понимаю, что информация не является инструкцией к самолечению.</span></label>
+        <button type="submit" class="btn">Войти</button>
+        <div class="gate-err" id="gate-err"></div>
+      </form>
+      <div class="gate-foot">Доступ к паролю предоставляет автор курса. <a href="../index.html">← На сайт клиники</a></div>
+    </div>
+  </div>
+
+  <header class="edu-header" data-protected>
+    <div class="container edu-nav">
+      <a href="index.html" class="edu-logo">Dr. <span>Dzhuraeva</span><small>Education · для специалистов</small></a>
+      <div class="crumbs"><a href="index.html">Портал</a> · <span>Ultraformer MPT</span></div>
+      <a href="../index.html" class="edu-back">← Сайт клиники</a>
+    </div>
+  </header>
+
+  <main class="edu-main" data-protected>
+    <div class="container">
+
+      <div class="lead-block">
+        <span class="eyebrow">Аппаратные методики · ультразвук (HIFU)</span>
+        <h1 style="font-size:40px;line-height:1.1;margin:12px 0;">Ultraformer MPT — SMAS-ультразвук (MMFU)</h1>
+        <div class="role-line">Картриджи и глубины · энергия и линии · режимы · лифтинг и контур</div>
+        <p style="color:#5c554b;font-size:17px;max-width:780px;">Микро- и макрофокусированный ультразвук (Classys). Точечный нагрев на заданной глубине формирует точки термокоагуляции, сокращает коллаген и запускает неоколлагенез — лифтинг без разрезов и даунтайма. Ниже — параметры по зонам и картриджам.</p>
+      </div>
+
+      <div class="note verify"><b>Важно.</b> Параметры систематизированы из <b>опубликованных клинических источников и материалов производителя</b> (ссылки внизу) как образовательный ориентир и <b>требуют верификации</b>: точные настройки задаются на официальном обучении Classys и подбираются индивидуально по толщине кожи, зоне и переносимости.</div>
+
+      <!-- МЕХАНИЗМ -->
+      <section class="section">
+        <h2>Механизм действия</h2>
+        <p><span class="term" data-term="hifu">HIFU</span> фокусирует ультразвук в точке на заданной глубине, нагревая ткань до 60–70 °C и создавая микроскопические <span class="term" data-term="tcp">точки термокоагуляции (TCP)</span>. Окружающая ткань не повреждается. Это вызывает немедленное сокращение коллагена и отсроченный <span class="term" data-term="neocollagen">неоколлагенез</span> в течение недель.</p>
+        <p><span class="term" data-term="mmfu">MMFU</span> в Ultraformer сочетает микро- и макрофокусированный ультразвук, а технология <span class="term" data-term="mpt">MPT (micro pulsed)</span> уменьшает интервал между TCP — больше точек за один проход, комфортнее и быстрее. Глубокий картридж <b>4,5 мм</b> работает на уровне <span class="term" data-term="smas">SMAS</span> — анатомической основы лифтинга.</p>
+        <div class="depth-fig">
+          <svg viewBox="0 0 520 300" role="img" aria-label="Глубины фокуса HIFU в коже">
+            <rect x="120" y="20" width="380" height="34" fill="#f0dcc0" stroke="#d8c8b2"/>
+            <rect x="120" y="54" width="380" height="70" fill="#f3c9b0" stroke="#d8c8b2"/>
+            <rect x="120" y="124" width="380" height="70" fill="#ecb89c" stroke="#d8c8b2"/>
+            <rect x="120" y="194" width="380" height="30" fill="#e7c9a0" stroke="#d8c8b2"/>
+            <rect x="120" y="224" width="380" height="56" fill="#f6ecb4" stroke="#d8c8b2"/>
+            <text x="128" y="40" font-family="Manrope,sans-serif" font-size="11" fill="#6b5a44">Эпидермис</text>
+            <text x="128" y="95" font-family="Manrope,sans-serif" font-size="11" fill="#6b5a44">Сосочковая дерма</text>
+            <text x="128" y="165" font-family="Manrope,sans-serif" font-size="11" fill="#6b5a44">Сетчатая дерма</text>
+            <text x="128" y="213" font-family="Manrope,sans-serif" font-size="11" fill="#6b5a44">SMAS</text>
+            <text x="128" y="256" font-family="Manrope,sans-serif" font-size="11" fill="#6b5a44">Гиподерма (жир)</text>
+            <!-- TCP foci -->
+            <g font-family="Manrope,sans-serif" font-size="10" fill="#b06f52">
+              <path d="M40,75 L116,75" stroke="#6c7b5b" stroke-width="2"/><circle cx="118" cy="75" r="5" fill="#b5453b"/><text x="36" y="70" text-anchor="end">1.5–2.0 мм</text>
+              <path d="M40,150 L116,150" stroke="#6c7b5b" stroke-width="2"/><circle cx="118" cy="150" r="5" fill="#b5453b"/><text x="36" y="145" text-anchor="end">3.0 мм</text>
+              <path d="M40,208 L116,208" stroke="#6c7b5b" stroke-width="2"/><circle cx="118" cy="208" r="6" fill="#b5453b"/><text x="36" y="203" text-anchor="end">4.5 мм (SMAS)</text>
+              <path d="M40,252 L116,252" stroke="#6c7b5b" stroke-width="2"/><circle cx="118" cy="252" r="5" fill="#b5453b"/><text x="36" y="247" text-anchor="end">6–13 мм (тело)</text>
+            </g>
+          </svg>
+          <div class="depth-cap">Точки термокоагуляции (TCP) фокусируются на заданной глубине; эпидермис остаётся интактным.</div>
+        </div>
+      </section>
+
+      <!-- КАРТРИДЖИ -->
+      <section class="section">
+        <h2>Картриджи и глубины</h2>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Глубина</th><th>Целевой слой</th><th>Зоны применения</th></tr></thead>
+          <tbody>
+            <tr><td><b>1.5 мм</b></td><td>Поверхностная дерма</td><td>Тонкие морщины, периорбитальная зона, лоб</td></tr>
+            <tr><td><b>2.0 мм</b></td><td>Сосочковая дерма</td><td>Чувствительные зоны — вокруг глаз и губ</td></tr>
+            <tr><td><b>3.0 мм</b></td><td>Глубокая дерма</td><td>Щёки, линия челюсти (умеренный лифтинг)</td></tr>
+            <tr><td><b>4.5 мм</b></td><td><span class="term" data-term="smas">SMAS</span></td><td>Глубокий лифтинг — челюсть, шея</td></tr>
+            <tr><td><b>6–13 мм</b></td><td>Подкожный жир</td><td>Тело: живот, бёдра, руки (редукция жира)</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">Лицо обычно сочетает несколько глубин (например 4.5 + 3.0 + 1.5/2.0 мм) — от SMAS к поверхности. Зону у костных выступов и нервов обрабатывают осторожно.</div>
+      </section>
+
+      <!-- ЭНЕРГИЯ И ЛИНИИ -->
+      <section class="section">
+        <h2>Энергия и число линий</h2>
+        <div class="tbl-wrap"><table class="params">
+          <thead><tr><th>Область</th><th>Картриджи</th><th>Энергия, Дж<span class="badge-verify">проверить</span></th><th>Импульсы (линии)</th><th>Интервал курса</th></tr></thead>
+          <tbody>
+            <tr><td>Лицо</td><td>1.5–3.0 мм (+4.5)</td><td>0,2–0,4</td><td>~400–600 на всё лицо</td><td>6–12 мес</td></tr>
+            <tr><td>Тело</td><td>6–13 мм</td><td>0,4–0,7</td><td>~600–1200</td><td>8–16 нед</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">Общий диапазон энергии — <b>0,1–2,0 Дж</b> в зависимости от картриджа и переносимости пациента. Энергию снижают над костными выступами и в чувствительных зонах.</div>
+      </section>
+
+      <!-- РЕЖИМЫ -->
+      <section class="section">
+        <h2>Режимы воздействия</h2>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Режим</th><th>Назначение</th></tr></thead>
+          <tbody>
+            <tr><td><b>Normal</b></td><td>Стандартная подача HIFU (одиночные TCP)</td></tr>
+            <tr><td><b>Micro Pulse (MPT)</b></td><td>Уменьшенный интервал между TCP — быстрее, более равномерный прогрев, комфортнее</td></tr>
+            <tr><td><b>Circular</b></td><td>Круговая подача — в т.ч. для трансдермальной доставки</td></tr>
+            <tr><td><b>Ultra Circular</b></td><td>Усиленная редукция жира (тело)</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <!-- РЕЗУЛЬТАТ -->
+      <section class="section">
+        <h2>Результат и динамика</h2>
+        <ul>
+          <li>Часть эффекта — сразу (сокращение коллагена), основной — за <b>2 недели – 3–5 месяцев</b> (неоколлагенез).</li>
+          <li>Длительность результата — <b>9–12 месяцев</b>, далее поддерживающие процедуры.</li>
+          <li>Лицо — нередко 1 процедура с заметным результатом; для усиления — курс 2–3 с интервалом.</li>
+          <li>Без даунтайма: лёгкое покраснение/отёк/покалывание проходят за часы–дни.</li>
+        </ul>
+      </section>
+
+      <!-- ПРОТИВОПОКАЗАНИЯ -->
+      <section class="section">
+        <h2>Противопоказания</h2>
+        <ul>
+          <li>Беременность и лактация</li>
+          <li><span class="term" data-term="pacemaker">Кардиостимулятор</span> и другие активные импланты</li>
+          <li>Металлические импланты/нити в зоне воздействия (уточнять)</li>
+          <li>Открытые раны, активная инфекция или воспаление в зоне</li>
+          <li>Кожные заболевания в зоне, склонность к келоидам</li>
+          <li>Тяжёлая степень птоза/избытка кожи — HIFU не заменяет хирургию</li>
+          <li>Онкология, тяжёлые декомпенсированные состояния — индивидуально</li>
+        </ul>
+        <div class="note verify">Список не исчерпывающий — сверяйтесь с инструкцией Classys и собирайте анамнез; зоны над щитовидной железой и по ходу крупных сосудов/нервов обрабатывают по правилам безопасности.</div>
+      </section>
+
+      <!-- УХОД -->
+      <section class="section">
+        <h2>Подготовка и уход</h2>
+        <h3>До процедуры</h3>
+        <ul>
+          <li>Очистить кожу, снять макияж и кожный жир; нанести УЗ-гель для проведения энергии</li>
+          <li>Разметить зоны; оценить толщину и птоз кожи, обсудить ожидания</li>
+        </ul>
+        <h3>После процедуры</h3>
+        <ul>
+          <li>Лёгкое покраснение/отёк/покалывание — норма, проходит за часы–дни</li>
+          <li>24–48 ч избегать солнца и интенсивных нагрузок; <b>SPF 50+</b></li>
+          <li>Без даунтайма — возврат к обычной активности сразу</li>
+        </ul>
+      </section>
+
+      <!-- ИСТОЧНИКИ -->
+      <section class="section">
+        <h2>Источники</h2>
+        <ul>
+          <li>CLASSYS — официальная страница Ultraformer MPT (classys.com)</li>
+          <li>Клинические operator-гайды (Mico Aesthetics, Edwin Lim Clinic)</li>
+          <li>Histological analysis of HIFU frequencies — PMC (NCBI)</li>
+        </ul>
+        <p style="color:var(--muted);font-size:14px;">Параметры — образовательный ориентир, требуют верификации по официальному обучению Classys и инструкции. Изображения производителя не воспроизводятся.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="edu-footer" data-protected>
+    <div class="container">
+      <div>© 2026 ИП Джураева Малика Дильмурадовна · образовательный портал для специалистов</div>
+      <div class="disclaimer">Материалы носят образовательный характер для специалистов с медицинским образованием, не являются инструкцией к самолечению и не заменяют официальные инструкции к оборудованию. Все параметры требуют верификации и применяются под ответственность специалиста. <a href="../privacy.html">Политика конфиденциальности</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var G = {
+        "hifu": ["HIFU", "High-Intensity Focused Ultrasound — высокоинтенсивный фокусированный ультразвук. Фокусирует энергию в точке на заданной глубине, нагревая ткань без повреждения поверхности кожи."],
+        "mmfu": ["MMFU", "Micro & Macro Focused Ultrasound — сочетание микро- и макрофокусированного ультразвука. Позволяет работать и поверхностно, и на уровне SMAS, и в жире."],
+        "mpt": ["MPT (Micro Pulsed)", "Технология Ultraformer: уменьшает расстояние между точками термокоагуляции (microspacing), доставляя больше точек за один импульс — быстрее и комфортнее."],
+        "tcp": ["TCP — точки термокоагуляции", "Микроскопические зоны теплового свёртывания ткани в фокусе ультразвука (≈60–70 °C). Запускают сокращение коллагена и неоколлагенез; ткань между ними не повреждается."],
+        "smas": ["SMAS", "Superficial Musculo-Aponeurotic System — поверхностная мышечно-апоневротическая система, соединительнотканный слой лица, на который воздействуют при хирургическом и аппаратном лифтинге. На лице — около 4,5 мм глубины."],
+        "neocollagen": ["Неоколлагенез", "Образование нового коллагена в ответ на контролируемое тепловое повреждение. Развивается недели–месяцы, обеспечивая отсроченный лифтинг и уплотнение кожи."],
+        "pacemaker": ["Кардиостимулятор", "Имплантируемый электрокардиостимулятор. Воздействие энергии аппаратов рядом может нарушить его работу — абсолютное противопоказание для большинства процедур."]
+      };
+      var pop = null;
+      function close() { if (pop) { pop.remove(); pop = null; } }
+      function open(el) {
+        close();
+        var d = G[el.getAttribute("data-term")];
+        if (!d) return;
+        pop = document.createElement("div");
+        pop.className = "term-pop";
+        pop.innerHTML = '<span class="tp-title">' + d[0] + "</span>" + d[1];
+        document.body.appendChild(pop);
+        var r = el.getBoundingClientRect(), sx = window.scrollX, sy = window.scrollY;
+        var top = r.bottom + sy + 10, left = r.left + sx, pw = pop.offsetWidth;
+        if (left + pw > window.innerWidth + sx - 12) left = window.innerWidth + sx - pw - 12;
+        if (left < sx + 8) left = sx + 8;
+        if (r.bottom + 10 + pop.offsetHeight > window.innerHeight) { top = r.top + sy - pop.offsetHeight - 10; pop.classList.add("below"); }
+        pop.style.top = top + "px"; pop.style.left = left + "px";
+        pop.style.setProperty("--ax", Math.max(12, Math.min(r.left + sx - left + r.width / 2 - 7, pw - 20)) + "px");
+        pop._for = el;
+      }
+      document.addEventListener("click", function (e) {
+        var t = e.target.closest(".term");
+        if (t) { e.preventDefault(); if (pop && pop._for === t) close(); else open(t); return; }
+        if (!e.target.closest(".term-pop")) close();
+      });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+      window.addEventListener("resize", close);
+      document.querySelectorAll(".term").forEach(function (el) {
+        el.setAttribute("tabindex", "0"); el.setAttribute("role", "button");
+        el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(el); } });
+      });
+    })();
+  </script>
+  <script src="edu.js"></script>
+</body>
+</html>
