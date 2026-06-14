@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Лазеры — атлас (для вставки)</title>
+<meta name="robots" content="noindex, nofollow" />
+<!--
+  САМОДОСТАТОЧНЫЙ БЛОК ДЛЯ ВСТАВКИ В УРОК GetCourse. Весь CSS и JS внутри.
+  Как вставить: см. edu/embed/README.md
+-->
+</head>
+<body style="margin:0;background:#fbf9f4;">
+
+<!-- ↓↓↓ КОПИРОВАТЬ ОТСЮДА ↓↓↓ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap');
+.dz-edu{--paper:#fbf9f4;--panel:#f4f0e8;--bg-2:#e5ddd0;--line:#d6ccbd;--ink:#2e2820;--muted:#8a8175;--sage:#8a9a7b;--sage-dark:#6c7b5b;--espresso:#3b3027;--artery:#b5453b;--vein:#4a6f9c;--muscle-2:#b06f52;--danger:#c0392b;--radius:4px;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Manrope",-apple-system,"Segoe UI",sans-serif;font-family:var(--sans);color:var(--ink);line-height:1.7;font-weight:300;background:var(--paper);max-width:1080px;margin:0 auto;padding:24px;-webkit-font-smoothing:antialiased;}
+.dz-edu *{box-sizing:border-box;}
+.dz-edu h1,.dz-edu h2,.dz-edu h3,.dz-edu h4{font-family:var(--serif);font-weight:500;letter-spacing:.5px;color:var(--espresso);margin:0;}
+.dz-edu p{margin:0 0 14px;}
+.dz-edu .eyebrow{color:var(--sage-dark);font-weight:600;letter-spacing:3px;text-transform:uppercase;font-size:12px;}
+.dz-edu .lead h1{font-size:36px;line-height:1.1;margin:10px 0;}
+.dz-edu .role-line{color:var(--muted);letter-spacing:1px;font-size:14px;margin-bottom:14px;}
+.dz-edu .lead p{color:#5c554b;font-size:17px;max-width:760px;}
+.dz-edu .section{margin:48px 0;}
+.dz-edu .section h2{font-size:28px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+.dz-edu .section h3{font-size:20px;margin:26px 0 10px;}
+.dz-edu .section p{color:#5c554b;font-size:16px;max-width:820px;}
+.dz-edu ul{margin:0 0 16px;padding-left:0;list-style:none;max-width:820px;}
+.dz-edu ul li{position:relative;padding-left:24px;margin-bottom:9px;color:#5c554b;}
+.dz-edu ul li::before{content:"";position:absolute;left:0;top:11px;width:11px;height:6px;border-left:1.5px solid var(--sage-dark);border-bottom:1.5px solid var(--sage-dark);transform:rotate(-45deg);}
+.dz-edu .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);margin:18px 0;}
+.dz-edu table{width:100%;border-collapse:collapse;background:var(--paper);font-size:14.5px;min-width:560px;}
+.dz-edu th,.dz-edu td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+.dz-edu th{background:var(--bg-2);font-family:var(--sans);font-weight:600;color:var(--espresso);letter-spacing:.3px;font-size:12px;text-transform:uppercase;}
+.dz-edu tbody tr:last-child td{border-bottom:none;}
+.dz-edu td b{color:var(--espresso);}
+.dz-edu .note{border-left:3px solid var(--sage);background:var(--panel);padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0;margin:20px 0;font-size:15px;color:#5c554b;}
+.dz-edu .note.verify{border-left-color:#c79a3a;background:#f6efdd;}
+.dz-edu .note.danger{border-left-color:var(--danger);background:#f7e7e4;}
+.dz-edu .note b{color:var(--espresso);}
+.dz-edu .badge-verify{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:#8a6d1f;background:#f1e4c0;border-radius:999px;padding:2px 9px;vertical-align:middle;margin-left:6px;}
+.dz-edu .atlas-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start;}
+.dz-edu .atlas-figure-wrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px;}
+.dz-edu .atlas svg{width:100%;height:auto;display:block;}
+.dz-edu .atlas-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.dz-edu .lyr-btn{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.5px;cursor:pointer;border:1px solid var(--sage-dark);background:var(--sage-dark);color:#fff;padding:7px 14px;border-radius:999px;transition:all .2s;}
+.dz-edu .lyr-btn.off{background:transparent;color:var(--muted);border-color:var(--line);}
+.dz-edu .lyr-btn .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+.dz-edu .atlas-reset{margin-left:auto;background:transparent;color:var(--muted);border:none;font-size:12px;cursor:pointer;text-decoration:underline;}
+.dz-edu .atlas-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:12px;}
+.dz-edu .atlas-legend i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle;}
+.dz-edu .hide-ablative .layer-ablative,.dz-edu .hide-nonablative .layer-nonablative,.dz-edu .hide-vascular .layer-vascular,.dz-edu .hide-epilation .layer-epilation{display:none;}
+.dz-edu .skin-corneum{fill:#e7d6bd;}.dz-edu .skin-epidermis{fill:#f0dcc0;}.dz-edu .skin-papillary{fill:#f3c9b0;}.dz-edu .skin-reticular{fill:#ecb89c;}.dz-edu .skin-hypodermis{fill:#f6ecb4;}.dz-edu .skin-fascia{fill:#dcd0b8;}
+.dz-edu .skin-band{stroke:#d8c8b2;stroke-width:1;}
+.dz-edu .layer-lbl{font-family:var(--sans);font-size:10.5px;fill:#6b5a44;font-weight:600;}
+.dz-edu .ruler-line,.dz-edu .ruler-tick{stroke:#b9ad9b;stroke-width:1.2;}
+.dz-edu .ruler-lbl{font-family:var(--sans);font-size:9.5px;fill:var(--muted);}
+.dz-edu .pen-bar{fill-opacity:.42;}
+.dz-edu .pen-bar.ab{fill:var(--artery);stroke:var(--artery);}.dz-edu .pen-bar.na{fill:var(--sage-dark);stroke:var(--sage-dark);}.dz-edu .pen-bar.va{fill:var(--vein);stroke:var(--vein);}.dz-edu .pen-bar.ep{fill:var(--muscle-2);stroke:var(--muscle-2);}
+.dz-edu .wl-lbl{font-family:var(--sans);font-size:8.5px;font-weight:600;fill:var(--espresso);text-anchor:middle;}
+.dz-edu .point{stroke:#fff;stroke-width:2;transition:r .15s;cursor:pointer;}
+.dz-edu .point.ab{fill:var(--artery);}.dz-edu .point.na{fill:var(--sage-dark);}.dz-edu .point.va{fill:var(--vein);}.dz-edu .point.ep{fill:var(--muscle-2);}
+.dz-edu .point.active{r:11;stroke:#2e2820;}
+.dz-edu .atlas-info{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px;min-height:260px;}
+.dz-edu .atlas-info .hint{color:var(--muted);font-size:15px;}
+.dz-edu .ai-title{font-family:var(--serif);font-size:24px;color:var(--espresso);margin-bottom:14px;}
+.dz-edu .ai-list{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14.5px;}
+.dz-edu .ai-list dt{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px;padding-top:3px;}
+.dz-edu .ai-list dd{color:var(--ink);}
+.dz-edu .ai-verify{margin-top:16px;font-size:13px;color:#8a6d1f;background:#f6efdd;border-radius:var(--radius);padding:10px 14px;}
+@media (max-width:900px){.dz-edu .atlas-grid{grid-template-columns:1fr;}}
+</style>
+
+<div class="dz-edu">
+  <div class="lead">
+    <span class="eyebrow">Аппаратные методики</span>
+    <h1>Лазеры: длины волн и глубины воздействия</h1>
+    <div class="role-line">Хромофоры · слои кожи · аблятивные и неаблятивные · фототипы</div>
+    <p>Какая длина волны на какую мишень (хромофор) работает, как глубоко проникает и почему параметры зависят от фототипа кожи.</p>
+  </div>
+
+  <div class="note verify"><b>Важно.</b> Глубины, флюенс и режимы — образовательный ориентир; зависят от конкретного аппарата, насадки и кожи и <b>требуют верификации</b> по инструкции производителя. Срез кожи — схема, не в масштабе.</div>
+
+  <section class="atlas section" data-atlas>
+    <h2>Срез кожи и глубина проникновения</h2>
+    <p>Включайте классы лазеров, нажимайте на маркеры внизу столбцов — справа появятся мишень, глубина, тип воздействия и применение.</p>
+    <div class="atlas-grid">
+      <div class="atlas-figure-wrap">
+        <div class="atlas-controls">
+          <button class="lyr-btn" data-toggle="ablative"><span class="dot" style="background:#b5453b"></span>Аблятивные</button>
+          <button class="lyr-btn" data-toggle="nonablative"><span class="dot" style="background:#6c7b5b"></span>Неаблятивные</button>
+          <button class="lyr-btn" data-toggle="vascular"><span class="dot" style="background:#4a6f9c"></span>Сосуд./пигмент</button>
+          <button class="lyr-btn" data-toggle="epilation"><span class="dot" style="background:#b06f52"></span>Эпиляция</button>
+          <button class="atlas-reset" data-atlas-reset>сбросить</button>
+        </div>
+        <div data-atlas-figure>
+          <svg viewBox="0 0 600 720" role="img" aria-label="Срез кожи и глубина проникновения лазеров">
+            <g class="skin-base">
+              <rect class="skin-corneum skin-band" x="70" y="88" width="232" height="16"/>
+              <rect class="skin-epidermis skin-band" x="70" y="104" width="232" height="66"/>
+              <rect class="skin-papillary skin-band" x="70" y="170" width="232" height="64"/>
+              <rect class="skin-reticular skin-band" x="70" y="234" width="232" height="220"/>
+              <rect class="skin-hypodermis skin-band" x="70" y="454" width="232" height="206"/>
+              <rect class="skin-fascia skin-band" x="70" y="660" width="232" height="40"/>
+              <text class="layer-lbl" x="80" y="100">Роговой слой</text>
+              <text class="layer-lbl" x="80" y="142">Эпидермис</text>
+              <text class="layer-lbl" x="80" y="206">Сосочковая дерма</text>
+              <text class="layer-lbl" x="80" y="348">Сетчатая дерма</text>
+              <text class="layer-lbl" x="80" y="560">Гиподерма (жир)</text>
+              <text class="layer-lbl" x="80" y="684">Фасция / SMAS</text>
+              <line class="ruler-line" x1="56" y1="88" x2="56" y2="700"/>
+              <line class="ruler-tick" x1="50" y1="88" x2="56" y2="88"/><text class="ruler-lbl" x="30" y="92">0</text>
+              <line class="ruler-tick" x1="50" y1="170" x2="56" y2="170"/><text class="ruler-lbl" x="20" y="174">0.1 мм</text>
+              <line class="ruler-tick" x1="50" y1="234" x2="56" y2="234"/><text class="ruler-lbl" x="20" y="238">0.3 мм</text>
+              <line class="ruler-tick" x1="50" y1="320" x2="56" y2="320"/><text class="ruler-lbl" x="28" y="324">1 мм</text>
+              <line class="ruler-tick" x1="50" y1="454" x2="56" y2="454"/><text class="ruler-lbl" x="28" y="458">2 мм</text>
+              <line class="ruler-tick" x1="50" y1="560" x2="56" y2="560"/><text class="ruler-lbl" x="28" y="564">4 мм</text>
+            </g>
+            <g class="layer-ablative">
+              <rect class="pen-bar ab" x="335" y="88" width="20" height="40" rx="3"/>
+              <circle class="point ab" data-point="er-yag" cx="345" cy="128" r="8"/><text class="wl-lbl" x="345" y="146">Er:YAG</text>
+              <rect class="pen-bar ab" x="371" y="88" width="20" height="112" rx="3"/>
+              <circle class="point ab" data-point="co2" cx="381" cy="200" r="8"/><text class="wl-lbl" x="381" y="218">CO₂</text>
+            </g>
+            <g class="layer-nonablative">
+              <rect class="pen-bar na" x="407" y="88" width="20" height="212" rx="3"/>
+              <circle class="point na" data-point="er-glass" cx="417" cy="300" r="8"/><text class="wl-lbl" x="417" y="318">Er:Glass</text>
+            </g>
+            <g class="layer-vascular">
+              <rect class="pen-bar va" x="443" y="88" width="20" height="122" rx="3"/>
+              <circle class="point va" data-point="ktp" cx="453" cy="210" r="8"/><text class="wl-lbl" x="453" y="228">KTP 532</text>
+              <rect class="pen-bar va" x="479" y="88" width="20" height="152" rx="3"/>
+              <circle class="point va" data-point="pdl" cx="489" cy="240" r="8"/><text class="wl-lbl" x="489" y="258">PDL 595</text>
+            </g>
+            <g class="layer-epilation">
+              <rect class="pen-bar ep" x="515" y="88" width="20" height="252" rx="3"/>
+              <circle class="point ep" data-point="alex" cx="525" cy="340" r="8"/><text class="wl-lbl" x="525" y="358">755</text>
+              <rect class="pen-bar ep" x="551" y="88" width="20" height="312" rx="3"/>
+              <circle class="point ep" data-point="diode" cx="561" cy="400" r="8"/><text class="wl-lbl" x="561" y="418">808</text>
+              <rect class="pen-bar ep" x="551" y="88" width="20" height="382" rx="3" fill-opacity="0.22"/>
+              <circle class="point ep" data-point="ndyag" cx="525" cy="470" r="8"/><text class="wl-lbl" x="525" y="488">1064</text>
+            </g>
+          </svg>
+        </div>
+        <div class="atlas-legend">
+          <span><i style="background:#b5453b"></i>аблятивные</span>
+          <span><i style="background:#6c7b5b"></i>неаблятивные</span>
+          <span><i style="background:#4a6f9c"></i>сосуд./пигмент</span>
+          <span><i style="background:#b06f52"></i>эпиляция</span>
+        </div>
+      </div>
+      <div class="atlas-info" data-atlas-info>
+        <p class="hint">Нажмите на <b>маркер длины волны</b> внизу столбца — здесь появятся мишень (хромофор), глубина, тип воздействия и применение.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Типы лазеров и длины волн</h2>
+    <p>Принцип селективного фототермолиза: длина волны — под целевой хромофор, длительность импульса — под время термической релаксации мишени.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Длина волны</th><th>Мишень</th><th>Тип</th><th>Глубина<span class="badge-verify">проверить</span></th><th>Применение</th></tr></thead>
+      <tbody>
+        <tr><td><b>Er:YAG 2940</b></td><td>Вода</td><td>Аблятивный</td><td>Очень поверхностно</td><td>Точная шлифовка</td></tr>
+        <tr><td><b>CO₂ 10600</b></td><td>Вода</td><td>Аблятивный + коагуляция</td><td>Эпидермис → сосочк. дерма</td><td>Глубокая шлифовка, рубцы</td></tr>
+        <tr><td><b>Er:Glass 1540/1550</b></td><td>Вода</td><td>Неаблятивный фракц.</td><td>Сосочк./средняя дерма</td><td>Омоложение, постакне</td></tr>
+        <tr><td><b>KTP 532</b></td><td>Оксигемоглобин, меланин</td><td>Неаблятивный</td><td>Поверхностно</td><td>Купероз, лентиго; ⚠ тёмная кожа</td></tr>
+        <tr><td><b>PDL 595</b></td><td>Оксигемоглобин</td><td>Неаблятивный</td><td>Сосочковая дерма</td><td>Розацеа, сосуды</td></tr>
+        <tr><td><b>Александрит 755</b></td><td>Меланин</td><td>Неаблятивный</td><td>~1–2 мм</td><td>Эпиляция; ⚠ тёмная кожа</td></tr>
+        <tr><td><b>Диод 808/810</b></td><td>Меланин</td><td>Неаблятивный</td><td>Глубина фолликула</td><td>Эпиляция, универсальный</td></tr>
+        <tr><td><b>Nd:YAG 1064</b></td><td>Меланин (слабее)</td><td>Неаблятивный</td><td>Самый глубокий</td><td>Эпиляция тёмной кожи, сосуды</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <h2>Параметры по фототипам (Фитцпатрик)</h2>
+    <p>Чем больше меланина, тем выше риск ожога и поствоспалительной гиперпигментации (ПВГ) на «меланиновых» длинах волн (532/755 нм).</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Фототип</th><th>Риск ПВГ</th><th>Тактика<span class="badge-verify">проверить</span></th><th>Предпочтительно</th></tr></thead>
+      <tbody>
+        <tr><td>I–II</td><td>Низкий</td><td>Стандартные флюенсы, охлаждение</td><td>Широкий выбор</td></tr>
+        <tr><td>III–IV</td><td>Средний</td><td>Ниже флюенс, длиннее импульс, тест-зона</td><td>Диод 808, аккуратно 755</td></tr>
+        <tr><td>V–VI</td><td>Высокий</td><td>Минимум «меланиновых», длинные импульсы, усиленное охлаждение</td><td>Nd:YAG 1064</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note danger"><b>Осторожно.</b> Загар = временно повышенный фототип: пигментзависимые процедуры откладывают. Тест-зона при IV–VI обязательна.</div>
+  </section>
+
+  <section class="section">
+    <h2>Противопоказания</h2>
+    <ul>
+      <li>Активный загар, недавняя инсоляция (для пигментзависимых методик)</li>
+      <li>Приём изотретиноина — отсрочка по аблятивным процедурам</li>
+      <li>Активная инфекция/герпес в зоне</li>
+      <li>Фотосенсибилизирующие препараты</li>
+      <li>Склонность к келоидам, нарушения заживления</li>
+    </ul>
+    <div class="note verify">Список не исчерпывающий — сверяйтесь с инструкцией аппарата.</div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var P={
+    "er-yag":{t:"Er:YAG 2940 нм",r:[["Мишень","вода (высокое поглощение)"],["Тип","аблятивный"],["Глубина","очень поверхностно, минимальный нагрев",1],["Применение","точная шлифовка, текстура"]]},
+    "co2":{t:"CO₂ 10600 нм",r:[["Мишень","вода"],["Тип","аблятивный + коагуляция"],["Глубина","эпидермис → сосочковая дерма",1],["Применение","глубокая шлифовка, рубцы; даунтайм"]]},
+    "er-glass":{t:"Er:Glass 1540/1550 нм",r:[["Мишень","вода (мягче)"],["Тип","неаблятивный фракционный"],["Глубина","сосочковая/средняя дерма (~0.5–1.5 мм)",1],["Применение","омоложение, постакне, малый даунтайм"]]},
+    "ktp":{t:"KTP 532 нм",r:[["Мишень","оксигемоглобин, меланин"],["Тип","неаблятивный"],["Глубина","поверхностно",1],["Применение","купероз, лентиго; осторожно на тёмной коже"]]},
+    "pdl":{t:"PDL 595 нм",r:[["Мишень","оксигемоглобин"],["Тип","неаблятивный (сосудистый)"],["Глубина","сосочковая дерма",1],["Применение","розацеа, эритема, телеангиэктазии"]]},
+    "alex":{t:"Александрит 755 нм",r:[["Мишень","меланин (сильное поглощение)"],["Тип","неаблятивный"],["Глубина","~1–2 мм",1],["Применение","эпиляция, пигмент; риск на фототипах IV–VI"]]},
+    "diode":{t:"Диод 808/810 нм",r:[["Мишень","меланин"],["Тип","неаблятивный"],["Глубина","до фолликула (~1.5–3 мм)",1],["Применение","эпиляция, относительно универсален"]]},
+    "ndyag":{t:"Nd:YAG 1064 нм",r:[["Мишень","меланин (слабее), гемоглобин"],["Тип","неаблятивный, самый глубокий"],["Глубина","до ~3–5 мм",1],["Применение","эпиляция тёмной кожи, глубокие сосуды, коллаген"]]}
+  };
+  var atlas=document.querySelector('.dz-edu [data-atlas]')||document.querySelector('[data-atlas]');
+  if(!atlas)return;
+  var fig=atlas.querySelector('[data-atlas-figure]');
+  var info=atlas.querySelector('[data-atlas-info]');
+  var def=info?info.innerHTML:"";
+  atlas.querySelectorAll('[data-toggle]').forEach(function(b){b.addEventListener('click',function(){var l=b.getAttribute('data-toggle');var off=b.classList.toggle('off');fig.classList.toggle('hide-'+l,off);});});
+  function badge(v){return v?' <span class="badge-verify">проверить</span>':'';}
+  function activate(el){atlas.querySelectorAll('[data-point]').forEach(function(p){p.classList.remove('active');});el.classList.add('active');var d=P[el.getAttribute('data-point')];if(!d||!info)return;var r='';d.r.forEach(function(x){r+='<dt>'+x[0]+'</dt><dd>'+x[1]+badge(x[2])+'</dd>';});info.innerHTML='<div class="ai-title">'+d.t+'</div><dl class="ai-list">'+r+'</dl><p class="ai-verify">⚠ Параметры ориентировочны, требуют верификации врачом и зависят от аппарата.</p>';}
+  atlas.querySelectorAll('[data-point]').forEach(function(el){el.setAttribute('tabindex','0');el.setAttribute('role','button');el.addEventListener('click',function(){activate(el);});el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();activate(el);}});});
+  var rst=atlas.querySelector('[data-atlas-reset]');if(rst)rst.addEventListener('click',function(){atlas.querySelectorAll('[data-point]').forEach(function(p){p.classList.remove('active');});if(info)info.innerHTML=def;});
+})();
+</script>
+<!-- ↑↑↑ КОПИРОВАТЬ ДО СЮДА ↑↑↑ -->
+
+</body>
+</html>
