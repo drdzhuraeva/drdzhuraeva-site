@@ -276,6 +276,37 @@
     @media (max-width: 560px) { .book-form .bf-row { flex-direction: column; } }
     @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
 
+    /* Education — paid courses for cosmetologists */
+    .education { background: var(--bg-2); }
+    .edu-head p { color: var(--muted); max-width: 460px; font-size: 15px; margin-top: 6px; }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+    .course {
+      background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 34px 30px; display: flex; flex-direction: column;
+    }
+    .course .tag {
+      align-self: flex-start; font-family: var(--sans); font-weight: 600; font-size: 11px;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--sage-dark);
+      border: 1px solid var(--sage); border-radius: 999px; padding: 5px 12px; margin-bottom: 18px;
+    }
+    .course h3 { font-size: 24px; line-height: 1.2; margin-bottom: 12px; }
+    .course .c-desc { color: #5c554b; font-size: 15px; margin-bottom: 20px; }
+    .course .c-list { list-style: none; margin: 0 0 24px; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+    .course .c-list li { color: #5c554b; font-size: 14px; padding-left: 24px; position: relative; }
+    .course .c-list li::before {
+      content: ""; position: absolute; left: 0; top: 9px; width: 12px; height: 6px;
+      border-left: 1.5px solid var(--sage-dark); border-bottom: 1.5px solid var(--sage-dark);
+      transform: rotate(-45deg);
+    }
+    .course .c-meta { display: flex; gap: 22px; flex-wrap: wrap; color: var(--muted); font-size: 13px; letter-spacing: .5px; margin-bottom: 22px; }
+    .course .c-meta b { color: var(--espresso); font-weight: 600; }
+    .course .c-foot { margin-top: auto; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 22px; }
+    .course .price { font-family: var(--serif); font-size: 30px; color: var(--sage-dark); line-height: 1; }
+    .course .price small { font-family: var(--sans); font-size: 13px; color: var(--muted); font-weight: 400; }
+    .course .btn { padding: 11px 22px; }
+    .edu-note { color: var(--muted); font-size: 14px; margin-top: 30px; max-width: 720px; }
+    .edu-note a { color: var(--sage-dark); border-bottom: 1px solid var(--sage); }
+
     /* Anatomy — interactive skin cross-section */
     .anat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 40px; }
     .anat-figure { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
@@ -345,6 +376,7 @@
         <a href="#approach">Подход</a>
         <a href="#anatomy">Кожа</a>
         <a href="#services">Процедуры</a>
+        <a href="#education">Обучение</a>
         <a href="#reviews">Отзывы</a>
         <a href="#contact">Контакты</a>
       </nav>
@@ -629,6 +661,80 @@
           <div class="who">— Дмитрий Мороз · Яндекс.Карты</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="block education" id="education">
+    <div class="container">
+      <div class="edu-head">
+        <div class="eyebrow">Обучение для специалистов</div>
+        <h2>Образовательные курсы для косметологов</h2>
+        <p>Авторские программы для врачей-косметологов и специалистов эстетической медицины. Доказательный подход, разбор клинических случаев и готовые протоколы для работы.</p>
+      </div>
+
+      <div class="edu-grid">
+
+        <!-- COURSE 1 -->
+        <article class="course">
+          <span class="tag">Онлайн</span>
+          <h3>Аппаратная косметология: база</h3>
+          <p class="c-desc">Систематизация знаний по аппаратным методикам: показания, противопоказания и построение программы для пациента.</p>
+          <ul class="c-list">
+            <li>Физика и механизмы действия аппаратов</li>
+            <li>Подбор методики под тип кожи и запрос</li>
+            <li>Сочетание процедур и интервалы</li>
+            <li>Разбор реальных клинических случаев</li>
+          </ul>
+          <div class="c-meta"><span><b>8</b> модулей</span><span><b>~12</b> часов</span><span>Сертификат</span></div>
+          <div class="c-foot">
+            <div class="price">19 900 ₽ <small>/ доступ навсегда</small></div>
+            <!-- TODO: вставьте ссылку на оплату (ЮKassa / Tinkoff / Robokassa) в href -->
+            <a href="#" target="_blank" rel="noopener" class="btn">Оплатить курс</a>
+          </div>
+        </article>
+
+        <!-- COURSE 2 -->
+        <article class="course">
+          <span class="tag">Онлайн + практика</span>
+          <h3>Дерматоскопия для косметолога</h3>
+          <p class="c-desc">Как видеть кожу глубже: распознавание состояний, маршрутизация пациента и грамотные рекомендации.</p>
+          <ul class="c-list">
+            <li>Базовая дерматоскопическая картина</li>
+            <li>Красные флаги и когда направить к врачу</li>
+            <li>Документирование и динамическое наблюдение</li>
+            <li>Практические задания с обратной связью</li>
+          </ul>
+          <div class="c-meta"><span><b>6</b> модулей</span><span><b>~10</b> часов</span><span>Сертификат</span></div>
+          <div class="c-foot">
+            <div class="price">24 900 ₽ <small>/ доступ навсегда</small></div>
+            <!-- TODO: вставьте ссылку на оплату (ЮKassa / Tinkoff / Robokassa) в href -->
+            <a href="#" target="_blank" rel="noopener" class="btn">Оплатить курс</a>
+          </div>
+        </article>
+
+        <!-- COURSE 3 -->
+        <article class="course">
+          <span class="tag">Менторство</span>
+          <h3>Ведение пациента: от диагностики до результата</h3>
+          <p class="c-desc">Индивидуальное сопровождение: разбор ваших случаев, выстраивание программ и работа с возражениями пациентов.</p>
+          <ul class="c-list">
+            <li>Личные онлайн-сессии с разбором кейсов</li>
+            <li>Построение долгосрочных программ ухода</li>
+            <li>Коммуникация и удержание пациента</li>
+            <li>Доступ к закрытому чату поддержки</li>
+          </ul>
+          <div class="c-meta"><span><b>4</b> сессии</span><span><b>1:1</b> формат</span><span>Чат поддержки</span></div>
+          <div class="c-foot">
+            <div class="price">49 900 ₽ <small>/ пакет</small></div>
+            <!-- TODO: вставьте ссылку на оплату (ЮKassa / Tinkoff / Robokassa) в href -->
+            <a href="#" target="_blank" rel="noopener" class="btn">Оплатить курс</a>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="edu-note">Курсы предназначены для специалистов с медицинским образованием. После оплаты доступ к материалам открывается в течение рабочего дня. Остались вопросы по программе — <a href="#contact">напишите нам</a>.</p>
     </div>
   </section>
 
