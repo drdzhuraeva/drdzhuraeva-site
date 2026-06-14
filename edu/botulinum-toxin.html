@@ -38,6 +38,18 @@
     .plate img { width: 100%; height: auto; display: block; border-radius: 2px; }
     .plate figcaption { margin-top: 12px; font-size: 13px; color: var(--muted); text-align: center; line-height: 1.4; }
     .plate-attr { color: var(--muted); font-size: 13px; }
+    /* Глоссарий — кликабельные сноски к терминам */
+    .term { color: var(--sage-dark); border-bottom: 1px dashed var(--sage); cursor: help; }
+    .term:hover, .term:focus { color: var(--espresso); border-bottom-color: var(--sage-dark); outline: none; }
+    .term::after { content: "?"; font-size: 9px; vertical-align: super; color: var(--sage-dark); margin-left: 1px; font-weight: 600; }
+    .term-pop { position: absolute; z-index: 200; max-width: 330px; background: var(--espresso); color: #efe7da;
+      font-size: 14px; line-height: 1.55; padding: 15px 17px; border-radius: 6px; box-shadow: 0 14px 36px rgba(40,30,20,.3);
+      font-weight: 300; }
+    .term-pop .tp-title { font-family: var(--serif); font-size: 18px; display: block; margin-bottom: 7px; color: #fff; }
+    .term-pop b { color: #fff; }
+    .term-pop::before { content: ""; position: absolute; top: -7px; left: var(--ax, 22px);
+      border: 7px solid transparent; border-bottom-color: var(--espresso); border-top: 0; }
+    .term-pop.below::before { top: auto; bottom: -7px; border-bottom-color: transparent; border-top-color: var(--espresso); border-bottom: 0; }
     .face-outline { fill: #f7efe6; stroke: var(--line); stroke-width: 2; }
     .skin-line { fill: none; stroke: #c9b9a3; stroke-width: 2; stroke-linecap: round; }
     .skin-soft { fill: #efe4d4; stroke: #d8c8b2; stroke-width: 1.5; }
@@ -402,7 +414,8 @@
       <!-- ============ ПРЕПАРАТЫ ============ -->
       <section class="section">
         <h2>Препараты ботулотоксина типа A</h2>
-        <p>На рынке РФ зарегистрировано несколько препаратов на основе ботулотоксина типа A. Они отличаются по составу комплекса, наличию белков-носителей и единицам активности — <b>единицы разных препаратов не эквивалентны</b> и не пересчитываются «один к одному».</p>
+        <p><b>Механизм.</b> Ботулотоксин блокирует выброс <span class="term" data-term="acetylcholine">ацетилхолина</span> в <span class="term" data-term="nmj">нервно-мышечном синапсе</span>: сигнал с нерва перестаёт доходить до мышцы, и она временно расслабляется. Эффект развивается за 3–7 дней, держится в среднем 3–4 месяца, затем передача восстанавливается за счёт прорастания новых терминалей — поэтому процедуру повторяют.</p>
+        <p>На рынке РФ зарегистрировано несколько препаратов на основе ботулотоксина типа A. Они отличаются по составу комплекса, наличию <span class="term" data-term="complex-proteins">белков-носителей</span> и <span class="term" data-term="units">единицам активности</span> — <b>единицы разных препаратов не эквивалентны</b> и не пересчитываются «один к одному». Поэтому при смене препарата дозу пересчитывают по таблице ниже, а не переносят напрямую.</p>
         <div class="tbl-wrap">
           <table>
             <thead><tr><th>Препарат (МНН)</th><th>Производитель</th><th>Особенности состава</th><th>Пересчёт к Botox<span class="badge-verify">проверить</span></th></tr></thead>
@@ -436,7 +449,7 @@
             </tbody>
           </table>
         </div>
-        <div class="note danger"><b>Зоны осторожности.</b> Глабелла и спинка носа — близко проходят <b>a. supratrochlearis</b> и <b>a. angularis</b> (риск при сочетании с филлерами). Латеральнее средней линии лба — риск птоза брови; над орбитой соблюдайте безопасный отступ. Глубокая инъекция в области нижнего века/щеки — риск диффузии в нежелательные мышцы.</div>
+        <div class="note danger"><b>Зоны осторожности.</b> <span class="term" data-term="glabella">Глабелла</span> и спинка носа — близко проходят <b>a. supratrochlearis</b> и <b>a. angularis</b> (риск при сочетании с филлерами). Латеральнее средней линии лба — риск <span class="term" data-term="ptoz">птоза</span> брови; над орбитой соблюдайте безопасный отступ. Глубокая инъекция в области нижнего века/щеки — риск <span class="term" data-term="diffusion">диффузии</span> в нежелательные мышцы.</div>
       </section>
 
       <!-- ============ ПОДБОР ПОД ТИП ЛИЦА ============ -->
@@ -450,18 +463,19 @@
         <p>Коррекция жевательных мышц формирует овал; эффект развивается недели, нужны повторы.</p>
         <h3>«Гневное» / опущенное выражение рта</h3>
         <p>DAO + при необходимости mentalis; учитывать баланс с леваторами, чтобы не нарушить улыбку.</p>
-        <div class="note">Тип кожи (по Фитцпатрику) на дозу ботулотоксина прямо не влияет, но определяет тактику сопутствующих процедур и риск ПВГ при комбинировании — это разберём в разделах по аппаратам и пилингам.</div>
+        <div class="note">Тип кожи (по <span class="term" data-term="fitzpatrick">Фитцпатрику</span>) на дозу ботулотоксина прямо не влияет, но определяет тактику сопутствующих процедур и риск <span class="term" data-term="pvg">ПВГ</span> при комбинировании — это разберём в разделах по аппаратам и пилингам.</div>
       </section>
 
       <!-- ============ ПРОТИВОПОКАЗАНИЯ ============ -->
       <section class="section">
         <h2>Противопоказания и осторожность</h2>
+        <p>Термины с пунктирным подчёркиванием — кликабельны: нажмите, чтобы увидеть пояснение.</p>
         <ul>
-          <li>Беременность и лактация</li>
-          <li>Миастения, синдром Ламберта–Итона и др. нервно-мышечные заболевания</li>
-          <li>Гиперчувствительность к компонентам, инфекция/воспаление в зоне</li>
-          <li>Приём аминогликозидов и др. средств, влияющих на нервно-мышечную передачу</li>
-          <li>Нереалистичные ожидания, дисморфофобия</li>
+          <li><b>Беременность и лактация.</b> Контролируемых исследований безопасности у беременных и кормящих нет, токсин относят к небезопасным в этот период — от процедуры воздерживаются.</li>
+          <li><b><span class="term" data-term="miastenia">Миастения</span>, <span class="term" data-term="lambert-eaton">синдром Ламберта–Итона</span></b> и другие нервно-мышечные заболевания. Токсин и так нарушает нервно-мышечную передачу — на фоне болезни это может резко усилить слабость вплоть до нарушения глотания и дыхания.</li>
+          <li><b><span class="term" data-term="giperchuvstvitelnost">Гиперчувствительность</span> к компонентам</b>, а также активная инфекция или воспаление в зоне инъекции — риск распространения инфекции и непредсказуемой реакции.</li>
+          <li><b>Приём <span class="term" data-term="aminoglikozidy">аминогликозидов</span></b> и других средств, влияющих на нервно-мышечную передачу — они потенцируют действие токсина и увеличивают риск избыточной слабости.</li>
+          <li><b>Нереалистичные ожидания, <span class="term" data-term="dysmorphophobia">дисморфофобия</span>.</b> Психологическая неготовность и искажённое восприятие внешности — относительное противопоказание: такие пациенты редко довольны результатом.</li>
         </ul>
         <div class="note verify">Список не исчерпывающий — сверяйтесь с инструкцией препарата и собирайте анамнез.</div>
       </section>
@@ -557,6 +571,67 @@
       }
     };
   </script>
+
+  <script>
+    /* Глоссарий: кликабельные сноски к терминам (.term[data-term]) */
+    (function () {
+      var G = {
+        "acetylcholine": ["Ацетилхолин", "Нейромедиатор, который выделяется на окончании двигательного нерва и заставляет мышцу сокращаться. Ботулотоксин блокирует его выброс — мышца расслабляется."],
+        "nmj": ["Нервно-мышечный синапс", "Место контакта нервного окончания с мышечным волокном, где сигнал с нерва передаётся мышце через ацетилхолин. Мишень действия ботулотоксина."],
+        "complex-proteins": ["Белки-носители (комплексообразующие)", "Сопутствующие белки, окружающие молекулу токсина в препарате. У разных брендов их количество отличается (у Xeomin их нет); теоретически влияют на иммуногенность."],
+        "units": ["Единицы активности (Ед, U)", "Мера биологической активности токсина, а не масса. Единицы разных препаратов измеряются по-разному и НЕ равны между собой — отсюда коэффициенты пересчёта."],
+        "glabella": ["Глабелла", "Межбровный промежуток. Мышцы глабеллы (corrugator + procerus) формируют вертикальные межбровные морщины — складки «11»."],
+        "ptoz": ["Птоз", "Опущение: брови (при избыточном расслаблении лба) или верхнего века (при попадании токсина в мышцу, поднимающую веко). Частое нежелательное явление при неверной технике."],
+        "diffusion": ["Диффузия токсина", "Распространение препарата за пределы целевой мышцы в соседние, из-за чего возникают нежелательные эффекты (например, птоз). Зависит от дозы, объёма разведения и глубины введения."],
+        "fitzpatrick": ["Шкала Фитцпатрика", "Классификация фототипов кожи (I–VI) по реакции на ультрафиолет. Чем выше фототип, тем больше меланина и выше риск ожога и пигментных осложнений при аппаратных процедурах."],
+        "pvg": ["ПВГ — поствоспалительная гиперпигментация", "Потемнение участка кожи после воспаления или травмы из-за избыточной выработки меланина. Чаще на смуглой коже (фототипы IV–VI); риск выше при агрессивных воздействиях."],
+        "miastenia": ["Миастения (myasthenia gravis)", "Хроническое аутоиммунное заболевание: антитела нарушают передачу сигнала с нерва на мышцу. Проявляется патологической мышечной утомляемостью и слабостью. Ботулотоксин усиливает блок — противопоказан."],
+        "lambert-eaton": ["Синдром Ламберта–Итона", "Редкое аутоиммунное нарушение нервно-мышечной передачи (часто связано с опухолью), при котором снижается выброс ацетилхолина. Как и при миастении, токсин опасно усиливает слабость."],
+        "giperchuvstvitelnost": ["Гиперчувствительность", "Повышенная иммунная реакция на препарат или его компоненты (например, человеческий альбумин) — от местной реакции до анафилаксии."],
+        "aminoglikozidy": ["Аминогликозиды", "Группа антибиотиков (гентамицин, амикацин, тобрамицин и др.). Нарушают нервно-мышечную передачу и усиливают эффект ботулотоксина, повышая риск избыточной слабости."],
+        "dysmorphophobia": ["Дисморфофобия", "Психическое расстройство: чрезмерная озабоченность мнимым или незначительным дефектом внешности. Пациенты редко довольны эстетическим результатом — относительное противопоказание."]
+      };
+      var pop = null;
+      function close() { if (pop) { pop.remove(); pop = null; } }
+      function open(el) {
+        close();
+        var key = el.getAttribute("data-term");
+        var d = G[key];
+        if (!d) return;
+        pop = document.createElement("div");
+        pop.className = "term-pop";
+        pop.innerHTML = '<span class="tp-title">' + d[0] + "</span>" + d[1];
+        document.body.appendChild(pop);
+        var r = el.getBoundingClientRect();
+        var sx = window.scrollX, sy = window.scrollY;
+        var top = r.bottom + sy + 10;
+        var left = r.left + sx;
+        var pw = pop.offsetWidth;
+        if (left + pw > window.innerWidth + sx - 12) left = window.innerWidth + sx - pw - 12;
+        if (left < sx + 8) left = sx + 8;
+        // если не помещается снизу — показываем сверху
+        if (r.bottom + 10 + pop.offsetHeight > window.innerHeight) {
+          top = r.top + sy - pop.offsetHeight - 10;
+          pop.classList.add("below");
+        }
+        pop.style.top = top + "px";
+        pop.style.left = left + "px";
+        pop.style.setProperty("--ax", Math.max(12, Math.min(r.left + sx - left + r.width / 2 - 7, pw - 20)) + "px");
+      }
+      document.addEventListener("click", function (e) {
+        var t = e.target.closest(".term");
+        if (t) { e.preventDefault(); if (pop && pop._for === t) { close(); } else { open(t); if (pop) pop._for = t; } return; }
+        if (!e.target.closest(".term-pop")) close();
+      });
+      document.querySelectorAll(".term").forEach(function (el) {
+        el.setAttribute("tabindex", "0"); el.setAttribute("role", "button");
+        el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(el); } });
+      });
+      window.addEventListener("resize", close);
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+    })();
+  </script>
+
   <script src="edu.js"></script>
   <script src="anatomy-face.js"></script>
 </body>
