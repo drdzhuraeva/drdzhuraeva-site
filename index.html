@@ -276,6 +276,28 @@
     .bf-alt a { color: var(--sage); border-bottom: 1px solid rgba(138,154,123,.5); }
     .bf-alt a:hover { color: var(--cream); }
     @media (max-width: 560px) { .book-form .bf-row { flex-direction: column; } }
+    /* Leave-a-review form (light, in reviews section) */
+    .rev-invite { margin-top: 48px; max-width: 640px; }
+    .rev-invite h3 { font-family: var(--serif); font-size: 26px; color: var(--ink); margin-bottom: 8px; }
+    .rev-invite > p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+    .rev-form { display: flex; flex-direction: column; gap: 13px; }
+    .rev-form .rf-row { display: flex; gap: 13px; }
+    .rev-form input, .rev-form select, .rev-form textarea {
+      width: 100%; font-family: inherit; font-size: 15px; color: var(--ink);
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 13px 15px; transition: border-color .2s;
+    }
+    .rev-form input::placeholder, .rev-form textarea::placeholder { color: var(--muted); }
+    .rev-form input:focus, .rev-form select:focus, .rev-form textarea:focus { outline: none; border-color: var(--sage); }
+    .rev-form select { appearance: none; -webkit-appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%238a9a7b' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
+      background-repeat: no-repeat; background-position: right 15px center; padding-right: 38px; }
+    .rev-form textarea { resize: vertical; min-height: 70px; }
+    .rev-form button.btn { border: none; cursor: pointer; align-self: flex-start; margin-top: 2px; }
+    .rf-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .rf-consent input { width: auto; margin-top: 3px; flex-shrink: 0; }
+    .rf-consent a { color: var(--sage-dark); border-bottom: 1px solid var(--sage); }
+    @media (max-width: 560px) { .rev-form .rf-row { flex-direction: column; } }
     @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
 
     /* Education — paid courses for cosmetologists */
@@ -658,7 +680,7 @@
     <div class="container">
       <div class="eyebrow">Отзывы</div>
       <h2>Что говорят пациенты</h2>
-      <p class="reviews-sub">Реальные отзывы пациентов с Яндекс.Карт.</p>
+      <p class="reviews-sub">Реальные отзывы наших пациентов.</p>
       <div class="reviews-grid">
         <div class="review">
           <div class="stars">★★★★★</div>
@@ -675,6 +697,36 @@
           <p>«Приходил в клинику несколько раз на процедуры к трихологу Малике. Очень комфортно по атмосфере, всё аккуратно и профессионально. Понравилось, что не «навязывают», а реально объясняют, что и зачем делаем. Процедуры прошли хорошо, рекомендации понятные. Уже вижу заметную разницу в лучшую сторону, поэтому буду продолжать ходить. Остался доволен, буду смело рекомендовать.»</p>
           <div class="who">— Дмитрий Мороз · Яндекс.Карты</div>
         </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>«Долго искала грамотного косметолога. Обратилась к Малике Джураевой и не пожалела. Моя кожа стала чистой, ровной и ухоженной. Прекрасное местоположение с красивым видом. Я осталась в восторге. Спасибо вам ещё раз.»</p>
+          <div class="who">— Лаура · Пациент</div>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>«Спасибо Вам большое за сегодняшнюю процедуру! Всё прошло легко и безболезненно, жду прекрасного результата! Было всё комфортно и профессионально! Клиника тоже очень красивая и уютная! Мне очень всё понравилось.»</p>
+          <div class="who">— Наталья · Пациент</div>
+        </div>
+      </div>
+      <div class="rev-invite">
+        <h3>Оставить отзыв</h3>
+        <p>Были на приёме? Поделитесь впечатлением — отзыв откроется в WhatsApp уже заполненным, останется только отправить. После проверки мы опубликуем его здесь.</p>
+        <form class="rev-form" id="review-form">
+          <div class="rf-row">
+            <input type="text" id="rf-name" placeholder="Ваше имя" autocomplete="name" required />
+            <select id="rf-rating" aria-label="Оценка" required>
+              <option value="5" selected>★★★★★ — отлично</option>
+              <option value="4">★★★★ — хорошо</option>
+              <option value="3">★★★ — нормально</option>
+            </select>
+          </div>
+          <textarea id="rf-text" placeholder="Расскажите о вашем визите: что понравилось, результат, впечатления…" rows="3" required></textarea>
+          <label class="rf-consent">
+            <input type="checkbox" id="rf-consent" required />
+            <span>Я согласен(а) на публикацию отзыва на сайте и <a href="consent.html" target="_blank" rel="noopener">обработку персональных данных</a>.</span>
+          </label>
+          <button type="submit" class="btn">Отправить через WhatsApp</button>
+        </form>
       </div>
     </div>
   </section>
@@ -1226,6 +1278,30 @@
         const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
         window.open(url, "_blank", "noopener");
       });
+
+      /* ---------- Review form ---------- */
+      const reviewForm = document.getElementById("review-form");
+      if (reviewForm) {
+        reviewForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (!document.getElementById("rf-consent").checked) {
+            document.getElementById("rf-consent").reportValidity();
+            return;
+          }
+          const rName = document.getElementById("rf-name").value.trim();
+          const rRating = document.getElementById("rf-rating").value;
+          const rText = document.getElementById("rf-text").value.trim();
+
+          const rLines = ["Здравствуйте! Хочу оставить отзыв о приёме."];
+          rLines.push("Имя: " + rName);
+          rLines.push("Оценка: " + "★".repeat(Number(rRating)) + " (" + rRating + "/5)");
+          rLines.push("Отзыв: " + rText);
+          rLines.push("Согласен(а) на публикацию отзыва на сайте.");
+
+          const rUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(rLines.join("\n"));
+          window.open(rUrl, "_blank", "noopener");
+        });
+      }
 
       /* ---------- Selector / filter ---------- */
       const selected = { age: new Set(), concern: new Set(), effect: new Set() };
